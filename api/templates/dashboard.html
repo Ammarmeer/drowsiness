@@ -1,0 +1,523 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - Drowsiness Detection System</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        .stats-card {
+            transition: all 0.3s ease;
+            border: none;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        .stats-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+        }
+        .chart-container {
+            height: 300px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #f8f9fa;
+            border-radius: 8px;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container">
+            <a class="navbar-brand" href="/">🚗 Drowsiness Detection System</a>
+            <div class="navbar-nav ms-auto">
+                <a class="nav-link" href="/">Home</a>
+                <a class="nav-link active" href="/dashboard">Dashboard</a>
+                <a class="nav-link" href="/settings">Settings</a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container my-4">
+        <div class="d-flex justify-content-between align-items-center mb-4">
+            <h2>📊 System Dashboard</h2>
+            <div>
+                <button class="btn btn-outline-primary" onclick="refreshData()">🔄 Refresh</button>
+                <span id="last-update" class="text-muted ms-2">Last updated: Never</span>
+            </div>
+        </div>
+
+        <!-- Stats Cards -->
+        <div class="row mb-4">
+            <div class="col-md-3 mb-3">
+                <div class="card stats-card text-center">
+                    <div class="card-body">
+                        <div style="font-size: 2rem;">👁️</div>
+                        <h5 class="mt-2">Monitoring Status</h5>
+                        <span id="monitoring-status" class="badge bg-secondary">Loading...</span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3 mb-3">
+                <div class="card stats-card text-center">
+                    <div class="card-body">
+                        <div style="font-size: 2rem;">📡</div>
+                        <h5 class="mt-2">ESP32 Status</h5>
+                        <span id="esp32-status" class="badge bg-secondary">Loading...</span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3 mb-3">
+                <div class="card stats-card text-center">
+                    <div class="card-body">
+                        <div style="font-size: 2rem;">🤖</div>
+                        <h5 class="mt-2">Model Status</h5>
+                        <span id="model-status" class="badge bg-secondary">Loading...</span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3 mb-3">
+                <div class="card stats-card text-center">
+                    <div class="card-body">
+                        <div style="font-size: 2rem;">📈</div>
+                        <h5 class="mt-2">Total Detections</h5>
+                        <h3 id="total-detections" class="text-primary">0</h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <!-- Live Video Feed -->
+            <div class="col-lg-8 mb-4">
+                <div class="card">
+                    <div class="card-header">
+                        <h5>📹 Live Monitoring</h5>
+                    </div>
+                    <div class="card-body">
+                        <div class="text-center">
+                            <img id="video-feed" src="/video_feed" alt="Live Video" 
+                                 style="max-width: 100%; height: auto; border-radius: 8px;">
+                        </div>
+                        <div class="mt-3 text-center">
+                            <button id="start-monitoring" class="btn btn-success me-2" onclick="startMonitoring()">
+                                ▶️ Start
+                            </button>
+                            <button id="stop-monitoring" class="btn btn-danger me-2" onclick="stopMonitoring()">
+                                ⏹️ Stop
+                            </button>
+                            <button class="btn btn-warning me-2" onclick="testEquipment()">
+                                🔧 Test Equipment
+                            </button>
+                            <button class="btn btn-info" onclick="manualAlert()">
+                                🚨 Manual Alert
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Side Panel -->
+            <div class="col-lg-4">
+                <!-- Detection History -->
+                <div class="card mb-4">
+                    <div class="card-header">
+                        <h5>📊 Detection History</h5>
+                    </div>
+                    <div class="card-body">
+                        <div class="chart-container" id="detection-chart">
+                            <div class="text-center">
+                                <div class="spinner-border text-primary" role="status"></div>
+                                <p class="mt-2 text-muted">Loading detection data...</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- System Information -->
+                <div class="card">
+                    <div class="card-header">
+                        <h5>ℹ️ System Information</h5>
+                    </div>
+                    <div class="card-body">
+                        <table class="table table-sm">
+                            <tr>
+                                <td><strong>ESP32-CAM IP:</strong></td>
+                                <td><code id="esp32-ip">Loading...</code></td>
+                            </tr>
+                            <tr>
+                                <td><strong>Flask Server:</strong></td>
+                                <td><code>localhost:5000</code></td>
+                            </tr>
+                            <tr>
+                                <td><strong>Detection Model:</strong></td>
+                                <td id="model-info">Loading...</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Last Detection:</strong></td>
+                                <td id="last-detection-time">Never</td>
+                            </tr>
+                        </table>
+                        
+                        <div class="mt-3">
+                            <h6>Recent Activity</h6>
+                            <div id="recent-activity" style="max-height: 200px; overflow-y: auto;">
+                                <div class="text-center text-muted">
+                                    <div class="spinner-border spinner-border-sm" role="status"></div>
+                                    <span class="ms-2">Loading...</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Detailed Detection Log -->
+        <div class="row mt-4">
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-header d-flex justify-content-between align-items-center">
+                        <h5>📋 Detection Log</h5>
+                        <button class="btn btn-outline-secondary btn-sm" onclick="exportDetections()">
+                            💾 Export Data
+                        </button>
+                    </div>
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table class="table table-striped table-hover">
+                                <thead>
+                                    <tr>
+                                        <th>Timestamp</th>
+                                        <th>Status</th>
+                                        <th>Confidence</th>
+                                        <th>Action</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="detection-log">
+                                    <tr>
+                                        <td colspan="4" class="text-center text-muted">
+                                            <div class="spinner-border spinner-border-sm" role="status"></div>
+                                            <span class="ms-2">Loading detection log...</span>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Toast Container -->
+    <div class="toast-container position-fixed bottom-0 end-0 p-3">
+        <div id="notification-toast" class="toast" role="alert">
+            <div class="toast-header">
+                <strong class="me-auto">Dashboard</strong>
+                <button type="button" class="btn-close" data-bs-dismiss="toast"></button>
+            </div>
+            <div class="toast-body" id="toast-message"></div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Show notification
+        function showNotification(message, type = 'info') {
+            const toast = document.getElementById('notification-toast');
+            const toastBody = document.getElementById('toast-message');
+            
+            toastBody.textContent = message;
+            toast.className = `toast show bg-${type === 'error' ? 'danger' : type}`;
+            
+            const bsToast = new bootstrap.Toast(toast);
+            bsToast.show();
+        }
+
+        // Load system status
+        function loadSystemStatus() {
+            fetch('/status')
+                .then(response => response.json())
+                .then(data => {
+                    // Update monitoring status
+                    const monitoringStatus = document.getElementById('monitoring-status');
+                    if (monitoringStatus) {
+                        monitoringStatus.className = data.monitoring ? 'badge bg-success' : 'badge bg-secondary';
+                        monitoringStatus.textContent = data.monitoring ? 'Active' : 'Inactive';
+                    }
+
+                    // Update ESP32 status
+                    const esp32Status = document.getElementById('esp32-status');
+                    if (esp32Status) {
+                        esp32Status.className = data.esp32_connected ? 'badge bg-success' : 'badge bg-danger';
+                        esp32Status.textContent = data.esp32_connected ? 'Connected' : 'Disconnected';
+                    }
+
+                    // Update model status
+                    const modelStatus = document.getElementById('model-status');
+                    if (modelStatus) {
+                        modelStatus.className = data.model_loaded ? 'badge bg-success' : 'badge bg-warning';
+                        modelStatus.textContent = data.model_loaded ? 'YOLOv8 Loaded' : 'Mock Mode';
+                    }
+
+                    // Update total detections
+                    const totalDetections = document.getElementById('total-detections');
+                    if (totalDetections) {
+                        totalDetections.textContent = data.total_detections || 0;
+                    }
+
+                    // Update ESP32 IP
+                    const esp32IP = document.getElementById('esp32-ip');
+                    if (esp32IP) {
+                        esp32IP.textContent = data.esp32_ip || 'Unknown';
+                    }
+
+                    // Update model info
+                    const modelInfo = document.getElementById('model-info');
+                    if (modelInfo) {
+                        modelInfo.textContent = data.model_loaded ? 'YOLOv8 Drowsiness Model' : 'Mock Detection Mode';
+                    }
+
+                    // Update last detection time
+                    const lastDetectionTime = document.getElementById('last-detection-time');
+                    if (lastDetectionTime && data.latest_detection) {
+                        const time = new Date(data.latest_detection.timestamp).toLocaleString();
+                        lastDetectionTime.textContent = time;
+                    }
+
+                    // Update button states
+                    const startBtn = document.getElementById('start-monitoring');
+                    const stopBtn = document.getElementById('stop-monitoring');
+                    if (startBtn) startBtn.disabled = data.monitoring;
+                    if (stopBtn) stopBtn.disabled = !data.monitoring;
+                })
+                .catch(error => {
+                    console.error('Error loading status:', error);
+                    showNotification('Failed to load system status', 'error');
+                });
+        }
+
+        // Load detection history
+        function loadDetectionHistory() {
+            fetch('/detections')
+                .then(response => response.json())
+                .then(data => {
+                    const logBody = document.getElementById('detection-log');
+                    const recentActivity = document.getElementById('recent-activity');
+                    const chartContainer = document.getElementById('detection-chart');
+                    
+                    if (data.detections && data.detections.length > 0) {
+                        // Update detection log table
+                        if (logBody) {
+                            logBody.innerHTML = '';
+                            data.detections.slice(-20).reverse().forEach(detection => {
+                                const row = document.createElement('tr');
+                                const time = new Date(detection.timestamp).toLocaleString();
+                                const status = detection.drowsy ? 'DROWSY' : 'ALERT';
+                                const confidence = (detection.confidence * 100).toFixed(1);
+                                const action = detection.drowsy ? 'Alert Triggered' : 'None';
+                                const statusClass = detection.drowsy ? 'text-danger' : 'text-success';
+                                
+                                row.innerHTML = `
+                                    <td>${time}</td>
+                                    <td><strong class="${statusClass}">${status}</strong></td>
+                                    <td>${confidence}%</td>
+                                    <td>${action}</td>
+                                `;
+                                logBody.appendChild(row);
+                            });
+                        }
+
+                        // Update recent activity
+                        if (recentActivity) {
+                            recentActivity.innerHTML = '';
+                            data.detections.slice(-5).reverse().forEach(detection => {
+                                const item = document.createElement('div');
+                                item.className = 'border-bottom py-2';
+                                const time = new Date(detection.timestamp).toLocaleTimeString();
+                                const status = detection.drowsy ? 'DROWSY' : 'ALERT';
+                                const badgeClass = detection.drowsy ? 'bg-danger' : 'bg-success';
+                                
+                                item.innerHTML = `
+                                    <div class="d-flex justify-content-between">
+                                        <span class="badge ${badgeClass}">${status}</span>
+                                        <small class="text-muted">${time}</small>
+                                    </div>
+                                `;
+                                recentActivity.appendChild(item);
+                            });
+                        }
+
+                        // Simple chart representation
+                        if (chartContainer) {
+                            const drowsyCount = data.detections.filter(d => d.drowsy).length;
+                            const alertCount = data.detections.length - drowsyCount;
+                            
+                            chartContainer.innerHTML = `
+                                <div class="w-100 text-center">
+                                    <h6>Detection Summary</h6>
+                                    <div class="row">
+                                        <div class="col-6">
+                                            <div class="text-success">
+                                                <h4>${alertCount}</h4>
+                                                <small>Alert</small>
+                                            </div>
+                                        </div>
+                                        <div class="col-6">
+                                            <div class="text-danger">
+                                                <h4>${drowsyCount}</h4>
+                                                <small>Drowsy</small>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="mt-3">
+                                        <div class="progress">
+                                            <div class="progress-bar bg-success" style="width: ${(alertCount/(alertCount+drowsyCount))*100}%"></div>
+                                            <div class="progress-bar bg-danger" style="width: ${(drowsyCount/(alertCount+drowsyCount))*100}%"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            `;
+                        }
+                    } else {
+                        // No data available
+                        if (logBody) {
+                            logBody.innerHTML = '<tr><td colspan="4" class="text-center text-muted">No detection data available</td></tr>';
+                        }
+                        if (recentActivity) {
+                            recentActivity.innerHTML = '<p class="text-muted text-center">No recent activity</p>';
+                        }
+                        if (chartContainer) {
+                            chartContainer.innerHTML = '<p class="text-muted">No data to display</p>';
+                        }
+                    }
+                })
+                .catch(error => {
+                    console.error('Error loading detections:', error);
+                    showNotification('Failed to load detection history', 'error');
+                });
+        }
+
+        // Control functions
+        function startMonitoring() {
+            fetch('/start_monitoring', {method: 'POST'})
+                .then(response => response.json())
+                .then(data => {
+                    if (data.status === 'success') {
+                        showNotification('Monitoring started successfully!', 'success');
+                        loadSystemStatus();
+                    } else {
+                        showNotification(data.message, 'warning');
+                    }
+                })
+                .catch(error => {
+                    showNotification('Failed to start monitoring', 'error');
+                });
+        }
+
+        function stopMonitoring() {
+            fetch('/stop_monitoring', {method: 'POST'})
+                .then(response => response.json())
+                .then(data => {
+                    if (data.status === 'success') {
+                        showNotification('Monitoring stopped successfully!', 'success');
+                        loadSystemStatus();
+                    } else {
+                        showNotification(data.message, 'warning');
+                    }
+                })
+                .catch(error => {
+                    showNotification('Failed to stop monitoring', 'error');
+                });
+        }
+
+        function testEquipment() {
+            showNotification('Testing ESP32 equipment...', 'info');
+            fetch('/test_esp32')
+                .then(response => response.json())
+                .then(data => {
+                    showNotification(data.message, data.status === 'success' ? 'success' : 'error');
+                })
+                .catch(error => {
+                    showNotification('Equipment test failed', 'error');
+                });
+        }
+
+        function manualAlert() {
+            showNotification('Triggering manual alert...', 'warning');
+            fetch('/manual_alert')
+                .then(response => response.json())
+                .then(data => {
+                    showNotification(data.message, data.status === 'success' ? 'warning' : 'error');
+                })
+                .catch(error => {
+                    showNotification('Manual alert failed', 'error');
+                });
+        }
+
+        function exportDetections() {
+            fetch('/detections')
+                .then(response => response.json())
+                .then(data => {
+                    if (data.detections && data.detections.length > 0) {
+                        // Create CSV content
+                        let csv = 'Timestamp,Status,Confidence,Action\n';
+                        data.detections.forEach(detection => {
+                            const time = new Date(detection.timestamp).toISOString();
+                            const status = detection.drowsy ? 'DROWSY' : 'ALERT';
+                            const confidence = detection.confidence;
+                            const action = detection.drowsy ? 'Alert Triggered' : 'None';
+                            csv += `${time},${status},${confidence},${action}\n`;
+                        });
+                        
+                        // Download CSV
+                        const blob = new Blob([csv], { type: 'text/csv' });
+                        const url = window.URL.createObjectURL(blob);
+                        const a = document.createElement('a');
+                        a.href = url;
+                        a.download = `drowsiness_detections_${new Date().toISOString().split('T')[0]}.csv`;
+                        a.click();
+                        window.URL.revokeObjectURL(url);
+                        
+                        showNotification('Detection data exported successfully!', 'success');
+                    } else {
+                        showNotification('No data to export', 'warning');
+                    }
+                })
+                .catch(error => {
+                    showNotification('Export failed', 'error');
+                });
+        }
+
+        function refreshData() {
+            showNotification('Refreshing dashboard data...', 'info');
+            loadSystemStatus();
+            loadDetectionHistory();
+            
+            // Update last updated time
+            const lastUpdate = document.getElementById('last-update');
+            if (lastUpdate) {
+                lastUpdate.textContent = `Last updated: ${new Date().toLocaleTimeString()}`;
+            }
+        }
+
+        // Initialize dashboard
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('📊 Dashboard initialized');
+            
+            // Load initial data
+            loadSystemStatus();
+            loadDetectionHistory();
+            
+            // Set up auto-refresh
+            setInterval(refreshData, 10000); // Refresh every 10 seconds
+            
+            // Update last updated time
+            const lastUpdate = document.getElementById('last-update');
+            if (lastUpdate) {
+                lastUpdate.textContent = `Last updated: ${new Date().toLocaleTimeString()}`;
+            }
+        });
+    </script>
+</body>
+</html>

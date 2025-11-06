@@ -1,0 +1,1201 @@
+2025-09-12 09:48:47,211 - app - WARNING - No model file found - using mock detection
+2025-09-12 09:48:47,225 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): 192.168.1.20:80
+2025-09-12 09:48:47,524 - urllib3.connectionpool - DEBUG - http://192.168.1.20:80 "GET / HTTP/1.1" 200 490
+2025-09-12 09:48:47,547 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://192.168.1.42:5000
+2025-09-12 09:48:47,547 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-09-12 09:48:47,559 - werkzeug - INFO -  * Restarting with stat
+2025-09-12 09:48:53,733 - app - WARNING - No model file found - using mock detection
+2025-09-12 09:48:53,744 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): 192.168.1.20:80
+2025-09-12 09:48:53,878 - urllib3.connectionpool - DEBUG - http://192.168.1.20:80 "GET / HTTP/1.1" 200 490
+2025-09-12 09:48:53,898 - werkzeug - WARNING -  * Debugger is active!
+2025-09-12 09:48:53,903 - werkzeug - INFO -  * Debugger PIN: 922-454-551
+2025-09-12 09:48:54,092 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): 192.168.1.20:80
+2025-09-12 09:48:54,178 - urllib3.connectionpool - DEBUG - http://192.168.1.20:80 "GET / HTTP/1.1" 200 490
+2025-09-12 09:48:54,220 - werkzeug - INFO - 127.0.0.1 - - [12/Sep/2025 09:48:54] "GET / HTTP/1.1" 200 -
+2025-09-12 09:48:54,242 - werkzeug - INFO - 127.0.0.1 - - [12/Sep/2025 09:48:54] "GET /video_feed HTTP/1.1" 200 -
+2025-09-12 09:48:54,342 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): 192.168.1.20:80
+2025-09-12 09:48:54,343 - werkzeug - INFO - 127.0.0.1 - - [12/Sep/2025 09:48:54] "GET /detections HTTP/1.1" 200 -
+2025-09-12 09:48:54,390 - werkzeug - INFO - 127.0.0.1 - - [12/Sep/2025 09:48:54] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+2025-09-12 09:48:54,391 - urllib3.connectionpool - DEBUG - http://192.168.1.20:80 "GET / HTTP/1.1" 200 490
+2025-09-12 09:48:54,394 - werkzeug - INFO - 127.0.0.1 - - [12/Sep/2025 09:48:54] "GET /status HTTP/1.1" 200 -
+2025-09-12 09:48:56,352 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): 192.168.1.20:80
+2025-09-12 09:48:56,427 - urllib3.connectionpool - DEBUG - http://192.168.1.20:80 "GET / HTTP/1.1" 200 490
+2025-09-12 09:48:56,432 - werkzeug - INFO - 127.0.0.1 - - [12/Sep/2025 09:48:56] "GET /status HTTP/1.1" 200 -
+2025-09-12 09:48:58,359 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): 192.168.1.20:80
+2025-09-12 09:48:58,473 - urllib3.connectionpool - DEBUG - http://192.168.1.20:80 "GET / HTTP/1.1" 200 490
+2025-09-12 09:48:58,473 - werkzeug - INFO - 127.0.0.1 - - [12/Sep/2025 09:48:58] "GET /status HTTP/1.1" 200 -
+2025-09-12 09:48:59,350 - werkzeug - INFO - 127.0.0.1 - - [12/Sep/2025 09:48:59] "GET /detections HTTP/1.1" 200 -
+2025-09-12 09:49:00,351 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): 192.168.1.20:80
+2025-09-12 09:49:02,671 - urllib3.connectionpool - DEBUG - http://192.168.1.20:80 "GET / HTTP/1.1" 200 490
+2025-09-12 09:49:02,671 - werkzeug - INFO - 127.0.0.1 - - [12/Sep/2025 09:49:02] "GET /status HTTP/1.1" 200 -
+2025-09-12 09:49:02,671 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): 192.168.1.20:80
+2025-09-12 09:49:02,710 - urllib3.connectionpool - DEBUG - http://192.168.1.20:80 "GET / HTTP/1.1" 200 490
+2025-09-12 09:49:02,710 - werkzeug - INFO - 127.0.0.1 - - [12/Sep/2025 09:49:02] "GET /status HTTP/1.1" 200 -
+2025-09-12 09:49:02,871 - werkzeug - INFO - 127.0.0.1 - - [12/Sep/2025 09:49:02] "[33mGET /get_detection_history HTTP/1.1[0m" 404 -
+2025-09-12 09:49:02,871 - werkzeug - INFO - 127.0.0.1 - - [12/Sep/2025 09:49:02] "[33mGET /get_status HTTP/1.1[0m" 404 -
+2025-09-12 09:49:04,355 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): 192.168.1.20:80
+2025-09-12 09:49:04,355 - werkzeug - INFO - 127.0.0.1 - - [12/Sep/2025 09:49:04] "GET /detections HTTP/1.1" 200 -
+2025-09-12 09:49:04,420 - urllib3.connectionpool - DEBUG - http://192.168.1.20:80 "GET / HTTP/1.1" 200 490
+2025-09-12 09:49:04,436 - werkzeug - INFO - 127.0.0.1 - - [12/Sep/2025 09:49:04] "GET /status HTTP/1.1" 200 -
+2025-09-12 09:49:06,344 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): 192.168.1.20:80
+2025-09-12 09:49:06,456 - urllib3.connectionpool - DEBUG - http://192.168.1.20:80 "GET / HTTP/1.1" 200 490
+2025-09-12 09:49:06,456 - werkzeug - INFO - 127.0.0.1 - - [12/Sep/2025 09:49:06] "GET /status HTTP/1.1" 200 -
+2025-09-12 09:49:08,353 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): 192.168.1.20:80
+2025-09-12 09:49:08,403 - urllib3.connectionpool - DEBUG - http://192.168.1.20:80 "GET / HTTP/1.1" 200 490
+2025-09-12 09:49:08,403 - werkzeug - INFO - 127.0.0.1 - - [12/Sep/2025 09:49:08] "GET /status HTTP/1.1" 200 -
+2025-09-12 09:49:09,339 - werkzeug - INFO - 127.0.0.1 - - [12/Sep/2025 09:49:09] "GET /detections HTTP/1.1" 200 -
+2025-09-12 09:49:10,356 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): 192.168.1.20:80
+2025-09-12 09:49:10,440 - urllib3.connectionpool - DEBUG - http://192.168.1.20:80 "GET / HTTP/1.1" 200 490
+2025-09-12 09:49:10,456 - werkzeug - INFO - 127.0.0.1 - - [12/Sep/2025 09:49:10] "GET /status HTTP/1.1" 200 -
+2025-09-12 09:49:12,342 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): 192.168.1.20:80
+2025-09-12 09:49:12,409 - urllib3.connectionpool - DEBUG - http://192.168.1.20:80 "GET / HTTP/1.1" 200 490
+2025-09-12 09:49:12,410 - werkzeug - INFO - 127.0.0.1 - - [12/Sep/2025 09:49:12] "GET /status HTTP/1.1" 200 -
+2025-09-12 09:49:14,342 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): 192.168.1.20:80
+2025-09-12 09:49:14,344 - werkzeug - INFO - 127.0.0.1 - - [12/Sep/2025 09:49:14] "GET /detections HTTP/1.1" 200 -
+2025-09-12 09:49:14,457 - urllib3.connectionpool - DEBUG - http://192.168.1.20:80 "GET / HTTP/1.1" 200 490
+2025-09-12 09:49:14,457 - werkzeug - INFO - 127.0.0.1 - - [12/Sep/2025 09:49:14] "GET /status HTTP/1.1" 200 -
+2025-09-12 09:49:15,625 - werkzeug - INFO -  * Detected change in 'D:\\Drowsiness Detection\\app.py', reloading
+2025-09-12 09:49:16,278 - werkzeug - INFO -  * Restarting with stat
+2025-09-12 09:49:23,247 - app - INFO - Model loaded successfully from models/best.pt
+2025-09-12 09:49:23,260 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): 192.168.1.20:80
+2025-09-12 09:49:23,352 - urllib3.connectionpool - DEBUG - http://192.168.1.20:80 "GET / HTTP/1.1" 200 490
+2025-09-12 09:49:23,372 - werkzeug - WARNING -  * Debugger is active!
+2025-09-12 09:49:23,378 - werkzeug - INFO -  * Debugger PIN: 922-454-551
+2025-09-12 09:49:23,574 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): 192.168.1.20:80
+2025-09-12 09:49:23,576 - werkzeug - INFO - 127.0.0.1 - - [12/Sep/2025 09:49:23] "GET /detections HTTP/1.1" 200 -
+2025-09-12 09:49:23,581 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): 192.168.1.20:80
+2025-09-12 09:49:23,676 - urllib3.connectionpool - DEBUG - http://192.168.1.20:80 "GET / HTTP/1.1" 200 490
+2025-09-12 09:49:23,678 - werkzeug - INFO - 127.0.0.1 - - [12/Sep/2025 09:49:23] "GET /status HTTP/1.1" 200 -
+2025-09-12 09:49:23,682 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): 192.168.1.20:80
+2025-09-12 09:49:23,689 - urllib3.connectionpool - DEBUG - http://192.168.1.20:80 "GET / HTTP/1.1" 200 490
+2025-09-12 09:49:23,694 - werkzeug - INFO - 127.0.0.1 - - [12/Sep/2025 09:49:23] "GET / HTTP/1.1" 200 -
+2025-09-12 09:49:23,725 - urllib3.connectionpool - DEBUG - http://192.168.1.20:80 "GET / HTTP/1.1" 200 490
+2025-09-12 09:49:23,727 - werkzeug - INFO - 127.0.0.1 - - [12/Sep/2025 09:49:23] "GET /status HTTP/1.1" 200 -
+2025-09-12 09:49:23,727 - werkzeug - INFO - 127.0.0.1 - - [12/Sep/2025 09:49:23] "GET /video_feed HTTP/1.1" 200 -
+2025-09-12 09:49:23,732 - werkzeug - INFO - 127.0.0.1 - - [12/Sep/2025 09:49:23] "GET /detections HTTP/1.1" 200 -
+2025-09-12 09:49:23,733 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): 192.168.1.20:80
+2025-09-12 09:49:23,748 - urllib3.connectionpool - DEBUG - http://192.168.1.20:80 "GET / HTTP/1.1" 200 490
+2025-09-12 09:49:23,749 - werkzeug - INFO - 127.0.0.1 - - [12/Sep/2025 09:49:23] "GET /status HTTP/1.1" 200 -
+2025-09-12 09:49:25,726 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): 192.168.1.20:80
+2025-09-12 09:49:25,827 - urllib3.connectionpool - DEBUG - http://192.168.1.20:80 "GET / HTTP/1.1" 200 490
+2025-09-12 09:49:25,843 - werkzeug - INFO - 127.0.0.1 - - [12/Sep/2025 09:49:25] "GET /status HTTP/1.1" 200 -
+2025-09-12 09:49:27,731 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): 192.168.1.20:80
+2025-09-12 09:49:27,866 - urllib3.connectionpool - DEBUG - http://192.168.1.20:80 "GET / HTTP/1.1" 200 490
+2025-09-12 09:49:27,868 - werkzeug - INFO - 127.0.0.1 - - [12/Sep/2025 09:49:27] "GET /status HTTP/1.1" 200 -
+2025-09-12 09:49:28,515 - app - INFO - Monitoring worker started
+2025-09-12 09:49:28,515 - app - INFO - Monitoring started
+2025-09-12 09:49:28,515 - app - DEBUG - Attempting to get stream from ESP32...
+2025-09-12 09:49:28,515 - werkzeug - INFO - 127.0.0.1 - - [12/Sep/2025 09:49:28] "POST /start_monitoring HTTP/1.1" 200 -
+2025-09-12 09:49:28,515 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): 192.168.1.20:80
+2025-09-12 09:49:28,578 - urllib3.connectionpool - DEBUG - http://192.168.1.20:80 "GET /stream HTTP/1.1" 200 None
+2025-09-12 09:49:28,578 - app - DEBUG - Stream connected successfully
+2025-09-12 09:49:28,694 - app - DEBUG - Frame decoded: (480, 640, 3)
+2025-09-12 09:49:29,828 - werkzeug - INFO - 127.0.0.1 - - [12/Sep/2025 09:49:29] "GET /detections HTTP/1.1" 200 -
+2025-09-12 09:49:29,828 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): 192.168.1.20:80
+2025-09-12 09:49:32,053 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): www.google-analytics.com:443
+2025-09-12 09:49:32,219 - app - DEBUG - Detection: drowsy=False, conf=0.00
+2025-09-12 09:49:32,221 - app - DEBUG - Frame decoded: (480, 640, 3)
+2025-09-12 09:49:32,253 - app - DEBUG - Detection: drowsy=False, conf=0.00
+2025-09-12 09:49:32,263 - app - DEBUG - Frame decoded: (480, 640, 3)
+2025-09-12 09:49:32,301 - app - DEBUG - Detection: drowsy=False, conf=0.00
+2025-09-12 09:49:32,302 - app - DEBUG - Frame decoded: (480, 640, 3)
+2025-09-12 09:49:32,337 - app - DEBUG - Detection: drowsy=False, conf=0.00
+2025-09-12 09:49:32,337 - app - DEBUG - Frame decoded: (480, 640, 3)
+2025-09-12 09:49:32,383 - app - DEBUG - Detection: drowsy=False, conf=0.00
+2025-09-12 09:49:32,385 - app - DEBUG - Frame decoded: (480, 640, 3)
+2025-09-12 09:49:32,421 - app - DEBUG - Detection: drowsy=False, conf=0.00
+2025-09-12 09:49:32,425 - app - DEBUG - Frame decoded: (480, 640, 3)
+2025-09-12 09:49:32,461 - app - DEBUG - Detection: drowsy=False, conf=0.00
+2025-09-12 09:49:32,467 - app - DEBUG - Frame decoded: (480, 640, 3)
+2025-09-12 09:49:32,499 - app - DEBUG - Detection: drowsy=False, conf=0.00
+2025-09-12 09:49:32,502 - app - DEBUG - Frame decoded: (480, 640, 3)
+2025-09-12 09:49:32,535 - app - DEBUG - Detection: drowsy=False, conf=0.00
+2025-09-12 09:49:32,537 - app - DEBUG - Frame decoded: (480, 640, 3)
+2025-09-12 09:49:32,572 - app - DEBUG - Detection: drowsy=False, conf=0.00
+2025-09-12 09:49:32,574 - app - DEBUG - Frame decoded: (480, 640, 3)
+2025-09-12 09:49:32,604 - app - DEBUG - Detection: drowsy=False, conf=0.00
+2025-09-12 09:49:32,604 - app - DEBUG - Frame decoded: (480, 640, 3)
+2025-09-12 09:49:32,646 - app - DEBUG - Detection: drowsy=False, conf=0.00
+2025-09-12 09:49:32,649 - app - DEBUG - Frame decoded: (480, 640, 3)
+2025-09-12 09:49:32,680 - app - DEBUG - Detection: drowsy=False, conf=0.00
+2025-09-12 09:49:32,688 - app - DEBUG - Frame decoded: (480, 640, 3)
+2025-09-12 09:49:32,721 - app - DEBUG - Detection: drowsy=False, conf=0.00
+2025-09-12 09:49:32,730 - app - DEBUG - Frame decoded: (480, 640, 3)
+2025-09-12 09:49:32,763 - app - DEBUG - Detection: drowsy=False, conf=0.00
+2025-09-12 09:49:32,767 - app - DEBUG - Frame decoded: (480, 640, 3)
+2025-09-12 09:49:32,801 - app - DEBUG - Detection: drowsy=False, conf=0.00
+2025-09-12 09:49:32,802 - app - DEBUG - Frame decoded: (480, 640, 3)
+2025-09-12 09:49:32,837 - app - DEBUG - Detection: drowsy=False, conf=0.00
+2025-09-12 09:49:32,840 - app - DEBUG - Frame decoded: (480, 640, 3)
+2025-09-12 09:49:32,848 - werkzeug - INFO - 127.0.0.1 - - [12/Sep/2025 09:49:32] "GET /status HTTP/1.1" 200 -
+2025-09-12 09:49:32,853 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): 192.168.1.20:80
+2025-09-12 09:49:32,871 - app - DEBUG - Detection: drowsy=False, conf=0.00
+2025-09-12 09:49:32,909 - app - DEBUG - Frame decoded: (480, 640, 3)
+2025-09-12 09:49:32,936 - app - DEBUG - Detection: drowsy=False, conf=0.00
+2025-09-12 09:49:33,028 - app - DEBUG - Frame decoded: (480, 640, 3)
+2025-09-12 09:49:33,062 - app - DEBUG - Detection: drowsy=False, conf=0.00
+2025-09-12 09:49:33,147 - app - DEBUG - Frame decoded: (480, 640, 3)
+2025-09-12 09:49:33,166 - urllib3.connectionpool - DEBUG - https://www.google-analytics.com:443 "POST /mp/collect?measurement_id=G-X8NCJYTQXM&api_secret=QLQrATrNSwGRFRLE-cbHJw HTTP/1.1" 204 0
+2025-09-12 09:49:33,182 - app - DEBUG - Detection: drowsy=False, conf=0.00
+2025-09-12 09:49:33,291 - app - DEBUG - Frame decoded: (480, 640, 3)
+2025-09-12 09:49:33,321 - app - DEBUG - Detection: drowsy=False, conf=0.00
+2025-09-12 09:49:33,429 - app - DEBUG - Frame decoded: (480, 640, 3)
+2025-09-12 09:49:33,464 - app - DEBUG - Detection: drowsy=False, conf=0.00
+2025-09-12 09:49:33,579 - app - DEBUG - Frame decoded: (480, 640, 3)
+2025-09-12 09:49:33,622 - app - DEBUG - Detection: drowsy=False, conf=0.00
+2025-09-12 09:49:33,713 - app - DEBUG - Frame decoded: (480, 640, 3)
+2025-09-12 09:49:33,734 - werkzeug - INFO - 127.0.0.1 - - [12/Sep/2025 09:49:33] "GET /detections HTTP/1.1" 200 -
+2025-09-12 09:49:33,748 - app - DEBUG - Detection: drowsy=False, conf=0.00
+2025-09-12 09:49:33,830 - app - DEBUG - Frame decoded: (480, 640, 3)
+2025-09-12 09:49:33,867 - app - DEBUG - Detection: drowsy=False, conf=0.00
+2025-09-12 09:49:33,946 - app - DEBUG - Frame decoded: (480, 640, 3)
+2025-09-12 09:49:33,983 - app - DEBUG - Detection: drowsy=False, conf=0.00
+2025-09-12 09:49:34,072 - app - DEBUG - Frame decoded: (480, 640, 3)
+2025-09-12 09:49:34,096 - app - DEBUG - Detection: drowsy=False, conf=0.00
+2025-09-12 09:49:34,198 - app - DEBUG - Frame decoded: (480, 640, 3)
+2025-09-12 09:49:34,230 - app - DEBUG - Detection: drowsy=False, conf=0.00
+2025-09-12 09:49:34,312 - app - DEBUG - Frame decoded: (480, 640, 3)
+2025-09-12 09:49:34,355 - app - DEBUG - Detection: drowsy=False, conf=0.00
+2025-09-12 09:49:34,436 - app - DEBUG - Frame decoded: (480, 640, 3)
+2025-09-12 09:49:34,462 - app - DEBUG - Detection: drowsy=False, conf=0.00
+2025-09-12 09:49:34,563 - app - DEBUG - Frame decoded: (480, 640, 3)
+2025-09-12 09:49:34,598 - app - DEBUG - Detection: drowsy=False, conf=0.00
+2025-09-12 09:49:34,679 - app - DEBUG - Frame decoded: (480, 640, 3)
+2025-09-12 09:49:34,718 - app - DEBUG - Detection: drowsy=False, conf=0.00
+2025-09-12 09:49:34,813 - app - DEBUG - Frame decoded: (480, 640, 3)
+2025-09-12 09:49:34,863 - app - DEBUG - Detection: drowsy=False, conf=0.00
+2025-09-12 09:49:34,963 - app - DEBUG - Frame decoded: (480, 640, 3)
+2025-09-12 09:49:34,997 - app - DEBUG - Detection: drowsy=False, conf=0.00
+2025-09-12 09:49:35,091 - app - DEBUG - Frame decoded: (480, 640, 3)
+2025-09-12 09:49:35,129 - app - DEBUG - Detection: drowsy=False, conf=0.00
+2025-09-12 09:49:35,209 - app - DEBUG - Frame decoded: (480, 640, 3)
+2025-09-12 09:49:35,247 - app - DEBUG - Detection: drowsy=False, conf=0.00
+2025-09-12 09:49:35,327 - app - DEBUG - Frame decoded: (480, 640, 3)
+2025-09-12 09:49:35,364 - app - DEBUG - Detection: drowsy=False, conf=0.00
+2025-09-12 09:49:35,447 - app - DEBUG - Frame decoded: (480, 640, 3)
+2025-09-12 09:49:35,499 - app - DEBUG - Detection: drowsy=False, conf=0.00
+2025-09-12 09:49:35,647 - app - DEBUG - Frame decoded: (480, 640, 3)
+2025-09-12 09:49:35,698 - app - DEBUG - Detection: drowsy=False, conf=0.00
+2025-09-12 09:49:35,779 - app - DEBUG - Frame decoded: (480, 640, 3)
+2025-09-12 09:49:35,814 - app - DEBUG - Detection: drowsy=False, conf=0.00
+2025-09-12 09:49:35,866 - werkzeug - INFO - 127.0.0.1 - - [12/Sep/2025 09:49:35] "GET /status HTTP/1.1" 200 -
+2025-09-12 09:49:35,883 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): 192.168.1.20:80
+2025-09-12 09:49:35,905 - app - DEBUG - Frame decoded: (480, 640, 3)
+2025-09-12 09:49:35,932 - app - DEBUG - Detection: drowsy=False, conf=0.00
+2025-09-12 09:49:36,115 - app - DEBUG - Frame decoded: (480, 640, 3)
+2025-09-12 09:49:36,155 - app - DEBUG - Detection: drowsy=False, conf=0.00
+2025-09-12 09:49:36,311 - app - DEBUG - Frame decoded: (480, 640, 3)
+2025-09-12 09:49:36,350 - app - DEBUG - Detection: drowsy=False, conf=0.00
+2025-09-12 09:49:36,455 - app - DEBUG - Frame decoded: (480, 640, 3)
+2025-09-12 09:49:36,483 - app - DEBUG - Detection: drowsy=False, conf=0.00
+2025-09-12 09:49:36,627 - app - DEBUG - Frame decoded: (480, 640, 3)
+2025-09-12 09:49:36,667 - app - DEBUG - Detection: drowsy=False, conf=0.00
+2025-09-12 09:49:36,790 - app - DEBUG - Frame decoded: (480, 640, 3)
+2025-09-12 09:49:36,832 - app - DEBUG - Detection: drowsy=False, conf=0.00
+2025-09-12 09:49:36,983 - app - DEBUG - Frame decoded: (480, 640, 3)
+2025-09-12 09:49:37,031 - app - DEBUG - Detection: drowsy=False, conf=0.00
+2025-09-12 09:49:37,162 - app - DEBUG - Frame decoded: (480, 640, 3)
+2025-09-12 09:49:37,197 - app - DEBUG - Detection: drowsy=False, conf=0.00
+2025-09-12 09:49:37,313 - app - DEBUG - Frame decoded: (480, 640, 3)
+2025-09-12 09:49:37,365 - app - DEBUG - Detection: drowsy=False, conf=0.00
+2025-09-12 09:49:37,480 - app - DEBUG - Frame decoded: (480, 640, 3)
+2025-09-12 09:49:37,527 - app - DEBUG - Detection: drowsy=False, conf=0.00
+2025-09-12 09:49:37,629 - app - DEBUG - Frame decoded: (480, 640, 3)
+2025-09-12 09:49:37,682 - app - DEBUG - Detection: drowsy=False, conf=0.00
+2025-09-12 09:49:37,796 - app - DEBUG - Frame decoded: (480, 640, 3)
+2025-09-12 09:49:37,855 - app - DEBUG - Detection: drowsy=False, conf=0.00
+2025-09-12 09:49:37,978 - app - DEBUG - Frame decoded: (480, 640, 3)
+2025-09-12 09:49:38,030 - app - DEBUG - Detection: drowsy=False, conf=0.00
+2025-09-12 09:49:38,137 - app - DEBUG - Frame decoded: (480, 640, 3)
+2025-09-12 09:49:38,199 - app - DEBUG - Detection: drowsy=False, conf=0.00
+2025-09-12 09:49:38,511 - app - DEBUG - Frame decoded: (480, 640, 3)
+2025-09-12 09:49:38,573 - app - DEBUG - Detection: drowsy=False, conf=0.00
+2025-09-12 09:49:38,625 - app - DEBUG - Frame decoded: (480, 640, 3)
+2025-09-12 09:49:38,681 - app - DEBUG - Detection: drowsy=False, conf=0.00
+2025-09-12 09:49:38,738 - werkzeug - INFO - 127.0.0.1 - - [12/Sep/2025 09:49:38] "GET /detections HTTP/1.1" 200 -
+2025-09-12 09:49:38,784 - app - DEBUG - Frame decoded: (480, 640, 3)
+2025-09-12 09:49:38,843 - app - DEBUG - Detection: drowsy=False, conf=0.00
+2025-09-12 09:49:38,902 - app - DEBUG - Frame decoded: (480, 640, 3)
+2025-09-12 09:49:38,951 - app - DEBUG - Detection: drowsy=False, conf=0.00
+2025-09-12 09:49:39,026 - app - DEBUG - Frame decoded: (480, 640, 3)
+2025-09-12 09:49:39,072 - app - DEBUG - Detection: drowsy=False, conf=0.00
+2025-09-12 09:49:39,157 - app - DEBUG - Frame decoded: (480, 640, 3)
+2025-09-12 09:49:39,207 - app - DEBUG - Detection: drowsy=False, conf=0.00
+2025-09-12 09:49:39,276 - app - DEBUG - Frame decoded: (480, 640, 3)
+2025-09-12 09:49:39,325 - app - DEBUG - Detection: drowsy=False, conf=0.00
+2025-09-12 09:49:39,401 - app - DEBUG - Frame decoded: (480, 640, 3)
+2025-09-12 09:49:39,449 - app - DEBUG - Detection: drowsy=False, conf=0.00
+2025-09-12 09:49:39,563 - app - DEBUG - Frame decoded: (480, 640, 3)
+2025-09-12 09:49:39,615 - app - DEBUG - Detection: drowsy=False, conf=0.00
+2025-09-12 09:49:39,680 - app - DEBUG - Frame decoded: (480, 640, 3)
+2025-09-12 09:49:39,728 - app - DEBUG - Detection: drowsy=False, conf=0.00
+2025-09-12 09:49:39,815 - app - DEBUG - Frame decoded: (480, 640, 3)
+2025-09-12 09:49:39,866 - app - DEBUG - Detection: drowsy=False, conf=0.00
+2025-09-12 09:49:39,914 - werkzeug - INFO - 127.0.0.1 - - [12/Sep/2025 09:49:39] "GET /status HTTP/1.1" 200 -
+2025-09-12 09:49:39,920 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): 192.168.1.20:80
+2025-09-12 09:49:39,934 - app - DEBUG - Frame decoded: (480, 640, 3)
+2025-09-12 09:49:39,983 - app - DEBUG - Detection: drowsy=False, conf=0.00
+2025-09-12 09:49:40,071 - app - DEBUG - Frame decoded: (480, 640, 3)
+2025-09-12 09:49:40,119 - app - DEBUG - Detection: drowsy=False, conf=0.00
+2025-09-12 09:49:40,194 - app - DEBUG - Frame decoded: (480, 640, 3)
+2025-09-12 09:49:40,242 - app - DEBUG - Detection: drowsy=False, conf=0.00
+2025-09-12 09:49:40,317 - app - DEBUG - Frame decoded: (480, 640, 3)
+2025-09-12 09:49:40,370 - app - DEBUG - Detection: drowsy=False, conf=0.00
+2025-09-12 09:49:40,493 - app - DEBUG - Frame decoded: (480, 640, 3)
+2025-09-12 09:49:40,535 - app - DEBUG - Detection: drowsy=False, conf=0.00
+2025-09-12 09:49:40,622 - app - DEBUG - Frame decoded: (480, 640, 3)
+2025-09-12 09:49:40,670 - app - DEBUG - Detection: drowsy=False, conf=0.00
+2025-09-12 09:49:40,774 - app - DEBUG - Frame decoded: (480, 640, 3)
+2025-09-12 09:49:40,826 - app - DEBUG - Detection: drowsy=False, conf=0.00
+2025-09-12 09:49:40,899 - app - DEBUG - Frame decoded: (480, 640, 3)
+2025-09-12 09:49:40,944 - app - DEBUG - Detection: drowsy=False, conf=0.00
+2025-09-12 09:49:41,041 - app - DEBUG - Frame decoded: (480, 640, 3)
+2025-09-12 09:49:41,089 - app - DEBUG - Detection: drowsy=False, conf=0.00
+2025-09-12 09:49:41,163 - app - DEBUG - Frame decoded: (480, 640, 3)
+2025-09-12 09:49:41,199 - app - DEBUG - Detection: drowsy=False, conf=0.00
+2025-09-12 09:49:41,278 - app - DEBUG - Frame decoded: (480, 640, 3)
+2025-09-12 09:49:41,323 - app - DEBUG - Detection: drowsy=False, conf=0.00
+2025-09-12 09:49:41,414 - app - DEBUG - Frame decoded: (480, 640, 3)
+2025-09-12 09:49:41,458 - app - DEBUG - Detection: drowsy=False, conf=0.00
+2025-09-12 09:49:41,541 - app - DEBUG - Frame decoded: (480, 640, 3)
+2025-09-12 09:49:41,587 - app - DEBUG - Detection: drowsy=False, conf=0.00
+2025-09-12 09:49:41,664 - app - DEBUG - Frame decoded: (480, 640, 3)
+2025-09-12 09:49:41,699 - app - DEBUG - Detection: drowsy=False, conf=0.00
+2025-09-12 09:49:41,830 - app - DEBUG - Frame decoded: (480, 640, 3)
+2025-09-12 09:49:41,877 - app - DEBUG - Detection: drowsy=False, conf=0.00
+2025-09-12 09:49:41,972 - app - DEBUG - Frame decoded: (480, 640, 3)
+2025-09-12 09:49:42,018 - app - DEBUG - Detection: drowsy=False, conf=0.00
+2025-09-12 09:49:42,108 - app - DEBUG - Frame decoded: (480, 640, 3)
+2025-09-12 09:49:42,151 - app - DEBUG - Detection: drowsy=False, conf=0.00
+2025-09-12 09:49:42,263 - app - DEBUG - Frame decoded: (480, 640, 3)
+2025-09-12 09:49:42,316 - app - DEBUG - Detection: drowsy=False, conf=0.00
+2025-09-12 09:49:42,404 - app - DEBUG - Frame decoded: (480, 640, 3)
+2025-09-12 09:49:42,456 - app - DEBUG - Detection: drowsy=False, conf=0.00
+2025-09-12 09:49:42,529 - app - DEBUG - Frame decoded: (480, 640, 3)
+2025-09-12 09:49:42,566 - app - DEBUG - Detection: drowsy=False, conf=0.00
+2025-09-12 09:49:42,682 - app - DEBUG - Frame decoded: (480, 640, 3)
+2025-09-12 09:49:42,738 - app - DEBUG - Detection: drowsy=False, conf=0.00
+2025-09-12 09:49:42,953 - werkzeug - INFO - 127.0.0.1 - - [12/Sep/2025 09:49:42] "GET /status HTTP/1.1" 200 -
+2025-09-12 09:49:42,961 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): 192.168.1.20:80
+2025-09-12 09:49:43,735 - werkzeug - INFO - 127.0.0.1 - - [12/Sep/2025 09:49:43] "GET /detections HTTP/1.1" 200 -
+2025-09-12 09:49:45,965 - werkzeug - INFO - 127.0.0.1 - - [12/Sep/2025 09:49:45] "GET /status HTTP/1.1" 200 -
+2025-09-12 09:49:45,977 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): 192.168.1.20:80
+2025-09-12 09:49:47,748 - app - ERROR - Cannot connect to ESP32 stream
+2025-09-12 09:49:48,730 - werkzeug - INFO - 127.0.0.1 - - [12/Sep/2025 09:49:48] "GET /detections HTTP/1.1" 200 -
+2025-09-12 09:49:48,987 - werkzeug - INFO - 127.0.0.1 - - [12/Sep/2025 09:49:48] "GET /status HTTP/1.1" 200 -
+2025-09-12 09:49:48,994 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): 192.168.1.20:80
+2025-09-12 09:49:49,750 - app - DEBUG - Attempting to get stream from ESP32...
+2025-09-12 09:49:49,751 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): 192.168.1.20:80
+2025-09-12 09:49:52,001 - werkzeug - INFO - 127.0.0.1 - - [12/Sep/2025 09:49:52] "GET /status HTTP/1.1" 200 -
+2025-09-12 09:49:52,006 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): 192.168.1.20:80
+2025-09-12 09:49:53,742 - werkzeug - INFO - 127.0.0.1 - - [12/Sep/2025 09:49:53] "GET /detections HTTP/1.1" 200 -
+2025-09-12 09:49:54,768 - app - ERROR - Stream timeout - ESP32 not responding
+2025-09-12 09:49:55,018 - werkzeug - INFO - 127.0.0.1 - - [12/Sep/2025 09:49:55] "GET /status HTTP/1.1" 200 -
+2025-09-12 09:49:55,035 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): 192.168.1.20:80
+2025-09-12 09:49:56,771 - app - DEBUG - Attempting to get stream from ESP32...
+2025-09-12 09:49:56,771 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): 192.168.1.20:80
+2025-09-12 09:49:57,404 - urllib3.connectionpool - DEBUG - http://192.168.1.20:80 "GET / HTTP/1.1" 200 490
+2025-09-12 09:49:57,404 - werkzeug - INFO - 127.0.0.1 - - [12/Sep/2025 09:49:57] "GET /status HTTP/1.1" 200 -
+2025-09-12 09:49:57,423 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): 192.168.1.20:80
+2025-09-12 09:49:57,429 - urllib3.connectionpool - DEBUG - http://192.168.1.20:80 "GET /stream HTTP/1.1" 200 None
+2025-09-12 09:49:57,429 - app - DEBUG - Stream connected successfully
+2025-09-12 09:49:57,587 - app - DEBUG - Frame decoded: (480, 640, 3)
+2025-09-12 09:49:57,887 - app - DEBUG - Detection: drowsy=False, conf=0.00
+2025-09-12 09:49:57,887 - app - DEBUG - Frame decoded: (480, 640, 3)
+2025-09-12 09:49:57,940 - app - DEBUG - Detection: drowsy=False, conf=0.00
+2025-09-12 09:49:57,940 - app - DEBUG - Frame decoded: (480, 640, 3)
+2025-09-12 09:49:57,992 - app - DEBUG - Detection: drowsy=False, conf=0.00
+2025-09-12 09:49:58,023 - app - DEBUG - Frame decoded: (480, 640, 3)
+2025-09-12 09:49:58,056 - app - DEBUG - Detection: drowsy=False, conf=0.00
+2025-09-12 09:49:58,150 - app - DEBUG - Frame decoded: (480, 640, 3)
+2025-09-12 09:49:58,177 - app - DEBUG - Detection: drowsy=False, conf=0.00
+2025-09-12 09:49:58,271 - app - DEBUG - Frame decoded: (480, 640, 3)
+2025-09-12 09:49:58,305 - app - DEBUG - Detection: drowsy=False, conf=0.00
+2025-09-12 09:49:58,404 - app - DEBUG - Frame decoded: (480, 640, 3)
+2025-09-12 09:49:58,438 - app - DEBUG - Detection: drowsy=False, conf=0.00
+2025-09-12 09:49:58,538 - app - DEBUG - Frame decoded: (480, 640, 3)
+2025-09-12 09:49:58,572 - app - DEBUG - Detection: drowsy=False, conf=0.00
+2025-09-12 09:49:58,657 - app - DEBUG - Frame decoded: (480, 640, 3)
+2025-09-12 09:49:58,692 - app - DEBUG - Detection: drowsy=False, conf=0.00
+2025-09-12 09:49:58,736 - werkzeug - INFO - 127.0.0.1 - - [12/Sep/2025 09:49:58] "GET /detections HTTP/1.1" 200 -
+2025-09-12 09:49:58,800 - app - DEBUG - Frame decoded: (480, 640, 3)
+2025-09-12 09:49:58,831 - app - DEBUG - Detection: drowsy=False, conf=0.00
+2025-09-12 09:49:58,925 - app - DEBUG - Frame decoded: (480, 640, 3)
+2025-09-12 09:49:58,955 - app - DEBUG - Detection: drowsy=False, conf=0.00
+2025-09-12 09:49:59,038 - app - DEBUG - Frame decoded: (480, 640, 3)
+2025-09-12 09:49:59,072 - app - DEBUG - Detection: drowsy=False, conf=0.00
+2025-09-12 09:49:59,204 - app - DEBUG - Frame decoded: (480, 640, 3)
+2025-09-12 09:49:59,243 - app - DEBUG - Detection: drowsy=False, conf=0.00
+2025-09-12 09:49:59,372 - app - DEBUG - Frame decoded: (480, 640, 3)
+2025-09-12 09:49:59,405 - app - DEBUG - Detection: drowsy=False, conf=0.00
+2025-09-12 09:49:59,538 - app - DEBUG - Frame decoded: (480, 640, 3)
+2025-09-12 09:49:59,573 - app - DEBUG - Detection: drowsy=False, conf=0.00
+2025-09-12 09:49:59,671 - app - DEBUG - Frame decoded: (480, 640, 3)
+2025-09-12 09:49:59,706 - app - DEBUG - Detection: drowsy=False, conf=0.00
+2025-09-12 09:49:59,788 - app - DEBUG - Frame decoded: (480, 640, 3)
+2025-09-12 09:49:59,825 - app - DEBUG - Detection: drowsy=False, conf=0.00
+2025-09-12 09:49:59,929 - app - DEBUG - Frame decoded: (480, 640, 3)
+2025-09-12 09:49:59,972 - app - DEBUG - Detection: drowsy=False, conf=0.00
+2025-09-12 09:50:00,055 - app - DEBUG - Frame decoded: (480, 640, 3)
+2025-09-12 09:50:00,105 - app - DEBUG - Detection: drowsy=False, conf=0.00
+2025-09-12 09:50:00,205 - app - DEBUG - Frame decoded: (480, 640, 3)
+2025-09-12 09:50:00,255 - app - DEBUG - Detection: drowsy=False, conf=0.00
+2025-09-12 09:50:00,336 - app - DEBUG - Frame decoded: (480, 640, 3)
+2025-09-12 09:50:00,372 - app - DEBUG - Detection: drowsy=False, conf=0.00
+2025-09-12 09:50:00,457 - app - DEBUG - Frame decoded: (480, 640, 3)
+2025-09-12 09:50:00,471 - werkzeug - INFO - 127.0.0.1 - - [12/Sep/2025 09:50:00] "GET /status HTTP/1.1" 200 -
+2025-09-12 09:50:00,477 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): 192.168.1.20:80
+2025-09-12 09:50:00,490 - app - DEBUG - Detection: drowsy=False, conf=0.00
+2025-09-12 09:50:00,607 - app - DEBUG - Frame decoded: (480, 640, 3)
+2025-09-12 09:50:00,639 - app - DEBUG - Detection: drowsy=False, conf=0.00
+2025-09-12 09:50:00,739 - app - DEBUG - Frame decoded: (480, 640, 3)
+2025-09-12 09:50:00,793 - app - DEBUG - Detection: drowsy=False, conf=0.00
+2025-09-12 09:50:00,942 - app - DEBUG - Frame decoded: (480, 640, 3)
+2025-09-12 09:50:00,990 - app - DEBUG - Detection: drowsy=False, conf=0.00
+2025-09-12 09:50:01,141 - app - DEBUG - Frame decoded: (480, 640, 3)
+2025-09-12 09:50:01,193 - app - DEBUG - Detection: drowsy=False, conf=0.00
+2025-09-12 09:50:01,288 - app - DEBUG - Frame decoded: (480, 640, 3)
+2025-09-12 09:50:01,349 - app - DEBUG - Detection: drowsy=False, conf=0.00
+2025-09-12 09:50:01,441 - app - DEBUG - Frame decoded: (480, 640, 3)
+2025-09-12 09:50:01,501 - app - DEBUG - Detection: drowsy=False, conf=0.00
+2025-09-12 09:50:01,606 - app - DEBUG - Frame decoded: (480, 640, 3)
+2025-09-12 09:50:01,660 - app - DEBUG - Detection: drowsy=False, conf=0.00
+2025-09-12 09:50:01,755 - app - DEBUG - Frame decoded: (480, 640, 3)
+2025-09-12 09:50:01,811 - app - DEBUG - Detection: drowsy=False, conf=0.00
+2025-09-12 09:50:01,889 - app - DEBUG - Frame decoded: (480, 640, 3)
+2025-09-12 09:50:01,941 - app - DEBUG - Detection: drowsy=False, conf=0.00
+2025-09-12 09:50:02,012 - app - DEBUG - Frame decoded: (480, 640, 3)
+2025-09-12 09:50:02,057 - app - DEBUG - Detection: drowsy=False, conf=0.00
+2025-09-12 09:50:02,135 - app - DEBUG - Frame decoded: (480, 640, 3)
+2025-09-12 09:50:02,188 - app - DEBUG - Detection: drowsy=False, conf=0.00
+2025-09-12 09:50:02,263 - app - DEBUG - Frame decoded: (480, 640, 3)
+2025-09-12 09:50:02,314 - app - DEBUG - Detection: drowsy=False, conf=0.00
+2025-09-12 09:50:02,388 - app - DEBUG - Frame decoded: (480, 640, 3)
+2025-09-12 09:50:02,423 - app - DEBUG - Detection: drowsy=False, conf=0.00
+2025-09-12 09:50:02,520 - app - DEBUG - Frame decoded: (480, 640, 3)
+2025-09-12 09:50:02,557 - app - DEBUG - Detection: drowsy=False, conf=0.00
+2025-09-12 09:50:02,649 - app - DEBUG - Frame decoded: (480, 640, 3)
+2025-09-12 09:50:02,699 - app - DEBUG - Detection: drowsy=False, conf=0.00
+2025-09-12 09:50:02,786 - app - DEBUG - Frame decoded: (480, 640, 3)
+2025-09-12 09:50:02,823 - app - DEBUG - Detection: drowsy=False, conf=0.00
+2025-09-12 09:50:02,882 - werkzeug - INFO - 127.0.0.1 - - [12/Sep/2025 09:50:02] "[33mGET /get_detection_history HTTP/1.1[0m" 404 -
+2025-09-12 09:50:02,885 - werkzeug - INFO - 127.0.0.1 - - [12/Sep/2025 09:50:02] "[33mGET /get_status HTTP/1.1[0m" 404 -
+2025-09-12 09:50:02,901 - app - DEBUG - Frame decoded: (480, 640, 3)
+2025-09-12 09:50:02,943 - app - DEBUG - Detection: drowsy=False, conf=0.00
+2025-09-12 09:50:03,024 - app - DEBUG - Frame decoded: (480, 640, 3)
+2025-09-12 09:50:03,068 - app - DEBUG - Detection: drowsy=False, conf=0.00
+2025-09-12 09:50:03,145 - app - DEBUG - Frame decoded: (480, 640, 3)
+2025-09-12 09:50:03,192 - app - DEBUG - Detection: drowsy=False, conf=0.00
+2025-09-12 09:50:03,272 - app - DEBUG - Frame decoded: (480, 640, 3)
+2025-09-12 09:50:03,321 - app - DEBUG - Detection: drowsy=False, conf=0.00
+2025-09-12 09:50:03,400 - app - DEBUG - Frame decoded: (480, 640, 3)
+2025-09-12 09:50:03,439 - app - DEBUG - Detection: drowsy=False, conf=0.00
+2025-09-12 09:50:03,508 - werkzeug - INFO - 127.0.0.1 - - [12/Sep/2025 09:50:03] "GET /status HTTP/1.1" 200 -
+2025-09-12 09:50:03,516 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): 192.168.1.20:80
+2025-09-12 09:50:03,525 - app - DEBUG - Frame decoded: (480, 640, 3)
+2025-09-12 09:50:03,569 - app - DEBUG - Detection: drowsy=False, conf=0.00
+2025-09-12 09:50:03,644 - app - DEBUG - Frame decoded: (480, 640, 3)
+2025-09-12 09:50:03,691 - app - DEBUG - Detection: drowsy=False, conf=0.00
+2025-09-12 09:50:03,726 - werkzeug - INFO - 127.0.0.1 - - [12/Sep/2025 09:50:03] "GET /detections HTTP/1.1" 200 -
+2025-09-12 09:50:03,789 - app - DEBUG - Frame decoded: (480, 640, 3)
+2025-09-12 09:50:03,832 - app - DEBUG - Detection: drowsy=False, conf=0.00
+2025-09-12 09:50:03,920 - app - DEBUG - Frame decoded: (480, 640, 3)
+2025-09-12 09:50:03,968 - app - DEBUG - Detection: drowsy=False, conf=0.00
+2025-09-12 09:50:04,068 - app - DEBUG - Frame decoded: (480, 640, 3)
+2025-09-12 09:50:04,113 - app - DEBUG - Detection: drowsy=False, conf=0.00
+2025-09-12 09:50:04,189 - app - DEBUG - Frame decoded: (480, 640, 3)
+2025-09-12 09:50:04,251 - app - DEBUG - Detection: drowsy=False, conf=0.00
+2025-09-12 09:50:06,541 - werkzeug - INFO - 127.0.0.1 - - [12/Sep/2025 09:50:06] "GET /status HTTP/1.1" 200 -
+2025-09-12 09:50:06,555 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): 192.168.1.20:80
+2025-09-12 09:50:08,742 - werkzeug - INFO - 127.0.0.1 - - [12/Sep/2025 09:50:08] "GET /detections HTTP/1.1" 200 -
+2025-09-12 09:50:09,257 - app - ERROR - Cannot connect to ESP32 stream
+2025-09-12 09:50:09,574 - werkzeug - INFO - 127.0.0.1 - - [12/Sep/2025 09:50:09] "GET /status HTTP/1.1" 200 -
+2025-09-12 09:50:09,582 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): 192.168.1.20:80
+2025-09-12 09:50:11,259 - app - DEBUG - Attempting to get stream from ESP32...
+2025-09-12 09:50:11,260 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): 192.168.1.20:80
+2025-09-12 09:50:12,428 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): 192.168.1.100:80
+2025-09-12 09:50:12,594 - werkzeug - INFO - 127.0.0.1 - - [12/Sep/2025 09:50:12] "GET /status HTTP/1.1" 200 -
+2025-09-12 09:50:12,595 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): 192.168.1.20:80
+2025-09-12 09:50:12,924 - urllib3.connectionpool - DEBUG - http://192.168.1.20:80 "GET /stream HTTP/1.1" 200 None
+2025-09-12 09:50:12,924 - app - DEBUG - Stream connected successfully
+2025-09-12 09:50:13,074 - app - DEBUG - Frame decoded: (480, 640, 3)
+2025-09-12 09:50:13,386 - app - DEBUG - Detection: drowsy=False, conf=0.00
+2025-09-12 09:50:13,389 - app - DEBUG - Frame decoded: (480, 640, 3)
+2025-09-12 09:50:13,430 - app - DEBUG - Detection: drowsy=False, conf=0.00
+2025-09-12 09:50:13,433 - app - DEBUG - Frame decoded: (480, 640, 3)
+2025-09-12 09:50:13,467 - app - DEBUG - Detection: drowsy=False, conf=0.00
+2025-09-12 09:50:13,522 - app - DEBUG - Frame decoded: (480, 640, 3)
+2025-09-12 09:50:13,561 - app - DEBUG - Detection: drowsy=False, conf=0.00
+2025-09-12 09:50:13,691 - app - DEBUG - Frame decoded: (480, 640, 3)
+2025-09-12 09:50:13,731 - app - DEBUG - Detection: drowsy=False, conf=0.00
+2025-09-12 09:50:13,750 - werkzeug - INFO - 127.0.0.1 - - [12/Sep/2025 09:50:13] "GET /detections HTTP/1.1" 200 -
+2025-09-12 09:50:13,802 - app - DEBUG - Frame decoded: (480, 640, 3)
+2025-09-12 09:50:13,832 - app - DEBUG - Detection: drowsy=False, conf=0.00
+2025-09-12 09:50:13,974 - app - DEBUG - Frame decoded: (480, 640, 3)
+2025-09-12 09:50:13,998 - app - DEBUG - Detection: drowsy=False, conf=0.00
+2025-09-12 09:50:14,140 - app - DEBUG - Frame decoded: (480, 640, 3)
+2025-09-12 09:50:14,177 - app - DEBUG - Detection: drowsy=False, conf=0.00
+2025-09-12 09:50:14,301 - app - DEBUG - Frame decoded: (480, 640, 3)
+2025-09-12 09:50:14,327 - app - DEBUG - Detection: drowsy=False, conf=0.00
+2025-09-12 09:50:14,410 - app - DEBUG - Frame decoded: (480, 640, 3)
+2025-09-12 09:50:14,448 - app - DEBUG - Detection: drowsy=False, conf=0.00
+2025-09-12 09:50:14,586 - app - DEBUG - Frame decoded: (480, 640, 3)
+2025-09-12 09:50:14,626 - app - DEBUG - Detection: drowsy=False, conf=0.00
+2025-09-12 09:50:14,759 - app - DEBUG - Frame decoded: (480, 640, 3)
+2025-09-12 09:50:14,794 - app - DEBUG - Detection: drowsy=False, conf=0.00
+2025-09-12 09:50:14,965 - app - DEBUG - Frame decoded: (480, 640, 3)
+2025-09-12 09:50:14,997 - app - DEBUG - Detection: drowsy=False, conf=0.00
+2025-09-12 09:50:15,090 - app - DEBUG - Frame decoded: (480, 640, 3)
+2025-09-12 09:50:15,116 - app - DEBUG - Detection: drowsy=False, conf=0.00
+2025-09-12 09:50:15,206 - app - DEBUG - Frame decoded: (480, 640, 3)
+2025-09-12 09:50:15,228 - app - DEBUG - Detection: drowsy=False, conf=0.00
+2025-09-12 09:50:15,366 - app - DEBUG - Frame decoded: (480, 640, 3)
+2025-09-12 09:50:15,394 - app - DEBUG - Detection: drowsy=False, conf=0.00
+2025-09-12 09:50:15,394 - app - DEBUG - Frame decoded: (480, 640, 3)
+2025-09-12 09:50:15,428 - app - ERROR - Manual alert error: HTTPConnectionPool(host='192.168.1.100', port=80): Max retries exceeded with url: /drowsiness_alert (Caused by ConnectTimeoutError(<urllib3.connection.HTTPConnection object at 0x0000023860542310>, 'Connection to 192.168.1.100 timed out. (connect timeout=3)'))
+2025-09-12 09:50:15,429 - werkzeug - INFO - 127.0.0.1 - - [12/Sep/2025 09:50:15] "GET /manual_alert HTTP/1.1" 200 -
+2025-09-12 09:50:15,448 - app - DEBUG - Detection: drowsy=False, conf=0.00
+2025-09-12 09:50:15,643 - app - DEBUG - Frame decoded: (480, 640, 3)
+2025-09-12 09:50:15,694 - app - DEBUG - Detection: drowsy=False, conf=0.00
+2025-09-12 09:50:15,759 - werkzeug - INFO - 127.0.0.1 - - [12/Sep/2025 09:50:15] "GET /status HTTP/1.1" 200 -
+2025-09-12 09:50:15,765 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): 192.168.1.20:80
+2025-09-12 09:50:15,814 - app - DEBUG - Frame decoded: (480, 640, 3)
+2025-09-12 09:50:15,862 - app - DEBUG - Detection: drowsy=False, conf=0.00
+2025-09-12 09:50:15,979 - app - DEBUG - Frame decoded: (480, 640, 3)
+2025-09-12 09:50:16,028 - app - DEBUG - Detection: drowsy=False, conf=0.00
+2025-09-12 09:50:16,142 - app - DEBUG - Frame decoded: (480, 640, 3)
+2025-09-12 09:50:16,193 - app - DEBUG - Detection: drowsy=False, conf=0.00
+2025-09-12 09:50:16,265 - app - DEBUG - Frame decoded: (480, 640, 3)
+2025-09-12 09:50:16,313 - app - DEBUG - Detection: drowsy=False, conf=0.00
+2025-09-12 09:50:16,426 - app - DEBUG - Frame decoded: (480, 640, 3)
+2025-09-12 09:50:16,480 - app - DEBUG - Detection: drowsy=False, conf=0.00
+2025-09-12 09:50:16,592 - app - DEBUG - Frame decoded: (480, 640, 3)
+2025-09-12 09:50:16,657 - app - DEBUG - Detection: drowsy=False, conf=0.00
+2025-09-12 09:50:16,760 - app - DEBUG - Frame decoded: (480, 640, 3)
+2025-09-12 09:50:16,820 - app - DEBUG - Detection: drowsy=False, conf=0.00
+2025-09-12 09:50:16,882 - app - DEBUG - Frame decoded: (480, 640, 3)
+2025-09-12 09:50:16,937 - app - DEBUG - Detection: drowsy=False, conf=0.00
+2025-09-12 09:50:17,045 - app - DEBUG - Frame decoded: (480, 640, 3)
+2025-09-12 09:50:17,099 - app - DEBUG - Detection: drowsy=False, conf=0.00
+2025-09-12 09:50:17,209 - app - DEBUG - Frame decoded: (480, 640, 3)
+2025-09-12 09:50:17,266 - app - DEBUG - Detection: drowsy=False, conf=0.00
+2025-09-12 09:50:17,426 - app - DEBUG - Frame decoded: (480, 640, 3)
+2025-09-12 09:50:17,490 - app - DEBUG - Detection: drowsy=False, conf=0.00
+2025-09-12 09:50:17,528 - app - DEBUG - Frame decoded: (480, 640, 3)
+2025-09-12 09:50:17,598 - app - DEBUG - Detection: drowsy=False, conf=0.00
+2025-09-12 09:50:17,677 - app - DEBUG - Frame decoded: (480, 640, 3)
+2025-09-12 09:50:17,712 - app - DEBUG - Detection: drowsy=False, conf=0.00
+2025-09-12 09:50:17,826 - app - DEBUG - Frame decoded: (480, 640, 3)
+2025-09-12 09:50:17,865 - app - DEBUG - Detection: drowsy=False, conf=0.00
+2025-09-12 09:50:17,976 - app - DEBUG - Frame decoded: (480, 640, 3)
+2025-09-12 09:50:18,040 - app - DEBUG - Detection: drowsy=False, conf=0.00
+2025-09-12 09:50:18,118 - app - DEBUG - Frame decoded: (480, 640, 3)
+2025-09-12 09:50:18,168 - app - DEBUG - Detection: drowsy=False, conf=0.00
+2025-09-12 09:50:18,245 - app - DEBUG - Frame decoded: (480, 640, 3)
+2025-09-12 09:50:18,293 - app - DEBUG - Detection: drowsy=False, conf=0.00
+2025-09-12 09:50:18,371 - app - DEBUG - Frame decoded: (480, 640, 3)
+2025-09-12 09:50:18,415 - app - DEBUG - Detection: drowsy=False, conf=0.00
+2025-09-12 09:50:18,496 - app - DEBUG - Frame decoded: (480, 640, 3)
+2025-09-12 09:50:18,536 - app - DEBUG - Detection: drowsy=False, conf=0.00
+2025-09-12 09:50:18,620 - app - DEBUG - Frame decoded: (480, 640, 3)
+2025-09-12 09:50:18,664 - app - DEBUG - Detection: drowsy=False, conf=0.00
+2025-09-12 09:50:18,731 - werkzeug - INFO - 127.0.0.1 - - [12/Sep/2025 09:50:18] "GET /detections HTTP/1.1" 200 -
+2025-09-12 09:50:18,746 - app - DEBUG - Frame decoded: (480, 640, 3)
+2025-09-12 09:50:18,797 - app - DEBUG - Detection: drowsy=False, conf=0.00
+2025-09-12 09:50:18,826 - werkzeug - INFO - 127.0.0.1 - - [12/Sep/2025 09:50:18] "GET /status HTTP/1.1" 200 -
+2025-09-12 09:50:18,832 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): 192.168.1.20:80
+2025-09-12 09:50:18,879 - app - DEBUG - Frame decoded: (480, 640, 3)
+2025-09-12 09:50:18,923 - app - DEBUG - Detection: drowsy=False, conf=0.00
+2025-09-12 09:50:18,997 - app - DEBUG - Frame decoded: (480, 640, 3)
+2025-09-12 09:50:19,041 - app - DEBUG - Detection: drowsy=False, conf=0.00
+2025-09-12 09:50:19,129 - app - DEBUG - Frame decoded: (480, 640, 3)
+2025-09-12 09:50:19,162 - app - DEBUG - Detection: drowsy=False, conf=0.00
+2025-09-12 09:50:19,259 - app - DEBUG - Frame decoded: (480, 640, 3)
+2025-09-12 09:50:19,305 - app - DEBUG - Detection: drowsy=False, conf=0.00
+2025-09-12 09:50:19,384 - app - DEBUG - Frame decoded: (480, 640, 3)
+2025-09-12 09:50:19,429 - app - DEBUG - Detection: drowsy=False, conf=0.00
+2025-09-12 09:50:19,521 - app - DEBUG - Frame decoded: (480, 640, 3)
+2025-09-12 09:50:19,568 - app - DEBUG - Detection: drowsy=False, conf=0.00
+2025-09-12 09:50:19,645 - app - DEBUG - Frame decoded: (480, 640, 3)
+2025-09-12 09:50:19,689 - app - DEBUG - Detection: drowsy=False, conf=0.00
+2025-09-12 09:50:19,769 - app - DEBUG - Frame decoded: (480, 640, 3)
+2025-09-12 09:50:19,814 - app - DEBUG - Detection: drowsy=False, conf=0.00
+2025-09-12 09:50:19,879 - app - DEBUG - Frame decoded: (480, 640, 3)
+2025-09-12 09:50:19,934 - app - DEBUG - Detection: drowsy=False, conf=0.00
+2025-09-12 09:50:20,025 - app - DEBUG - Frame decoded: (480, 640, 3)
+2025-09-12 09:50:20,063 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): 192.168.1.20:80
+2025-09-12 09:50:20,070 - app - DEBUG - Detection: drowsy=False, conf=0.00
+2025-09-12 09:50:20,070 - app - INFO - Monitoring worker stopped
+2025-09-12 09:50:21,862 - werkzeug - INFO - 127.0.0.1 - - [12/Sep/2025 09:50:21] "GET /status HTTP/1.1" 200 -
+2025-09-12 09:50:21,874 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): 192.168.1.20:80
+2025-09-12 09:50:23,064 - app - ERROR - Error stopping alert: HTTPConnectionPool(host='192.168.1.20', port=80): Max retries exceeded with url: /stop_alert (Caused by ConnectTimeoutError(<urllib3.connection.HTTPConnection object at 0x0000023858193290>, 'Connection to 192.168.1.20 timed out. (connect timeout=3)'))
+2025-09-12 09:50:23,064 - app - INFO - Monitoring stopped
+2025-09-12 09:50:23,065 - werkzeug - INFO - 127.0.0.1 - - [12/Sep/2025 09:50:23] "POST /stop_monitoring HTTP/1.1" 200 -
+2025-09-12 09:50:23,733 - werkzeug - INFO - 127.0.0.1 - - [12/Sep/2025 09:50:23] "GET /detections HTTP/1.1" 200 -
+2025-09-12 09:50:24,838 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): 192.168.1.100:80
+2025-09-12 09:50:24,878 - werkzeug - INFO - 127.0.0.1 - - [12/Sep/2025 09:50:24] "GET /status HTTP/1.1" 200 -
+2025-09-12 09:50:24,882 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): 192.168.1.20:80
+2025-09-12 09:50:27,742 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): 192.168.1.20:80
+2025-09-12 09:50:27,848 - werkzeug - INFO - 127.0.0.1 - - [12/Sep/2025 09:50:27] "GET /test_esp32 HTTP/1.1" 200 -
+2025-09-12 09:50:27,885 - werkzeug - INFO - 127.0.0.1 - - [12/Sep/2025 09:50:27] "GET /status HTTP/1.1" 200 -
+2025-09-12 09:50:27,885 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): 192.168.1.20:80
+2025-09-12 09:50:28,731 - werkzeug - INFO - 127.0.0.1 - - [12/Sep/2025 09:50:28] "GET /detections HTTP/1.1" 200 -
+2025-09-12 09:50:30,764 - werkzeug - INFO - 127.0.0.1 - - [12/Sep/2025 09:50:30] "GET /status HTTP/1.1" 200 -
+2025-09-12 09:50:30,899 - werkzeug - INFO - 127.0.0.1 - - [12/Sep/2025 09:50:30] "GET /status HTTP/1.1" 200 -
+2025-09-12 09:50:30,904 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): 192.168.1.20:80
+2025-09-12 09:50:33,727 - werkzeug - INFO - 127.0.0.1 - - [12/Sep/2025 09:50:33] "GET /detections HTTP/1.1" 200 -
+2025-09-12 09:50:33,752 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): 192.168.1.20:80
+2025-09-12 09:50:33,905 - werkzeug - INFO - 127.0.0.1 - - [12/Sep/2025 09:50:33] "GET /status HTTP/1.1" 200 -
+2025-09-12 09:50:33,911 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): 192.168.1.20:80
+2025-09-12 09:50:36,832 - werkzeug - INFO - 127.0.0.1 - - [12/Sep/2025 09:50:36] "GET /status HTTP/1.1" 200 -
+2025-09-12 09:50:36,916 - werkzeug - INFO - 127.0.0.1 - - [12/Sep/2025 09:50:36] "GET /status HTTP/1.1" 200 -
+2025-09-12 09:50:36,925 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): 192.168.1.20:80
+2025-09-12 09:50:38,739 - werkzeug - INFO - 127.0.0.1 - - [12/Sep/2025 09:50:38] "GET /detections HTTP/1.1" 200 -
+2025-09-12 09:50:39,737 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): 192.168.1.20:80
+2025-09-12 09:50:39,930 - werkzeug - INFO - 127.0.0.1 - - [12/Sep/2025 09:50:39] "GET /status HTTP/1.1" 200 -
+2025-09-12 09:50:39,940 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): 192.168.1.20:80
+2025-09-12 09:50:42,751 - werkzeug - INFO - 127.0.0.1 - - [12/Sep/2025 09:50:42] "GET /status HTTP/1.1" 200 -
+2025-09-12 09:50:42,949 - werkzeug - INFO - 127.0.0.1 - - [12/Sep/2025 09:50:42] "GET /status HTTP/1.1" 200 -
+2025-09-12 09:50:42,966 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): 192.168.1.20:80
+2025-09-12 09:50:43,726 - werkzeug - INFO - 127.0.0.1 - - [12/Sep/2025 09:50:43] "GET /detections HTTP/1.1" 200 -
+2025-09-12 09:50:45,737 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): 192.168.1.20:80
+2025-09-12 09:50:45,978 - werkzeug - INFO - 127.0.0.1 - - [12/Sep/2025 09:50:45] "GET /status HTTP/1.1" 200 -
+2025-09-12 09:50:45,984 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): 192.168.1.20:80
+2025-09-12 09:50:48,735 - werkzeug - INFO - 127.0.0.1 - - [12/Sep/2025 09:50:48] "GET /detections HTTP/1.1" 200 -
+2025-09-12 09:50:48,752 - werkzeug - INFO - 127.0.0.1 - - [12/Sep/2025 09:50:48] "GET /status HTTP/1.1" 200 -
+2025-09-12 09:50:48,989 - werkzeug - INFO - 127.0.0.1 - - [12/Sep/2025 09:50:48] "GET /status HTTP/1.1" 200 -
+2025-09-12 09:50:48,996 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): 192.168.1.20:80
+2025-09-12 09:50:51,733 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): 192.168.1.20:80
+2025-09-12 09:50:52,001 - werkzeug - INFO - 127.0.0.1 - - [12/Sep/2025 09:50:52] "GET /status HTTP/1.1" 200 -
+2025-09-12 09:50:52,007 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): 192.168.1.20:80
+2025-09-12 09:50:53,034 - urllib3.connectionpool - DEBUG - http://192.168.1.20:80 "GET / HTTP/1.1" 200 490
+2025-09-12 09:50:53,034 - werkzeug - INFO - 127.0.0.1 - - [12/Sep/2025 09:50:53] "GET /status HTTP/1.1" 200 -
+2025-09-12 09:50:53,054 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): 192.168.1.20:80
+2025-09-12 09:50:53,070 - urllib3.connectionpool - DEBUG - http://192.168.1.20:80 "GET / HTTP/1.1" 200 490
+2025-09-12 09:50:53,075 - werkzeug - INFO - 127.0.0.1 - - [12/Sep/2025 09:50:53] "GET /status HTTP/1.1" 200 -
+2025-09-12 09:50:53,080 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): 192.168.1.20:80
+2025-09-12 09:50:53,126 - urllib3.connectionpool - DEBUG - http://192.168.1.20:80 "GET / HTTP/1.1" 200 490
+2025-09-12 09:50:53,128 - werkzeug - INFO - 127.0.0.1 - - [12/Sep/2025 09:50:53] "GET /status HTTP/1.1" 200 -
+2025-09-12 09:50:53,131 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): 192.168.1.20:80
+2025-09-12 09:50:53,172 - urllib3.connectionpool - DEBUG - http://192.168.1.20:80 "GET / HTTP/1.1" 200 490
+2025-09-12 09:50:53,173 - werkzeug - INFO - 127.0.0.1 - - [12/Sep/2025 09:50:53] "GET /status HTTP/1.1" 200 -
+2025-09-12 09:50:53,175 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): 192.168.1.20:80
+2025-09-12 09:50:53,227 - urllib3.connectionpool - DEBUG - http://192.168.1.20:80 "GET / HTTP/1.1" 200 490
+2025-09-12 09:50:53,227 - werkzeug - INFO - 127.0.0.1 - - [12/Sep/2025 09:50:53] "GET /status HTTP/1.1" 200 -
+2025-09-12 09:50:53,227 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): 192.168.1.20:80
+2025-09-12 09:50:53,272 - urllib3.connectionpool - DEBUG - http://192.168.1.20:80 "GET / HTTP/1.1" 200 490
+2025-09-12 09:50:53,274 - werkzeug - INFO - 127.0.0.1 - - [12/Sep/2025 09:50:53] "GET /status HTTP/1.1" 200 -
+2025-09-12 09:50:53,282 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): 192.168.1.20:80
+2025-09-12 09:50:53,329 - urllib3.connectionpool - DEBUG - http://192.168.1.20:80 "GET / HTTP/1.1" 200 490
+2025-09-12 09:50:53,331 - werkzeug - INFO - 127.0.0.1 - - [12/Sep/2025 09:50:53] "GET /status HTTP/1.1" 200 -
+2025-09-12 09:50:53,337 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): 192.168.1.20:80
+2025-09-12 09:50:53,363 - urllib3.connectionpool - DEBUG - http://192.168.1.20:80 "GET / HTTP/1.1" 200 490
+2025-09-12 09:50:53,363 - werkzeug - INFO - 127.0.0.1 - - [12/Sep/2025 09:50:53] "GET /status HTTP/1.1" 200 -
+2025-09-12 09:50:53,381 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): 192.168.1.20:80
+2025-09-12 09:50:53,443 - urllib3.connectionpool - DEBUG - http://192.168.1.20:80 "GET / HTTP/1.1" 200 490
+2025-09-12 09:50:53,445 - werkzeug - INFO - 127.0.0.1 - - [12/Sep/2025 09:50:53] "GET /status HTTP/1.1" 200 -
+2025-09-12 09:50:53,458 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): 192.168.1.20:80
+2025-09-12 09:50:53,495 - urllib3.connectionpool - DEBUG - http://192.168.1.20:80 "GET / HTTP/1.1" 200 490
+2025-09-12 09:50:53,495 - werkzeug - INFO - 127.0.0.1 - - [12/Sep/2025 09:50:53] "GET /status HTTP/1.1" 200 -
+2025-09-12 09:50:53,743 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): 192.168.1.20:80
+2025-09-12 09:50:53,758 - werkzeug - INFO - 127.0.0.1 - - [12/Sep/2025 09:50:53] "GET /detections HTTP/1.1" 200 -
+2025-09-12 09:50:53,904 - urllib3.connectionpool - DEBUG - http://192.168.1.20:80 "GET / HTTP/1.1" 200 490
+2025-09-12 09:50:53,905 - werkzeug - INFO - 127.0.0.1 - - [12/Sep/2025 09:50:53] "GET /status HTTP/1.1" 200 -
+2025-09-12 09:50:54,742 - werkzeug - INFO - 127.0.0.1 - - [12/Sep/2025 09:50:54] "GET /status HTTP/1.1" 200 -
+2025-09-12 09:50:55,727 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): 192.168.1.20:80
+2025-09-12 09:50:55,842 - urllib3.connectionpool - DEBUG - http://192.168.1.20:80 "GET / HTTP/1.1" 200 490
+2025-09-12 09:50:55,844 - werkzeug - INFO - 127.0.0.1 - - [12/Sep/2025 09:50:55] "GET /status HTTP/1.1" 200 -
+2025-09-12 09:50:57,733 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): 192.168.1.20:80
+2025-09-12 09:50:57,760 - urllib3.connectionpool - DEBUG - http://192.168.1.20:80 "GET / HTTP/1.1" 200 490
+2025-09-12 09:50:57,760 - werkzeug - INFO - 127.0.0.1 - - [12/Sep/2025 09:50:57] "GET /status HTTP/1.1" 200 -
+2025-09-12 09:50:58,729 - werkzeug - INFO - 127.0.0.1 - - [12/Sep/2025 09:50:58] "GET /detections HTTP/1.1" 200 -
+2025-09-12 09:50:59,743 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): 192.168.1.20:80
+2025-09-12 09:50:59,828 - urllib3.connectionpool - DEBUG - http://192.168.1.20:80 "GET / HTTP/1.1" 200 490
+2025-09-12 09:50:59,828 - werkzeug - INFO - 127.0.0.1 - - [12/Sep/2025 09:50:59] "GET /status HTTP/1.1" 200 -
+2025-09-12 09:51:01,727 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): 192.168.1.20:80
+2025-09-12 09:51:01,776 - urllib3.connectionpool - DEBUG - http://192.168.1.20:80 "GET / HTTP/1.1" 200 490
+2025-09-12 09:51:01,776 - werkzeug - INFO - 127.0.0.1 - - [12/Sep/2025 09:51:01] "GET /status HTTP/1.1" 200 -
+2025-09-12 09:51:02,568 - werkzeug - INFO - 127.0.0.1 - - [12/Sep/2025 09:51:02] "[33mGET /get_detection_history HTTP/1.1[0m" 404 -
+2025-09-12 09:51:02,876 - werkzeug - INFO - 127.0.0.1 - - [12/Sep/2025 09:51:02] "[33mGET /get_status HTTP/1.1[0m" 404 -
+2025-09-12 09:51:03,727 - werkzeug - INFO - 127.0.0.1 - - [12/Sep/2025 09:51:03] "GET /detections HTTP/1.1" 200 -
+2025-09-12 09:51:03,727 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): 192.168.1.20:80
+2025-09-12 09:51:03,815 - urllib3.connectionpool - DEBUG - http://192.168.1.20:80 "GET / HTTP/1.1" 200 490
+2025-09-12 09:51:03,815 - werkzeug - INFO - 127.0.0.1 - - [12/Sep/2025 09:51:03] "GET /status HTTP/1.1" 200 -
+2025-09-12 09:51:06,577 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): 192.168.1.20:80
+2025-09-12 09:51:06,691 - urllib3.connectionpool - DEBUG - http://192.168.1.20:80 "GET / HTTP/1.1" 200 490
+2025-09-12 09:51:06,692 - werkzeug - INFO - 127.0.0.1 - - [12/Sep/2025 09:51:06] "GET /status HTTP/1.1" 200 -
+2025-09-12 09:51:08,571 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): 192.168.1.20:80
+2025-09-12 09:51:08,715 - urllib3.connectionpool - DEBUG - http://192.168.1.20:80 "GET / HTTP/1.1" 200 490
+2025-09-12 09:51:08,716 - werkzeug - INFO - 127.0.0.1 - - [12/Sep/2025 09:51:08] "GET /status HTTP/1.1" 200 -
+2025-09-12 09:51:09,576 - werkzeug - INFO - 127.0.0.1 - - [12/Sep/2025 09:51:09] "GET /detections HTTP/1.1" 200 -
+2025-09-12 09:51:10,572 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): 192.168.1.20:80
+2025-09-12 09:51:10,684 - urllib3.connectionpool - DEBUG - http://192.168.1.20:80 "GET / HTTP/1.1" 200 490
+2025-09-12 09:51:10,685 - werkzeug - INFO - 127.0.0.1 - - [12/Sep/2025 09:51:10] "GET /status HTTP/1.1" 200 -
+2025-09-12 09:51:12,576 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): 192.168.1.20:80
+2025-09-12 09:51:12,644 - urllib3.connectionpool - DEBUG - http://192.168.1.20:80 "GET / HTTP/1.1" 200 490
+2025-09-12 09:51:12,645 - werkzeug - INFO - 127.0.0.1 - - [12/Sep/2025 09:51:12] "GET /status HTTP/1.1" 200 -
+2025-09-12 09:51:14,569 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): 192.168.1.20:80
+2025-09-12 09:51:14,571 - werkzeug - INFO - 127.0.0.1 - - [12/Sep/2025 09:51:14] "GET /detections HTTP/1.1" 200 -
+2025-09-12 09:51:14,690 - urllib3.connectionpool - DEBUG - http://192.168.1.20:80 "GET / HTTP/1.1" 200 490
+2025-09-12 09:51:14,692 - werkzeug - INFO - 127.0.0.1 - - [12/Sep/2025 09:51:14] "GET /status HTTP/1.1" 200 -
+2025-09-12 09:51:16,568 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): 192.168.1.20:80
+2025-09-12 09:51:16,629 - urllib3.connectionpool - DEBUG - http://192.168.1.20:80 "GET / HTTP/1.1" 200 490
+2025-09-12 09:51:16,630 - werkzeug - INFO - 127.0.0.1 - - [12/Sep/2025 09:51:16] "GET /status HTTP/1.1" 200 -
+2025-09-12 09:51:18,574 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): 192.168.1.20:80
+2025-09-12 09:51:19,077 - urllib3.connectionpool - DEBUG - http://192.168.1.20:80 "GET / HTTP/1.1" 200 490
+2025-09-12 09:51:19,080 - werkzeug - INFO - 127.0.0.1 - - [12/Sep/2025 09:51:19] "GET /status HTTP/1.1" 200 -
+2025-09-12 09:51:19,568 - werkzeug - INFO - 127.0.0.1 - - [12/Sep/2025 09:51:19] "GET /detections HTTP/1.1" 200 -
+2025-09-12 09:51:20,569 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): 192.168.1.20:80
+2025-09-12 09:51:20,910 - urllib3.connectionpool - DEBUG - http://192.168.1.20:80 "GET / HTTP/1.1" 200 490
+2025-09-12 09:51:20,919 - werkzeug - INFO - 127.0.0.1 - - [12/Sep/2025 09:51:20] "GET /status HTTP/1.1" 200 -
+2025-09-12 09:51:22,569 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): 192.168.1.20:80
+2025-09-12 09:51:23,689 - urllib3.connectionpool - DEBUG - http://192.168.1.20:80 "GET / HTTP/1.1" 200 490
+2025-09-12 09:51:23,692 - werkzeug - INFO - 127.0.0.1 - - [12/Sep/2025 09:51:23] "GET /status HTTP/1.1" 200 -
+2025-09-12 09:51:24,573 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): 192.168.1.20:80
+2025-09-12 09:51:24,574 - werkzeug - INFO - 127.0.0.1 - - [12/Sep/2025 09:51:24] "GET /detections HTTP/1.1" 200 -
+2025-09-12 09:51:24,842 - urllib3.connectionpool - DEBUG - http://192.168.1.20:80 "GET / HTTP/1.1" 200 490
+2025-09-12 09:51:24,852 - werkzeug - INFO - 127.0.0.1 - - [12/Sep/2025 09:51:24] "GET /status HTTP/1.1" 200 -
+2025-09-12 09:51:26,581 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): 192.168.1.20:80
+2025-09-12 09:51:26,649 - urllib3.connectionpool - DEBUG - http://192.168.1.20:80 "GET / HTTP/1.1" 200 490
+2025-09-12 09:51:26,652 - werkzeug - INFO - 127.0.0.1 - - [12/Sep/2025 09:51:26] "GET /status HTTP/1.1" 200 -
+2025-09-12 09:51:28,582 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): 192.168.1.20:80
+2025-09-12 09:51:28,743 - urllib3.connectionpool - DEBUG - http://192.168.1.20:80 "GET / HTTP/1.1" 200 490
+2025-09-12 09:51:28,748 - werkzeug - INFO - 127.0.0.1 - - [12/Sep/2025 09:51:28] "GET /status HTTP/1.1" 200 -
+2025-09-12 09:51:29,572 - werkzeug - INFO - 127.0.0.1 - - [12/Sep/2025 09:51:29] "GET /detections HTTP/1.1" 200 -
+2025-09-12 09:51:30,577 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): 192.168.1.20:80
+2025-09-12 09:51:30,690 - urllib3.connectionpool - DEBUG - http://192.168.1.20:80 "GET / HTTP/1.1" 200 490
+2025-09-12 09:51:30,697 - werkzeug - INFO - 127.0.0.1 - - [12/Sep/2025 09:51:30] "GET /status HTTP/1.1" 200 -
+2025-09-12 09:51:32,575 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): 192.168.1.20:80
+2025-09-12 09:51:33,727 - urllib3.connectionpool - DEBUG - http://192.168.1.20:80 "GET / HTTP/1.1" 200 490
+2025-09-12 09:51:33,741 - werkzeug - INFO - 127.0.0.1 - - [12/Sep/2025 09:51:33] "GET /status HTTP/1.1" 200 -
+2025-09-12 09:51:34,573 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): 192.168.1.20:80
+2025-09-12 09:51:34,574 - werkzeug - INFO - 127.0.0.1 - - [12/Sep/2025 09:51:34] "GET /detections HTTP/1.1" 200 -
+2025-09-12 09:51:35,684 - urllib3.connectionpool - DEBUG - http://192.168.1.20:80 "GET / HTTP/1.1" 200 490
+2025-09-12 09:51:35,694 - werkzeug - INFO - 127.0.0.1 - - [12/Sep/2025 09:51:35] "GET /status HTTP/1.1" 200 -
+2025-09-12 09:51:36,569 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): 192.168.1.20:80
+2025-09-12 09:51:38,012 - urllib3.connectionpool - DEBUG - http://192.168.1.20:80 "GET / HTTP/1.1" 200 490
+2025-09-12 09:51:38,024 - werkzeug - INFO - 127.0.0.1 - - [12/Sep/2025 09:51:38] "GET /status HTTP/1.1" 200 -
+2025-09-12 09:51:38,574 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): 192.168.1.20:80
+2025-09-12 09:51:38,651 - urllib3.connectionpool - DEBUG - http://192.168.1.20:80 "GET / HTTP/1.1" 200 490
+2025-09-12 09:51:38,656 - werkzeug - INFO - 127.0.0.1 - - [12/Sep/2025 09:51:38] "GET /status HTTP/1.1" 200 -
+2025-09-12 09:51:39,582 - werkzeug - INFO - 127.0.0.1 - - [12/Sep/2025 09:51:39] "GET /detections HTTP/1.1" 200 -
+2025-09-12 09:51:40,580 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): 192.168.1.20:80
+2025-09-12 09:51:40,706 - urllib3.connectionpool - DEBUG - http://192.168.1.20:80 "GET / HTTP/1.1" 200 490
+2025-09-12 09:51:40,707 - werkzeug - INFO - 127.0.0.1 - - [12/Sep/2025 09:51:40] "GET /status HTTP/1.1" 200 -
+2025-09-12 09:51:42,584 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): 192.168.1.20:80
+2025-09-12 09:51:42,639 - urllib3.connectionpool - DEBUG - http://192.168.1.20:80 "GET / HTTP/1.1" 200 490
+2025-09-12 09:51:42,644 - werkzeug - INFO - 127.0.0.1 - - [12/Sep/2025 09:51:42] "GET /status HTTP/1.1" 200 -
+2025-09-12 09:51:44,577 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): 192.168.1.20:80
+2025-09-12 09:51:44,578 - werkzeug - INFO - 127.0.0.1 - - [12/Sep/2025 09:51:44] "GET /detections HTTP/1.1" 200 -
+2025-09-12 09:51:44,711 - urllib3.connectionpool - DEBUG - http://192.168.1.20:80 "GET / HTTP/1.1" 200 490
+2025-09-12 09:51:44,714 - werkzeug - INFO - 127.0.0.1 - - [12/Sep/2025 09:51:44] "GET /status HTTP/1.1" 200 -
+2025-09-12 09:51:46,580 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): 192.168.1.20:80
+2025-09-12 09:51:46,639 - urllib3.connectionpool - DEBUG - http://192.168.1.20:80 "GET / HTTP/1.1" 200 490
+2025-09-12 09:51:46,643 - werkzeug - INFO - 127.0.0.1 - - [12/Sep/2025 09:51:46] "GET /status HTTP/1.1" 200 -
+2025-09-12 09:51:48,588 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): 192.168.1.20:80
+2025-09-12 09:51:48,661 - urllib3.connectionpool - DEBUG - http://192.168.1.20:80 "GET / HTTP/1.1" 200 490
+2025-09-12 09:51:48,663 - werkzeug - INFO - 127.0.0.1 - - [12/Sep/2025 09:51:48] "GET /status HTTP/1.1" 200 -
+2025-09-12 09:51:49,581 - werkzeug - INFO - 127.0.0.1 - - [12/Sep/2025 09:51:49] "GET /detections HTTP/1.1" 200 -
+2025-09-12 09:51:50,567 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): 192.168.1.20:80
+2025-09-12 09:51:50,630 - urllib3.connectionpool - DEBUG - http://192.168.1.20:80 "GET / HTTP/1.1" 200 490
+2025-09-12 09:51:50,632 - werkzeug - INFO - 127.0.0.1 - - [12/Sep/2025 09:51:50] "GET /status HTTP/1.1" 200 -
+2025-09-12 09:51:52,574 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): 192.168.1.20:80
+2025-09-12 09:51:54,587 - werkzeug - INFO - 127.0.0.1 - - [12/Sep/2025 09:51:54] "GET /detections HTTP/1.1" 200 -
+2025-09-12 09:51:55,578 - werkzeug - INFO - 127.0.0.1 - - [12/Sep/2025 09:51:55] "GET /status HTTP/1.1" 200 -
+2025-09-12 09:51:55,585 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): 192.168.1.20:80
+2025-09-12 09:51:58,598 - werkzeug - INFO - 127.0.0.1 - - [12/Sep/2025 09:51:58] "GET /status HTTP/1.1" 200 -
+2025-09-12 09:51:58,611 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): 192.168.1.20:80
+2025-09-12 09:51:59,575 - werkzeug - INFO - 127.0.0.1 - - [12/Sep/2025 09:51:59] "GET /detections HTTP/1.1" 200 -
+2025-09-12 09:52:01,614 - werkzeug - INFO - 127.0.0.1 - - [12/Sep/2025 09:52:01] "GET /status HTTP/1.1" 200 -
+2025-09-12 09:52:01,619 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): 192.168.1.20:80
+2025-09-12 09:52:01,709 - urllib3.connectionpool - DEBUG - http://192.168.1.20:80 "GET / HTTP/1.1" 200 490
+2025-09-12 09:52:01,726 - werkzeug - INFO - 127.0.0.1 - - [12/Sep/2025 09:52:01] "GET /status HTTP/1.1" 200 -
+2025-09-12 09:52:01,733 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): 192.168.1.20:80
+2025-09-12 09:52:01,769 - urllib3.connectionpool - DEBUG - http://192.168.1.20:80 "GET / HTTP/1.1" 200 490
+2025-09-12 09:52:01,787 - werkzeug - INFO - 127.0.0.1 - - [12/Sep/2025 09:52:01] "GET /status HTTP/1.1" 200 -
+2025-09-12 09:52:02,578 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): 192.168.1.20:80
+2025-09-12 09:52:02,722 - urllib3.connectionpool - DEBUG - http://192.168.1.20:80 "GET / HTTP/1.1" 200 490
+2025-09-12 09:52:02,725 - werkzeug - INFO - 127.0.0.1 - - [12/Sep/2025 09:52:02] "GET /status HTTP/1.1" 200 -
+2025-09-12 09:52:02,890 - werkzeug - INFO - 127.0.0.1 - - [12/Sep/2025 09:52:02] "[33mGET /get_detection_history HTTP/1.1[0m" 404 -
+2025-09-12 09:52:02,893 - werkzeug - INFO - 127.0.0.1 - - [12/Sep/2025 09:52:02] "[33mGET /get_status HTTP/1.1[0m" 404 -
+2025-09-12 09:52:04,571 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): 192.168.1.20:80
+2025-09-12 09:52:04,573 - werkzeug - INFO - 127.0.0.1 - - [12/Sep/2025 09:52:04] "GET /detections HTTP/1.1" 200 -
+2025-09-12 09:52:04,668 - urllib3.connectionpool - DEBUG - http://192.168.1.20:80 "GET / HTTP/1.1" 200 490
+2025-09-12 09:52:04,669 - werkzeug - INFO - 127.0.0.1 - - [12/Sep/2025 09:52:04] "GET /status HTTP/1.1" 200 -
+2025-09-12 09:53:02,577 - werkzeug - INFO - 127.0.0.1 - - [12/Sep/2025 09:53:02] "[33mGET /get_detection_history HTTP/1.1[0m" 404 -
+2025-09-12 09:53:02,587 - werkzeug - INFO - 127.0.0.1 - - [12/Sep/2025 09:53:02] "GET /detections HTTP/1.1" 200 -
+2025-09-12 09:53:02,590 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): 192.168.1.20:80
+2025-09-12 09:53:02,709 - urllib3.connectionpool - DEBUG - http://192.168.1.20:80 "GET / HTTP/1.1" 200 490
+2025-09-12 09:53:02,713 - werkzeug - INFO - 127.0.0.1 - - [12/Sep/2025 09:53:02] "GET /status HTTP/1.1" 200 -
+2025-09-12 09:53:02,890 - werkzeug - INFO - 127.0.0.1 - - [12/Sep/2025 09:53:02] "[33mGET /get_status HTTP/1.1[0m" 404 -
+2025-09-12 09:54:02,578 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): 192.168.1.20:80
+2025-09-12 09:54:02,580 - werkzeug - INFO - 127.0.0.1 - - [12/Sep/2025 09:54:02] "GET /detections HTTP/1.1" 200 -
+2025-09-12 09:54:02,828 - urllib3.connectionpool - DEBUG - http://192.168.1.20:80 "GET / HTTP/1.1" 200 490
+2025-09-12 09:54:02,832 - werkzeug - INFO - 127.0.0.1 - - [12/Sep/2025 09:54:02] "GET /status HTTP/1.1" 200 -
+2025-09-12 09:54:02,884 - werkzeug - INFO - 127.0.0.1 - - [12/Sep/2025 09:54:02] "[33mGET /get_detection_history HTTP/1.1[0m" 404 -
+2025-09-12 09:54:02,886 - werkzeug - INFO - 127.0.0.1 - - [12/Sep/2025 09:54:02] "[33mGET /get_status HTTP/1.1[0m" 404 -
+2025-09-12 09:55:03,661 - werkzeug - INFO - 127.0.0.1 - - [12/Sep/2025 09:55:03] "GET /detections HTTP/1.1" 200 -
+2025-09-12 09:55:03,662 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): 192.168.1.20:80
+2025-09-12 09:55:03,738 - urllib3.connectionpool - DEBUG - http://192.168.1.20:80 "GET / HTTP/1.1" 200 490
+2025-09-12 09:55:03,739 - werkzeug - INFO - 127.0.0.1 - - [12/Sep/2025 09:55:03] "GET /status HTTP/1.1" 200 -
+2025-09-12 09:55:03,961 - werkzeug - INFO - 127.0.0.1 - - [12/Sep/2025 09:55:03] "[33mGET /get_detection_history HTTP/1.1[0m" 404 -
+2025-09-12 09:55:03,962 - werkzeug - INFO - 127.0.0.1 - - [12/Sep/2025 09:55:03] "[33mGET /get_status HTTP/1.1[0m" 404 -
+2025-09-12 09:56:02,575 - werkzeug - INFO - 127.0.0.1 - - [12/Sep/2025 09:56:02] "[33mGET /get_detection_history HTTP/1.1[0m" 404 -
+2025-09-12 09:56:02,577 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): 192.168.1.20:80
+2025-09-12 09:56:02,580 - werkzeug - INFO - 127.0.0.1 - - [12/Sep/2025 09:56:02] "GET /detections HTTP/1.1" 200 -
+2025-09-12 09:56:02,628 - urllib3.connectionpool - DEBUG - http://192.168.1.20:80 "GET / HTTP/1.1" 200 490
+2025-09-12 09:56:02,630 - werkzeug - INFO - 127.0.0.1 - - [12/Sep/2025 09:56:02] "GET /status HTTP/1.1" 200 -
+2025-09-12 09:56:02,881 - werkzeug - INFO - 127.0.0.1 - - [12/Sep/2025 09:56:02] "[33mGET /get_status HTTP/1.1[0m" 404 -
+2025-09-12 09:57:02,582 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): 192.168.1.20:80
+2025-09-12 09:57:02,582 - werkzeug - INFO - 127.0.0.1 - - [12/Sep/2025 09:57:02] "GET /detections HTTP/1.1" 200 -
+2025-09-12 09:57:02,881 - werkzeug - INFO - 127.0.0.1 - - [12/Sep/2025 09:57:02] "[33mGET /get_detection_history HTTP/1.1[0m" 404 -
+2025-09-12 09:57:02,881 - werkzeug - INFO - 127.0.0.1 - - [12/Sep/2025 09:57:02] "[33mGET /get_status HTTP/1.1[0m" 404 -
+2025-09-12 09:57:03,863 - urllib3.connectionpool - DEBUG - http://192.168.1.20:80 "GET / HTTP/1.1" 200 490
+2025-09-12 09:57:03,863 - werkzeug - INFO - 127.0.0.1 - - [12/Sep/2025 09:57:03] "GET /status HTTP/1.1" 200 -
+2025-09-12 09:58:02,574 - werkzeug - INFO - 127.0.0.1 - - [12/Sep/2025 09:58:02] "[33mGET /get_detection_history HTTP/1.1[0m" 404 -
+2025-09-12 09:58:02,577 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): 192.168.1.20:80
+2025-09-12 09:58:02,580 - werkzeug - INFO - 127.0.0.1 - - [12/Sep/2025 09:58:02] "GET /detections HTTP/1.1" 200 -
+2025-09-12 09:58:02,888 - werkzeug - INFO - 127.0.0.1 - - [12/Sep/2025 09:58:02] "[33mGET /get_status HTTP/1.1[0m" 404 -
+2025-09-12 09:58:05,585 - werkzeug - INFO - 127.0.0.1 - - [12/Sep/2025 09:58:05] "GET /status HTTP/1.1" 200 -
+2025-09-12 09:59:02,578 - werkzeug - INFO - 127.0.0.1 - - [12/Sep/2025 09:59:02] "GET /detections HTTP/1.1" 200 -
+2025-09-12 09:59:02,581 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): 192.168.1.20:80
+2025-09-12 09:59:02,626 - urllib3.connectionpool - DEBUG - http://192.168.1.20:80 "GET / HTTP/1.1" 200 490
+2025-09-12 09:59:02,627 - werkzeug - INFO - 127.0.0.1 - - [12/Sep/2025 09:59:02] "GET /status HTTP/1.1" 200 -
+2025-09-12 09:59:02,887 - werkzeug - INFO - 127.0.0.1 - - [12/Sep/2025 09:59:02] "[33mGET /get_detection_history HTTP/1.1[0m" 404 -
+2025-09-12 09:59:02,889 - werkzeug - INFO - 127.0.0.1 - - [12/Sep/2025 09:59:02] "[33mGET /get_status HTTP/1.1[0m" 404 -
+2025-09-12 10:00:02,570 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): 192.168.1.20:80
+2025-09-12 10:00:02,570 - werkzeug - INFO - 127.0.0.1 - - [12/Sep/2025 10:00:02] "GET /detections HTTP/1.1" 200 -
+2025-09-12 10:00:02,570 - werkzeug - INFO - 127.0.0.1 - - [12/Sep/2025 10:00:02] "[33mGET /get_detection_history HTTP/1.1[0m" 404 -
+2025-09-12 10:00:02,629 - urllib3.connectionpool - DEBUG - http://192.168.1.20:80 "GET / HTTP/1.1" 200 490
+2025-09-12 10:00:02,629 - werkzeug - INFO - 127.0.0.1 - - [12/Sep/2025 10:00:02] "GET /status HTTP/1.1" 200 -
+2025-09-12 10:00:02,878 - werkzeug - INFO - 127.0.0.1 - - [12/Sep/2025 10:00:02] "[33mGET /get_status HTTP/1.1[0m" 404 -
+2025-09-12 10:01:02,566 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): 192.168.1.20:80
+2025-09-12 10:01:02,566 - werkzeug - INFO - 127.0.0.1 - - [12/Sep/2025 10:01:02] "GET /detections HTTP/1.1" 200 -
+2025-09-12 10:01:02,884 - werkzeug - INFO - 127.0.0.1 - - [12/Sep/2025 10:01:02] "[33mGET /get_detection_history HTTP/1.1[0m" 404 -
+2025-09-12 10:01:02,890 - werkzeug - INFO - 127.0.0.1 - - [12/Sep/2025 10:01:02] "[33mGET /get_status HTTP/1.1[0m" 404 -
+2025-09-12 10:01:05,568 - werkzeug - INFO - 127.0.0.1 - - [12/Sep/2025 10:01:05] "GET /status HTTP/1.1" 200 -
+2025-09-12 10:02:02,573 - werkzeug - INFO - 127.0.0.1 - - [12/Sep/2025 10:02:02] "[33mGET /get_detection_history HTTP/1.1[0m" 404 -
+2025-09-12 10:02:02,577 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): 192.168.1.20:80
+2025-09-12 10:02:02,578 - werkzeug - INFO - 127.0.0.1 - - [12/Sep/2025 10:02:02] "GET /detections HTTP/1.1" 200 -
+2025-09-12 10:02:02,663 - urllib3.connectionpool - DEBUG - http://192.168.1.20:80 "GET / HTTP/1.1" 200 490
+2025-09-12 10:02:02,664 - werkzeug - INFO - 127.0.0.1 - - [12/Sep/2025 10:02:02] "GET /status HTTP/1.1" 200 -
+2025-09-12 10:02:02,887 - werkzeug - INFO - 127.0.0.1 - - [12/Sep/2025 10:02:02] "[33mGET /get_status HTTP/1.1[0m" 404 -
+2025-09-12 10:03:02,571 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): 192.168.1.20:80
+2025-09-12 10:03:02,571 - werkzeug - INFO - 127.0.0.1 - - [12/Sep/2025 10:03:02] "GET /detections HTTP/1.1" 200 -
+2025-09-12 10:03:02,758 - urllib3.connectionpool - DEBUG - http://192.168.1.20:80 "GET / HTTP/1.1" 200 490
+2025-09-12 10:03:02,758 - werkzeug - INFO - 127.0.0.1 - - [12/Sep/2025 10:03:02] "GET /status HTTP/1.1" 200 -
+2025-09-12 10:03:02,891 - werkzeug - INFO - 127.0.0.1 - - [12/Sep/2025 10:03:02] "[33mGET /get_detection_history HTTP/1.1[0m" 404 -
+2025-09-12 10:03:02,891 - werkzeug - INFO - 127.0.0.1 - - [12/Sep/2025 10:03:02] "[33mGET /get_status HTTP/1.1[0m" 404 -
+2025-09-12 10:04:02,583 - werkzeug - INFO - 127.0.0.1 - - [12/Sep/2025 10:04:02] "[33mGET /get_detection_history HTTP/1.1[0m" 404 -
+2025-09-12 10:04:02,583 - werkzeug - INFO - 127.0.0.1 - - [12/Sep/2025 10:04:02] "GET /detections HTTP/1.1" 200 -
+2025-09-12 10:04:02,583 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): 192.168.1.20:80
+2025-09-12 10:04:02,676 - urllib3.connectionpool - DEBUG - http://192.168.1.20:80 "GET / HTTP/1.1" 200 490
+2025-09-12 10:04:02,677 - werkzeug - INFO - 127.0.0.1 - - [12/Sep/2025 10:04:02] "GET /status HTTP/1.1" 200 -
+2025-09-12 10:04:02,890 - werkzeug - INFO - 127.0.0.1 - - [12/Sep/2025 10:04:02] "[33mGET /get_status HTTP/1.1[0m" 404 -
+2025-09-12 10:05:02,582 - werkzeug - INFO - 127.0.0.1 - - [12/Sep/2025 10:05:02] "GET /detections HTTP/1.1" 200 -
+2025-09-12 10:05:02,582 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): 192.168.1.20:80
+2025-09-12 10:05:02,897 - werkzeug - INFO - 127.0.0.1 - - [12/Sep/2025 10:05:02] "[33mGET /get_detection_history HTTP/1.1[0m" 404 -
+2025-09-12 10:05:02,897 - werkzeug - INFO - 127.0.0.1 - - [12/Sep/2025 10:05:02] "[33mGET /get_status HTTP/1.1[0m" 404 -
+2025-09-12 10:05:02,931 - urllib3.connectionpool - DEBUG - http://192.168.1.20:80 "GET / HTTP/1.1" 200 490
+2025-09-12 10:05:02,935 - werkzeug - INFO - 127.0.0.1 - - [12/Sep/2025 10:05:02] "GET /status HTTP/1.1" 200 -
+2025-09-12 10:06:02,580 - werkzeug - INFO - 127.0.0.1 - - [12/Sep/2025 10:06:02] "[33mGET /get_detection_history HTTP/1.1[0m" 404 -
+2025-09-12 10:06:02,585 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): 192.168.1.20:80
+2025-09-12 10:06:02,594 - werkzeug - INFO - 127.0.0.1 - - [12/Sep/2025 10:06:02] "GET /detections HTTP/1.1" 200 -
+2025-09-12 10:06:02,688 - urllib3.connectionpool - DEBUG - http://192.168.1.20:80 "GET / HTTP/1.1" 200 490
+2025-09-12 10:06:02,696 - werkzeug - INFO - 127.0.0.1 - - [12/Sep/2025 10:06:02] "GET /status HTTP/1.1" 200 -
+2025-09-12 10:06:02,885 - werkzeug - INFO - 127.0.0.1 - - [12/Sep/2025 10:06:02] "[33mGET /get_status HTTP/1.1[0m" 404 -
+2025-09-12 10:07:02,573 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): 192.168.1.20:80
+2025-09-12 10:07:02,573 - werkzeug - INFO - 127.0.0.1 - - [12/Sep/2025 10:07:02] "GET /detections HTTP/1.1" 200 -
+2025-09-12 10:07:02,687 - urllib3.connectionpool - DEBUG - http://192.168.1.20:80 "GET / HTTP/1.1" 200 490
+2025-09-12 10:07:02,689 - werkzeug - INFO - 127.0.0.1 - - [12/Sep/2025 10:07:02] "GET /status HTTP/1.1" 200 -
+2025-09-12 10:07:02,886 - werkzeug - INFO - 127.0.0.1 - - [12/Sep/2025 10:07:02] "[33mGET /get_detection_history HTTP/1.1[0m" 404 -
+2025-09-12 10:07:02,889 - werkzeug - INFO - 127.0.0.1 - - [12/Sep/2025 10:07:02] "[33mGET /get_status HTTP/1.1[0m" 404 -
+2025-09-12 10:08:02,576 - werkzeug - INFO - 127.0.0.1 - - [12/Sep/2025 10:08:02] "[33mGET /get_detection_history HTTP/1.1[0m" 404 -
+2025-09-12 10:08:02,576 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): 192.168.1.20:80
+2025-09-12 10:08:02,576 - werkzeug - INFO - 127.0.0.1 - - [12/Sep/2025 10:08:02] "GET /detections HTTP/1.1" 200 -
+2025-09-12 10:08:02,808 - urllib3.connectionpool - DEBUG - http://192.168.1.20:80 "GET / HTTP/1.1" 200 490
+2025-09-12 10:08:02,809 - werkzeug - INFO - 127.0.0.1 - - [12/Sep/2025 10:08:02] "GET /status HTTP/1.1" 200 -
+2025-09-12 10:08:02,894 - werkzeug - INFO - 127.0.0.1 - - [12/Sep/2025 10:08:02] "[33mGET /get_status HTTP/1.1[0m" 404 -
+2025-09-12 10:09:02,564 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): 192.168.1.20:80
+2025-09-12 10:09:02,570 - werkzeug - INFO - 127.0.0.1 - - [12/Sep/2025 10:09:02] "GET /detections HTTP/1.1" 200 -
+2025-09-12 10:09:02,891 - werkzeug - INFO - 127.0.0.1 - - [12/Sep/2025 10:09:02] "[33mGET /get_detection_history HTTP/1.1[0m" 404 -
+2025-09-12 10:09:02,891 - werkzeug - INFO - 127.0.0.1 - - [12/Sep/2025 10:09:02] "[33mGET /get_status HTTP/1.1[0m" 404 -
+2025-09-12 10:09:05,578 - werkzeug - INFO - 127.0.0.1 - - [12/Sep/2025 10:09:05] "GET /status HTTP/1.1" 200 -
+2025-09-12 10:09:52,118 - werkzeug - INFO -  * Detected change in 'D:\\Drowsiness Detection\\app.py', reloading
+2025-09-12 10:09:52,960 - werkzeug - INFO -  * Restarting with stat
+2025-09-12 10:09:59,508 - app - INFO - Model loaded successfully from models/best.pt
+2025-09-12 10:10:06,591 - werkzeug - INFO - 127.0.0.1 - - [12/Sep/2025 10:10:06] "GET /detections HTTP/1.1" 200 -
+2025-09-12 10:10:06,593 - werkzeug - INFO - 127.0.0.1 - - [12/Sep/2025 10:10:06] "[33mGET /get_detection_history HTTP/1.1[0m" 404 -
+2025-09-12 10:10:06,596 - werkzeug - INFO - 127.0.0.1 - - [12/Sep/2025 10:10:06] "[33mGET /get_status HTTP/1.1[0m" 404 -
+2025-09-12 10:10:13,623 - werkzeug - INFO - 127.0.0.1 - - [12/Sep/2025 10:10:13] "GET /status HTTP/1.1" 200 -
+2025-09-12 10:10:21,309 - app - INFO - Received shutdown signal, stopping monitoring...
+2025-09-12 10:10:23,332 - app - ERROR - Error stopping alert: HTTPConnectionPool(host='192.168.1.20', port=80): Max retries exceeded with url: /stop_alert (Caused by ConnectTimeoutError(<urllib3.connection.HTTPConnection object at 0x000001073CBFE0D0>, 'Connection to 192.168.1.20 timed out. (connect timeout=2)'))
+2025-09-12 10:10:32,961 - app - INFO - Model loaded successfully from models/best.pt
+2025-09-12 10:10:40,057 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://192.168.1.42:5000
+2025-09-12 10:10:40,057 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-09-12 10:10:41,366 - werkzeug - INFO - 127.0.0.1 - - [12/Sep/2025 10:10:41] "GET /detections HTTP/1.1" 200 -
+2025-09-12 10:10:43,730 - werkzeug - INFO - 127.0.0.1 - - [12/Sep/2025 10:10:43] "GET /detections HTTP/1.1" 200 -
+2025-09-12 10:10:48,409 - werkzeug - INFO - 127.0.0.1 - - [12/Sep/2025 10:10:48] "GET /status HTTP/1.1" 200 -
+2025-09-12 10:10:48,734 - werkzeug - INFO - 127.0.0.1 - - [12/Sep/2025 10:10:48] "GET /detections HTTP/1.1" 200 -
+2025-09-12 10:10:50,349 - werkzeug - INFO - 127.0.0.1 - - [12/Sep/2025 10:10:50] "GET / HTTP/1.1" 200 -
+2025-09-12 10:10:50,400 - werkzeug - INFO - 127.0.0.1 - - [12/Sep/2025 10:10:50] "GET /detections HTTP/1.1" 200 -
+2025-09-12 10:10:51,390 - werkzeug - INFO - 127.0.0.1 - - [12/Sep/2025 10:10:51] "GET /video_feed HTTP/1.1" 200 -
+2025-09-12 10:10:55,405 - werkzeug - INFO - 127.0.0.1 - - [12/Sep/2025 10:10:55] "GET /detections HTTP/1.1" 200 -
+2025-09-12 10:10:55,437 - werkzeug - INFO - 127.0.0.1 - - [12/Sep/2025 10:10:55] "GET /status HTTP/1.1" 200 -
+2025-09-12 10:10:57,420 - werkzeug - INFO - 127.0.0.1 - - [12/Sep/2025 10:10:57] "GET /status HTTP/1.1" 200 -
+2025-09-12 10:11:00,407 - werkzeug - INFO - 127.0.0.1 - - [12/Sep/2025 10:11:00] "GET /detections HTTP/1.1" 200 -
+2025-09-12 10:11:04,489 - werkzeug - INFO - 127.0.0.1 - - [12/Sep/2025 10:11:04] "GET /status HTTP/1.1" 200 -
+2025-09-12 10:11:05,406 - werkzeug - INFO - 127.0.0.1 - - [12/Sep/2025 10:11:05] "GET /detections HTTP/1.1" 200 -
+2025-09-12 10:11:10,408 - werkzeug - INFO - 127.0.0.1 - - [12/Sep/2025 10:11:10] "GET /detections HTTP/1.1" 200 -
+2025-09-12 10:11:11,525 - werkzeug - INFO - 127.0.0.1 - - [12/Sep/2025 10:11:11] "GET /status HTTP/1.1" 200 -
+2025-09-12 10:11:15,409 - werkzeug - INFO - 127.0.0.1 - - [12/Sep/2025 10:11:15] "GET /detections HTTP/1.1" 200 -
+2025-09-12 10:11:18,543 - werkzeug - INFO - 127.0.0.1 - - [12/Sep/2025 10:11:18] "GET /status HTTP/1.1" 200 -
+2025-09-12 10:11:20,412 - werkzeug - INFO - 127.0.0.1 - - [12/Sep/2025 10:11:20] "GET /detections HTTP/1.1" 200 -
+2025-09-12 10:11:25,429 - werkzeug - INFO - 127.0.0.1 - - [12/Sep/2025 10:11:25] "GET /status HTTP/1.1" 200 -
+2025-09-12 10:11:25,429 - werkzeug - INFO - 127.0.0.1 - - [12/Sep/2025 10:11:25] "GET /detections HTTP/1.1" 200 -
+2025-09-12 10:11:25,581 - werkzeug - INFO - 127.0.0.1 - - [12/Sep/2025 10:11:25] "GET /status HTTP/1.1" 200 -
+2025-09-12 10:11:29,431 - werkzeug - INFO - 127.0.0.1 - - [12/Sep/2025 10:11:29] "GET /status HTTP/1.1" 200 -
+2025-09-12 10:11:30,611 - werkzeug - INFO - 127.0.0.1 - - [12/Sep/2025 10:11:30] "GET / HTTP/1.1" 200 -
+2025-09-12 10:11:30,619 - werkzeug - INFO - 127.0.0.1 - - [12/Sep/2025 10:11:30] "GET /detections HTTP/1.1" 200 -
+2025-09-12 10:11:30,643 - werkzeug - INFO - 127.0.0.1 - - [12/Sep/2025 10:11:30] "GET /detections HTTP/1.1" 200 -
+2025-09-12 10:11:31,450 - werkzeug - INFO - 127.0.0.1 - - [12/Sep/2025 10:11:31] "GET /status HTTP/1.1" 200 -
+2025-09-12 10:11:31,650 - werkzeug - INFO - 127.0.0.1 - - [12/Sep/2025 10:11:31] "GET /video_feed HTTP/1.1" 200 -
+2025-09-12 10:11:32,632 - werkzeug - INFO - 127.0.0.1 - - [12/Sep/2025 10:11:32] "GET /status HTTP/1.1" 200 -
+2025-09-12 10:11:35,448 - werkzeug - INFO - 127.0.0.1 - - [12/Sep/2025 10:11:35] "GET /status HTTP/1.1" 200 -
+2025-09-12 10:11:36,568 - werkzeug - INFO - 127.0.0.1 - - [12/Sep/2025 10:11:36] "GET /detections HTTP/1.1" 200 -
+2025-09-12 10:11:37,438 - werkzeug - INFO - 127.0.0.1 - - [12/Sep/2025 10:11:37] "GET /status HTTP/1.1" 200 -
+2025-09-12 10:11:37,663 - werkzeug - INFO - 127.0.0.1 - - [12/Sep/2025 10:11:37] "GET /status HTTP/1.1" 200 -
+2025-09-12 10:11:41,569 - werkzeug - INFO - 127.0.0.1 - - [12/Sep/2025 10:11:41] "GET /detections HTTP/1.1" 200 -
+2025-09-12 10:11:44,698 - werkzeug - INFO - 127.0.0.1 - - [12/Sep/2025 10:11:44] "GET /status HTTP/1.1" 200 -
+2025-09-12 10:11:46,567 - werkzeug - INFO - 127.0.0.1 - - [12/Sep/2025 10:11:46] "GET /detections HTTP/1.1" 200 -
+2025-09-12 10:11:51,582 - werkzeug - INFO - 127.0.0.1 - - [12/Sep/2025 10:11:51] "GET /detections HTTP/1.1" 200 -
+2025-09-12 10:11:51,722 - werkzeug - INFO - 127.0.0.1 - - [12/Sep/2025 10:11:51] "GET /status HTTP/1.1" 200 -
+2025-09-12 10:11:56,575 - werkzeug - INFO - 127.0.0.1 - - [12/Sep/2025 10:11:56] "GET /detections HTTP/1.1" 200 -
+2025-09-12 10:11:58,774 - werkzeug - INFO - 127.0.0.1 - - [12/Sep/2025 10:11:58] "GET /status HTTP/1.1" 200 -
+2025-09-12 10:12:01,589 - werkzeug - INFO - 127.0.0.1 - - [12/Sep/2025 10:12:01] "GET /detections HTTP/1.1" 200 -
+2025-09-12 10:12:05,796 - werkzeug - INFO - 127.0.0.1 - - [12/Sep/2025 10:12:05] "GET /status HTTP/1.1" 200 -
+2025-09-12 10:12:06,564 - werkzeug - INFO - 127.0.0.1 - - [12/Sep/2025 10:12:06] "GET /detections HTTP/1.1" 200 -
+2025-09-12 10:12:08,601 - werkzeug - INFO - 127.0.0.1 - - [12/Sep/2025 10:12:08] "GET /status HTTP/1.1" 200 -
+2025-09-12 10:12:10,621 - werkzeug - INFO - 127.0.0.1 - - [12/Sep/2025 10:12:10] "GET /status HTTP/1.1" 200 -
+2025-09-12 10:12:11,583 - werkzeug - INFO - 127.0.0.1 - - [12/Sep/2025 10:12:11] "GET /detections HTTP/1.1" 200 -
+2025-09-12 10:12:12,597 - werkzeug - INFO - 127.0.0.1 - - [12/Sep/2025 10:12:12] "GET /status HTTP/1.1" 200 -
+2025-09-12 10:12:12,847 - werkzeug - INFO - 127.0.0.1 - - [12/Sep/2025 10:12:12] "GET /status HTTP/1.1" 200 -
+2025-09-12 10:12:16,575 - werkzeug - INFO - 127.0.0.1 - - [12/Sep/2025 10:12:16] "GET /detections HTTP/1.1" 200 -
+2025-09-12 10:12:16,591 - werkzeug - INFO - 127.0.0.1 - - [12/Sep/2025 10:12:16] "GET /status HTTP/1.1" 200 -
+2025-09-12 10:12:18,605 - werkzeug - INFO - 127.0.0.1 - - [12/Sep/2025 10:12:18] "GET /status HTTP/1.1" 200 -
+2025-09-12 10:12:19,900 - werkzeug - INFO - 127.0.0.1 - - [12/Sep/2025 10:12:19] "GET /status HTTP/1.1" 200 -
+2025-09-12 10:12:21,566 - werkzeug - INFO - 127.0.0.1 - - [12/Sep/2025 10:12:21] "GET /detections HTTP/1.1" 200 -
+2025-09-12 10:12:22,613 - werkzeug - INFO - 127.0.0.1 - - [12/Sep/2025 10:12:22] "GET /status HTTP/1.1" 200 -
+2025-09-12 10:12:24,599 - werkzeug - INFO - 127.0.0.1 - - [12/Sep/2025 10:12:24] "GET /status HTTP/1.1" 200 -
+2025-09-12 10:12:26,571 - werkzeug - INFO - 127.0.0.1 - - [12/Sep/2025 10:12:26] "GET /detections HTTP/1.1" 200 -
+2025-09-12 10:12:26,595 - werkzeug - INFO - 127.0.0.1 - - [12/Sep/2025 10:12:26] "GET /status HTTP/1.1" 200 -
+2025-09-12 10:12:26,940 - werkzeug - INFO - 127.0.0.1 - - [12/Sep/2025 10:12:26] "GET /status HTTP/1.1" 200 -
+2025-09-12 10:12:30,606 - werkzeug - INFO - 127.0.0.1 - - [12/Sep/2025 10:12:30] "GET /status HTTP/1.1" 200 -
+2025-09-12 10:12:31,571 - werkzeug - INFO - 127.0.0.1 - - [12/Sep/2025 10:12:31] "GET /detections HTTP/1.1" 200 -
+2025-09-12 10:12:32,610 - werkzeug - INFO - 127.0.0.1 - - [12/Sep/2025 10:12:32] "GET /status HTTP/1.1" 200 -
+2025-09-12 10:12:33,971 - werkzeug - INFO - 127.0.0.1 - - [12/Sep/2025 10:12:33] "GET /status HTTP/1.1" 200 -
+2025-09-12 10:12:36,142 - werkzeug - INFO - 127.0.0.1 - - [12/Sep/2025 10:12:36] "GET /detections HTTP/1.1" 200 -
+2025-09-12 10:12:36,620 - werkzeug - INFO - 127.0.0.1 - - [12/Sep/2025 10:12:36] "GET /status HTTP/1.1" 200 -
+2025-09-12 10:12:38,621 - werkzeug - INFO - 127.0.0.1 - - [12/Sep/2025 10:12:38] "GET /status HTTP/1.1" 200 -
+2025-09-12 10:12:40,623 - werkzeug - INFO - 127.0.0.1 - - [12/Sep/2025 10:12:40] "GET /status HTTP/1.1" 200 -
+2025-09-12 10:12:40,648 - werkzeug - INFO - 127.0.0.1 - - [12/Sep/2025 10:12:40] "GET /detections HTTP/1.1" 200 -
+2025-09-12 10:12:40,990 - werkzeug - INFO - 127.0.0.1 - - [12/Sep/2025 10:12:40] "GET /status HTTP/1.1" 200 -
+2025-09-12 10:12:44,596 - werkzeug - INFO - 127.0.0.1 - - [12/Sep/2025 10:12:44] "GET /status HTTP/1.1" 200 -
+2025-09-12 10:12:45,643 - werkzeug - INFO - 127.0.0.1 - - [12/Sep/2025 10:12:45] "GET /detections HTTP/1.1" 200 -
+2025-09-12 10:12:46,594 - werkzeug - INFO - 127.0.0.1 - - [12/Sep/2025 10:12:46] "GET /status HTTP/1.1" 200 -
+2025-09-12 10:12:48,027 - werkzeug - INFO - 127.0.0.1 - - [12/Sep/2025 10:12:48] "GET /status HTTP/1.1" 200 -
+2025-09-12 10:12:50,597 - werkzeug - INFO - 127.0.0.1 - - [12/Sep/2025 10:12:50] "GET /status HTTP/1.1" 200 -
+2025-09-12 10:12:50,653 - werkzeug - INFO - 127.0.0.1 - - [12/Sep/2025 10:12:50] "GET /detections HTTP/1.1" 200 -
+2025-09-12 10:12:52,612 - werkzeug - INFO - 127.0.0.1 - - [12/Sep/2025 10:12:52] "GET /status HTTP/1.1" 200 -
+2025-09-12 10:12:54,601 - werkzeug - INFO - 127.0.0.1 - - [12/Sep/2025 10:12:54] "GET /status HTTP/1.1" 200 -
+2025-09-12 10:12:55,034 - werkzeug - INFO - 127.0.0.1 - - [12/Sep/2025 10:12:55] "GET /status HTTP/1.1" 200 -
+2025-09-12 10:12:55,652 - werkzeug - INFO - 127.0.0.1 - - [12/Sep/2025 10:12:55] "GET /detections HTTP/1.1" 200 -
+2025-09-12 10:12:58,611 - werkzeug - INFO - 127.0.0.1 - - [12/Sep/2025 10:12:58] "GET /status HTTP/1.1" 200 -
+2025-09-12 10:13:00,615 - werkzeug - INFO - 127.0.0.1 - - [12/Sep/2025 10:13:00] "GET /status HTTP/1.1" 200 -
+2025-09-12 10:13:00,649 - werkzeug - INFO - 127.0.0.1 - - [12/Sep/2025 10:13:00] "GET /detections HTTP/1.1" 200 -
+2025-09-12 10:13:02,065 - werkzeug - INFO - 127.0.0.1 - - [12/Sep/2025 10:13:02] "GET /status HTTP/1.1" 200 -
+2025-09-12 10:13:03,697 - werkzeug - INFO - 127.0.0.1 - - [12/Sep/2025 10:13:03] "GET /status HTTP/1.1" 200 -
+2025-09-12 10:13:05,655 - werkzeug - INFO - 127.0.0.1 - - [12/Sep/2025 10:13:05] "GET /detections HTTP/1.1" 200 -
+2025-09-12 10:13:05,681 - werkzeug - INFO - 127.0.0.1 - - [12/Sep/2025 10:13:05] "GET /status HTTP/1.1" 200 -
+2025-09-12 10:13:07,681 - werkzeug - INFO - 127.0.0.1 - - [12/Sep/2025 10:13:07] "GET /status HTTP/1.1" 200 -
+2025-09-12 10:13:09,114 - werkzeug - INFO - 127.0.0.1 - - [12/Sep/2025 10:13:09] "GET /status HTTP/1.1" 200 -
+2025-09-12 10:13:10,649 - werkzeug - INFO - 127.0.0.1 - - [12/Sep/2025 10:13:10] "GET /detections HTTP/1.1" 200 -
+2025-09-12 10:13:11,683 - werkzeug - INFO - 127.0.0.1 - - [12/Sep/2025 10:13:11] "GET /status HTTP/1.1" 200 -
+2025-09-12 10:13:13,683 - werkzeug - INFO - 127.0.0.1 - - [12/Sep/2025 10:13:13] "GET /status HTTP/1.1" 200 -
+2025-09-12 10:13:15,651 - werkzeug - INFO - 127.0.0.1 - - [12/Sep/2025 10:13:15] "GET /detections HTTP/1.1" 200 -
+2025-09-12 10:13:15,683 - werkzeug - INFO - 127.0.0.1 - - [12/Sep/2025 10:13:15] "GET /status HTTP/1.1" 200 -
+2025-09-12 10:13:16,149 - werkzeug - INFO - 127.0.0.1 - - [12/Sep/2025 10:13:16] "GET /status HTTP/1.1" 200 -
+2025-09-12 10:13:19,682 - werkzeug - INFO - 127.0.0.1 - - [12/Sep/2025 10:13:19] "GET /status HTTP/1.1" 200 -
+2025-09-12 10:13:20,653 - werkzeug - INFO - 127.0.0.1 - - [12/Sep/2025 10:13:20] "GET /detections HTTP/1.1" 200 -
+2025-09-12 10:13:21,683 - werkzeug - INFO - 127.0.0.1 - - [12/Sep/2025 10:13:21] "GET /status HTTP/1.1" 200 -
+2025-09-12 10:13:23,169 - werkzeug - INFO - 127.0.0.1 - - [12/Sep/2025 10:13:23] "GET /status HTTP/1.1" 200 -
+2025-09-12 10:13:25,655 - werkzeug - INFO - 127.0.0.1 - - [12/Sep/2025 10:13:25] "GET /detections HTTP/1.1" 200 -
+2025-09-12 10:13:25,685 - werkzeug - INFO - 127.0.0.1 - - [12/Sep/2025 10:13:25] "GET /status HTTP/1.1" 200 -
+2025-09-12 10:13:27,687 - werkzeug - INFO - 127.0.0.1 - - [12/Sep/2025 10:13:27] "GET /status HTTP/1.1" 200 -
+2025-09-12 10:13:29,686 - werkzeug - INFO - 127.0.0.1 - - [12/Sep/2025 10:13:29] "GET /status HTTP/1.1" 200 -
+2025-09-12 10:13:30,205 - werkzeug - INFO - 127.0.0.1 - - [12/Sep/2025 10:13:30] "GET /status HTTP/1.1" 200 -
+2025-09-12 10:13:30,656 - werkzeug - INFO - 127.0.0.1 - - [12/Sep/2025 10:13:30] "GET /detections HTTP/1.1" 200 -
+2025-09-12 10:13:33,671 - werkzeug - INFO - 127.0.0.1 - - [12/Sep/2025 10:13:33] "GET /status HTTP/1.1" 200 -
+2025-09-12 10:13:35,640 - werkzeug - INFO - 127.0.0.1 - - [12/Sep/2025 10:13:35] "GET /detections HTTP/1.1" 200 -
+2025-09-12 10:13:35,673 - werkzeug - INFO - 127.0.0.1 - - [12/Sep/2025 10:13:35] "GET /status HTTP/1.1" 200 -
+2025-09-12 10:13:37,241 - werkzeug - INFO - 127.0.0.1 - - [12/Sep/2025 10:13:37] "GET /status HTTP/1.1" 200 -
+2025-09-12 10:13:39,691 - werkzeug - INFO - 127.0.0.1 - - [12/Sep/2025 10:13:39] "GET /status HTTP/1.1" 200 -
+2025-09-12 10:13:40,643 - werkzeug - INFO - 127.0.0.1 - - [12/Sep/2025 10:13:40] "GET /detections HTTP/1.1" 200 -
+2025-09-12 10:13:41,707 - werkzeug - INFO - 127.0.0.1 - - [12/Sep/2025 10:13:41] "GET /status HTTP/1.1" 200 -
+2025-09-12 10:13:43,676 - werkzeug - INFO - 127.0.0.1 - - [12/Sep/2025 10:13:43] "GET /status HTTP/1.1" 200 -
+2025-09-12 10:13:44,276 - werkzeug - INFO - 127.0.0.1 - - [12/Sep/2025 10:13:44] "GET /status HTTP/1.1" 200 -
+2025-09-12 10:13:45,643 - werkzeug - INFO - 127.0.0.1 - - [12/Sep/2025 10:13:45] "GET /detections HTTP/1.1" 200 -
+2025-09-12 10:13:47,693 - werkzeug - INFO - 127.0.0.1 - - [12/Sep/2025 10:13:47] "GET /status HTTP/1.1" 200 -
+2025-09-12 10:13:49,678 - werkzeug - INFO - 127.0.0.1 - - [12/Sep/2025 10:13:49] "GET /status HTTP/1.1" 200 -
+2025-09-12 10:13:50,652 - werkzeug - INFO - 127.0.0.1 - - [12/Sep/2025 10:13:50] "GET /detections HTTP/1.1" 200 -
+2025-09-12 10:13:51,281 - werkzeug - INFO - 127.0.0.1 - - [12/Sep/2025 10:13:51] "GET /status HTTP/1.1" 200 -
+2025-09-12 10:13:53,666 - werkzeug - INFO - 127.0.0.1 - - [12/Sep/2025 10:13:53] "GET /status HTTP/1.1" 200 -
+2025-09-12 10:13:55,657 - werkzeug - INFO - 127.0.0.1 - - [12/Sep/2025 10:13:55] "GET /detections HTTP/1.1" 200 -
+2025-09-12 10:13:55,700 - werkzeug - INFO - 127.0.0.1 - - [12/Sep/2025 10:13:55] "GET /status HTTP/1.1" 200 -
+2025-09-12 10:13:57,686 - werkzeug - INFO - 127.0.0.1 - - [12/Sep/2025 10:13:57] "GET /status HTTP/1.1" 200 -
+2025-09-12 10:13:58,302 - werkzeug - INFO - 127.0.0.1 - - [12/Sep/2025 10:13:58] "GET /status HTTP/1.1" 200 -
+2025-09-12 10:14:00,639 - werkzeug - INFO - 127.0.0.1 - - [12/Sep/2025 10:14:00] "GET /detections HTTP/1.1" 200 -
+2025-09-12 10:14:01,673 - werkzeug - INFO - 127.0.0.1 - - [12/Sep/2025 10:14:01] "GET /status HTTP/1.1" 200 -
+2025-09-12 10:14:03,658 - werkzeug - INFO - 127.0.0.1 - - [12/Sep/2025 10:14:03] "GET /status HTTP/1.1" 200 -
+2025-09-12 10:14:05,324 - werkzeug - INFO - 127.0.0.1 - - [12/Sep/2025 10:14:05] "GET /status HTTP/1.1" 200 -
+2025-09-12 10:14:05,645 - werkzeug - INFO - 127.0.0.1 - - [12/Sep/2025 10:14:05] "GET /detections HTTP/1.1" 200 -
+2025-09-12 10:14:07,678 - werkzeug - INFO - 127.0.0.1 - - [12/Sep/2025 10:14:07] "GET /status HTTP/1.1" 200 -
+2025-09-12 10:14:09,662 - werkzeug - INFO - 127.0.0.1 - - [12/Sep/2025 10:14:09] "GET /status HTTP/1.1" 200 -
+2025-09-12 10:14:10,662 - werkzeug - INFO - 127.0.0.1 - - [12/Sep/2025 10:14:10] "GET /detections HTTP/1.1" 200 -
+2025-09-12 10:14:11,697 - werkzeug - INFO - 127.0.0.1 - - [12/Sep/2025 10:14:11] "GET /status HTTP/1.1" 200 -
+2025-09-12 10:14:12,364 - werkzeug - INFO - 127.0.0.1 - - [12/Sep/2025 10:14:12] "GET /status HTTP/1.1" 200 -
+2025-09-12 10:14:15,657 - werkzeug - INFO - 127.0.0.1 - - [12/Sep/2025 10:14:15] "GET /detections HTTP/1.1" 200 -
+2025-09-12 10:14:15,689 - werkzeug - INFO - 127.0.0.1 - - [12/Sep/2025 10:14:15] "GET /status HTTP/1.1" 200 -
+2025-09-12 10:14:17,689 - werkzeug - INFO - 127.0.0.1 - - [12/Sep/2025 10:14:17] "GET /status HTTP/1.1" 200 -
+2025-09-12 10:14:19,408 - werkzeug - INFO - 127.0.0.1 - - [12/Sep/2025 10:14:19] "GET /status HTTP/1.1" 200 -
+2025-09-12 10:14:20,643 - werkzeug - INFO - 127.0.0.1 - - [12/Sep/2025 10:14:20] "GET /detections HTTP/1.1" 200 -
+2025-09-12 10:14:21,697 - werkzeug - INFO - 127.0.0.1 - - [12/Sep/2025 10:14:21] "GET /status HTTP/1.1" 200 -
+2025-09-12 10:14:23,708 - werkzeug - INFO - 127.0.0.1 - - [12/Sep/2025 10:14:23] "GET /status HTTP/1.1" 200 -
+2025-09-12 10:14:25,642 - werkzeug - INFO - 127.0.0.1 - - [12/Sep/2025 10:14:25] "GET /detections HTTP/1.1" 200 -
+2025-09-12 10:14:25,693 - werkzeug - INFO - 127.0.0.1 - - [12/Sep/2025 10:14:25] "GET /status HTTP/1.1" 200 -
+2025-09-12 10:14:26,443 - werkzeug - INFO - 127.0.0.1 - - [12/Sep/2025 10:14:26] "GET /status HTTP/1.1" 200 -
+2025-09-12 10:14:29,662 - werkzeug - INFO - 127.0.0.1 - - [12/Sep/2025 10:14:29] "GET /status HTTP/1.1" 200 -
+2025-09-12 10:14:30,646 - werkzeug - INFO - 127.0.0.1 - - [12/Sep/2025 10:14:30] "GET /detections HTTP/1.1" 200 -
+2025-09-12 10:14:31,698 - werkzeug - INFO - 127.0.0.1 - - [12/Sep/2025 10:14:31] "GET /status HTTP/1.1" 200 -
+2025-09-12 10:14:33,448 - werkzeug - INFO - 127.0.0.1 - - [12/Sep/2025 10:14:33] "GET /status HTTP/1.1" 200 -
+2025-09-12 10:14:35,651 - werkzeug - INFO - 127.0.0.1 - - [12/Sep/2025 10:14:35] "GET /detections HTTP/1.1" 200 -
+2025-09-12 10:14:35,668 - werkzeug - INFO - 127.0.0.1 - - [12/Sep/2025 10:14:35] "GET /status HTTP/1.1" 200 -
+2025-09-12 10:14:37,686 - werkzeug - INFO - 127.0.0.1 - - [12/Sep/2025 10:14:37] "GET /status HTTP/1.1" 200 -
+2025-09-12 10:14:39,655 - werkzeug - INFO - 127.0.0.1 - - [12/Sep/2025 10:14:39] "GET /status HTTP/1.1" 200 -
+2025-09-12 10:14:40,472 - werkzeug - INFO - 127.0.0.1 - - [12/Sep/2025 10:14:40] "GET /status HTTP/1.1" 200 -
+2025-09-12 10:14:40,654 - werkzeug - INFO - 127.0.0.1 - - [12/Sep/2025 10:14:40] "GET /detections HTTP/1.1" 200 -
+2025-09-12 10:14:43,680 - werkzeug - INFO - 127.0.0.1 - - [12/Sep/2025 10:14:43] "GET /status HTTP/1.1" 200 -
+2025-09-12 10:14:45,650 - werkzeug - INFO - 127.0.0.1 - - [12/Sep/2025 10:14:45] "GET /detections HTTP/1.1" 200 -
+2025-09-12 10:14:45,676 - werkzeug - INFO - 127.0.0.1 - - [12/Sep/2025 10:14:45] "GET /status HTTP/1.1" 200 -
+2025-09-12 10:14:47,511 - werkzeug - INFO - 127.0.0.1 - - [12/Sep/2025 10:14:47] "GET /status HTTP/1.1" 200 -
+2025-09-12 10:14:49,696 - werkzeug - INFO - 127.0.0.1 - - [12/Sep/2025 10:14:49] "GET /status HTTP/1.1" 200 -
+2025-09-12 10:14:50,652 - werkzeug - INFO - 127.0.0.1 - - [12/Sep/2025 10:14:50] "GET /detections HTTP/1.1" 200 -
+2025-09-12 10:14:51,697 - werkzeug - INFO - 127.0.0.1 - - [12/Sep/2025 10:14:51] "GET /status HTTP/1.1" 200 -
+2025-09-12 10:14:53,686 - werkzeug - INFO - 127.0.0.1 - - [12/Sep/2025 10:14:53] "GET /status HTTP/1.1" 200 -
+2025-09-12 10:14:54,551 - werkzeug - INFO - 127.0.0.1 - - [12/Sep/2025 10:14:54] "GET /status HTTP/1.1" 200 -
+2025-09-12 10:14:55,652 - werkzeug - INFO - 127.0.0.1 - - [12/Sep/2025 10:14:55] "GET /detections HTTP/1.1" 200 -
+2025-09-12 10:14:57,685 - werkzeug - INFO - 127.0.0.1 - - [12/Sep/2025 10:14:57] "GET /status HTTP/1.1" 200 -
+2025-09-12 10:14:59,687 - werkzeug - INFO - 127.0.0.1 - - [12/Sep/2025 10:14:59] "GET /status HTTP/1.1" 200 -
+2025-09-12 10:15:00,654 - werkzeug - INFO - 127.0.0.1 - - [12/Sep/2025 10:15:00] "GET /detections HTTP/1.1" 200 -
+2025-09-12 10:15:01,589 - werkzeug - INFO - 127.0.0.1 - - [12/Sep/2025 10:15:01] "GET /status HTTP/1.1" 200 -
+2025-09-12 10:15:03,691 - werkzeug - INFO - 127.0.0.1 - - [12/Sep/2025 10:15:03] "GET /status HTTP/1.1" 200 -
+2025-09-12 10:15:05,648 - werkzeug - INFO - 127.0.0.1 - - [12/Sep/2025 10:15:05] "GET /detections HTTP/1.1" 200 -
+2025-09-12 10:15:05,703 - werkzeug - INFO - 127.0.0.1 - - [12/Sep/2025 10:15:05] "GET /status HTTP/1.1" 200 -
+2025-09-12 10:15:07,689 - werkzeug - INFO - 127.0.0.1 - - [12/Sep/2025 10:15:07] "GET /status HTTP/1.1" 200 -
+2025-09-12 10:15:08,739 - werkzeug - INFO - 127.0.0.1 - - [12/Sep/2025 10:15:08] "GET /status HTTP/1.1" 200 -
+2025-09-12 10:15:10,640 - werkzeug - INFO - 127.0.0.1 - - [12/Sep/2025 10:15:10] "GET /detections HTTP/1.1" 200 -
+2025-09-12 10:15:11,741 - werkzeug - INFO - 127.0.0.1 - - [12/Sep/2025 10:15:11] "GET /status HTTP/1.1" 200 -
+2025-09-12 10:15:13,758 - werkzeug - INFO - 127.0.0.1 - - [12/Sep/2025 10:15:13] "GET /status HTTP/1.1" 200 -
+2025-09-12 10:15:15,675 - werkzeug - INFO - 127.0.0.1 - - [12/Sep/2025 10:15:15] "GET /status HTTP/1.1" 200 -
+2025-09-12 10:15:15,774 - werkzeug - INFO - 127.0.0.1 - - [12/Sep/2025 10:15:15] "GET /status HTTP/1.1" 200 -
+2025-09-12 10:15:16,583 - werkzeug - INFO - 127.0.0.1 - - [12/Sep/2025 10:15:16] "GET /detections HTTP/1.1" 200 -
+2025-09-12 10:15:19,694 - werkzeug - INFO - 127.0.0.1 - - [12/Sep/2025 10:15:19] "GET /status HTTP/1.1" 200 -
+2025-09-12 10:15:21,576 - werkzeug - INFO - 127.0.0.1 - - [12/Sep/2025 10:15:21] "GET /detections HTTP/1.1" 200 -
+2025-09-12 10:15:21,695 - werkzeug - INFO - 127.0.0.1 - - [12/Sep/2025 10:15:21] "GET /status HTTP/1.1" 200 -
+2025-09-12 10:15:22,798 - werkzeug - INFO - 127.0.0.1 - - [12/Sep/2025 10:15:22] "GET /status HTTP/1.1" 200 -
+2025-09-12 10:15:25,709 - werkzeug - INFO - 127.0.0.1 - - [12/Sep/2025 10:15:25] "GET /status HTTP/1.1" 200 -
+2025-09-12 10:15:26,587 - werkzeug - INFO - 127.0.0.1 - - [12/Sep/2025 10:15:26] "GET /detections HTTP/1.1" 200 -
+2025-09-12 10:15:27,680 - werkzeug - INFO - 127.0.0.1 - - [12/Sep/2025 10:15:27] "GET /status HTTP/1.1" 200 -
+2025-09-12 10:15:29,697 - werkzeug - INFO - 127.0.0.1 - - [12/Sep/2025 10:15:29] "GET /status HTTP/1.1" 200 -
+2025-09-12 10:15:29,819 - werkzeug - INFO - 127.0.0.1 - - [12/Sep/2025 10:15:29] "GET /status HTTP/1.1" 200 -
+2025-09-12 10:15:31,580 - werkzeug - INFO - 127.0.0.1 - - [12/Sep/2025 10:15:31] "GET /detections HTTP/1.1" 200 -
+2025-09-12 10:15:33,700 - werkzeug - INFO - 127.0.0.1 - - [12/Sep/2025 10:15:33] "GET /status HTTP/1.1" 200 -
+2025-09-12 10:15:35,681 - werkzeug - INFO - 127.0.0.1 - - [12/Sep/2025 10:15:35] "GET /status HTTP/1.1" 200 -
+2025-09-12 10:15:36,570 - werkzeug - INFO - 127.0.0.1 - - [12/Sep/2025 10:15:36] "GET /detections HTTP/1.1" 200 -
+2025-09-12 10:15:36,854 - werkzeug - INFO - 127.0.0.1 - - [12/Sep/2025 10:15:36] "GET /status HTTP/1.1" 200 -
+2025-09-12 10:15:40,599 - werkzeug - INFO - 127.0.0.1 - - [12/Sep/2025 10:15:40] "GET /status HTTP/1.1" 200 -
+2025-09-12 10:15:41,567 - werkzeug - INFO - 127.0.0.1 - - [12/Sep/2025 10:15:41] "GET /detections HTTP/1.1" 200 -
+2025-09-12 10:15:42,600 - werkzeug - INFO - 127.0.0.1 - - [12/Sep/2025 10:15:42] "GET /status HTTP/1.1" 200 -
+2025-09-12 10:15:43,903 - werkzeug - INFO - 127.0.0.1 - - [12/Sep/2025 10:15:43] "GET /status HTTP/1.1" 200 -
+2025-09-12 10:15:46,571 - werkzeug - INFO - 127.0.0.1 - - [12/Sep/2025 10:15:46] "GET /detections HTTP/1.1" 200 -
+2025-09-12 10:15:46,632 - werkzeug - INFO - 127.0.0.1 - - [12/Sep/2025 10:15:46] "GET /status HTTP/1.1" 200 -
+2025-09-12 10:15:48,620 - werkzeug - INFO - 127.0.0.1 - - [12/Sep/2025 10:15:48] "GET /status HTTP/1.1" 200 -
+2025-09-12 10:15:50,605 - werkzeug - INFO - 127.0.0.1 - - [12/Sep/2025 10:15:50] "GET /status HTTP/1.1" 200 -
+2025-09-12 10:15:50,923 - werkzeug - INFO - 127.0.0.1 - - [12/Sep/2025 10:15:50] "GET /status HTTP/1.1" 200 -
+2025-09-12 10:15:51,571 - werkzeug - INFO - 127.0.0.1 - - [12/Sep/2025 10:15:51] "GET /detections HTTP/1.1" 200 -
+2025-09-12 10:15:54,630 - werkzeug - INFO - 127.0.0.1 - - [12/Sep/2025 10:15:54] "GET /status HTTP/1.1" 200 -
+2025-09-12 10:15:56,582 - werkzeug - INFO - 127.0.0.1 - - [12/Sep/2025 10:15:56] "GET /detections HTTP/1.1" 200 -
+2025-09-12 10:15:56,607 - werkzeug - INFO - 127.0.0.1 - - [12/Sep/2025 10:15:56] "GET /status HTTP/1.1" 200 -
+2025-09-12 10:15:57,954 - werkzeug - INFO - 127.0.0.1 - - [12/Sep/2025 10:15:57] "GET /status HTTP/1.1" 200 -
+2025-09-12 10:16:00,622 - werkzeug - INFO - 127.0.0.1 - - [12/Sep/2025 10:16:00] "GET /status HTTP/1.1" 200 -
+2025-09-12 10:16:01,581 - werkzeug - INFO - 127.0.0.1 - - [12/Sep/2025 10:16:01] "GET /detections HTTP/1.1" 200 -
+2025-09-12 10:16:02,607 - werkzeug - INFO - 127.0.0.1 - - [12/Sep/2025 10:16:02] "GET /status HTTP/1.1" 200 -
+2025-09-12 10:16:04,609 - werkzeug - INFO - 127.0.0.1 - - [12/Sep/2025 10:16:04] "GET /status HTTP/1.1" 200 -
+2025-09-12 10:16:04,994 - werkzeug - INFO - 127.0.0.1 - - [12/Sep/2025 10:16:04] "GET /status HTTP/1.1" 200 -
+2025-09-12 10:16:06,577 - werkzeug - INFO - 127.0.0.1 - - [12/Sep/2025 10:16:06] "GET /detections HTTP/1.1" 200 -
+2025-09-12 10:16:08,595 - werkzeug - INFO - 127.0.0.1 - - [12/Sep/2025 10:16:08] "GET /status HTTP/1.1" 200 -
+2025-09-12 10:16:10,594 - werkzeug - INFO - 127.0.0.1 - - [12/Sep/2025 10:16:10] "GET /status HTTP/1.1" 200 -
+2025-09-12 10:16:11,579 - werkzeug - INFO - 127.0.0.1 - - [12/Sep/2025 10:16:11] "GET /detections HTTP/1.1" 200 -
+2025-09-12 10:16:12,030 - werkzeug - INFO - 127.0.0.1 - - [12/Sep/2025 10:16:12] "GET /status HTTP/1.1" 200 -
+2025-09-12 10:16:14,614 - werkzeug - INFO - 127.0.0.1 - - [12/Sep/2025 10:16:14] "GET /status HTTP/1.1" 200 -
+2025-09-12 10:16:16,597 - werkzeug - INFO - 127.0.0.1 - - [12/Sep/2025 10:16:16] "GET /status HTTP/1.1" 200 -
+2025-09-12 10:16:18,597 - werkzeug - INFO - 127.0.0.1 - - [12/Sep/2025 10:16:18] "GET /status HTTP/1.1" 200 -
+2025-09-12 10:16:19,083 - werkzeug - INFO - 127.0.0.1 - - [12/Sep/2025 10:16:19] "GET /status HTTP/1.1" 200 -
+2025-09-12 10:16:22,602 - werkzeug - INFO - 127.0.0.1 - - [12/Sep/2025 10:16:22] "GET /status HTTP/1.1" 200 -
+2025-09-12 10:16:24,603 - werkzeug - INFO - 127.0.0.1 - - [12/Sep/2025 10:16:24] "GET /status HTTP/1.1" 200 -
+2025-09-12 10:16:26,133 - werkzeug - INFO - 127.0.0.1 - - [12/Sep/2025 10:16:26] "GET /status HTTP/1.1" 200 -
+2025-09-12 10:16:28,621 - werkzeug - INFO - 127.0.0.1 - - [12/Sep/2025 10:16:28] "GET /status HTTP/1.1" 200 -
+2025-09-12 10:16:30,604 - werkzeug - INFO - 127.0.0.1 - - [12/Sep/2025 10:16:30] "GET /status HTTP/1.1" 200 -
+2025-09-12 10:16:32,634 - werkzeug - INFO - 127.0.0.1 - - [12/Sep/2025 10:16:32] "GET /status HTTP/1.1" 200 -
+2025-09-12 10:16:33,169 - werkzeug - INFO - 127.0.0.1 - - [12/Sep/2025 10:16:33] "GET /status HTTP/1.1" 200 -
+2025-09-12 10:16:36,618 - werkzeug - INFO - 127.0.0.1 - - [12/Sep/2025 10:16:36] "GET /status HTTP/1.1" 200 -
+2025-09-12 10:16:38,620 - werkzeug - INFO - 127.0.0.1 - - [12/Sep/2025 10:16:38] "GET /status HTTP/1.1" 200 -
+2025-09-12 10:17:02,581 - werkzeug - INFO - 127.0.0.1 - - [12/Sep/2025 10:17:02] "GET /detections HTTP/1.1" 200 -
+2025-09-12 10:17:09,614 - werkzeug - INFO - 127.0.0.1 - - [12/Sep/2025 10:17:09] "GET /status HTTP/1.1" 200 -
+2025-09-12 10:18:02,566 - werkzeug - INFO - 127.0.0.1 - - [12/Sep/2025 10:18:02] "GET /detections HTTP/1.1" 200 -
+2025-09-12 10:18:09,587 - werkzeug - INFO - 127.0.0.1 - - [12/Sep/2025 10:18:09] "GET /status HTTP/1.1" 200 -
+2025-09-12 10:19:02,569 - werkzeug - INFO - 127.0.0.1 - - [12/Sep/2025 10:19:02] "GET /detections HTTP/1.1" 200 -
+2025-09-12 10:19:09,604 - werkzeug - INFO - 127.0.0.1 - - [12/Sep/2025 10:19:09] "GET /status HTTP/1.1" 200 -
+2025-09-12 10:20:02,574 - werkzeug - INFO - 127.0.0.1 - - [12/Sep/2025 10:20:02] "GET /detections HTTP/1.1" 200 -
+2025-09-12 10:20:09,593 - werkzeug - INFO - 127.0.0.1 - - [12/Sep/2025 10:20:09] "GET /status HTTP/1.1" 200 -
+2025-09-12 10:21:02,588 - werkzeug - INFO - 127.0.0.1 - - [12/Sep/2025 10:21:02] "GET /detections HTTP/1.1" 200 -
+2025-09-12 10:21:09,621 - werkzeug - INFO - 127.0.0.1 - - [12/Sep/2025 10:21:09] "GET /status HTTP/1.1" 200 -
+2025-09-12 10:22:02,574 - werkzeug - INFO - 127.0.0.1 - - [12/Sep/2025 10:22:02] "GET /detections HTTP/1.1" 200 -
+2025-09-12 10:22:09,609 - werkzeug - INFO - 127.0.0.1 - - [12/Sep/2025 10:22:09] "GET /status HTTP/1.1" 200 -
+2025-09-12 10:23:02,577 - werkzeug - INFO - 127.0.0.1 - - [12/Sep/2025 10:23:02] "GET /detections HTTP/1.1" 200 -
+2025-09-12 10:23:09,607 - werkzeug - INFO - 127.0.0.1 - - [12/Sep/2025 10:23:09] "GET /status HTTP/1.1" 200 -
+2025-09-12 10:24:02,589 - werkzeug - INFO - 127.0.0.1 - - [12/Sep/2025 10:24:02] "GET /detections HTTP/1.1" 200 -
+2025-09-12 10:24:09,626 - werkzeug - INFO - 127.0.0.1 - - [12/Sep/2025 10:24:09] "GET /status HTTP/1.1" 200 -
+2025-09-12 10:25:02,579 - werkzeug - INFO - 127.0.0.1 - - [12/Sep/2025 10:25:02] "GET /detections HTTP/1.1" 200 -
+2025-09-12 10:25:09,611 - werkzeug - INFO - 127.0.0.1 - - [12/Sep/2025 10:25:09] "GET /status HTTP/1.1" 200 -
+2025-09-12 10:26:02,568 - werkzeug - INFO - 127.0.0.1 - - [12/Sep/2025 10:26:02] "GET /detections HTTP/1.1" 200 -
+2025-09-12 10:26:09,585 - werkzeug - INFO - 127.0.0.1 - - [12/Sep/2025 10:26:09] "GET /status HTTP/1.1" 200 -
+2025-09-12 10:27:02,572 - werkzeug - INFO - 127.0.0.1 - - [12/Sep/2025 10:27:02] "GET /detections HTTP/1.1" 200 -
+2025-09-12 10:27:09,597 - werkzeug - INFO - 127.0.0.1 - - [12/Sep/2025 10:27:09] "GET /status HTTP/1.1" 200 -
+2025-09-12 10:28:02,588 - werkzeug - INFO - 127.0.0.1 - - [12/Sep/2025 10:28:02] "GET /detections HTTP/1.1" 200 -
+2025-09-12 10:28:09,592 - werkzeug - INFO - 127.0.0.1 - - [12/Sep/2025 10:28:09] "GET /status HTTP/1.1" 200 -
+2025-09-12 10:29:02,576 - werkzeug - INFO - 127.0.0.1 - - [12/Sep/2025 10:29:02] "GET /detections HTTP/1.1" 200 -
+2025-09-12 10:29:09,595 - werkzeug - INFO - 127.0.0.1 - - [12/Sep/2025 10:29:09] "GET /status HTTP/1.1" 200 -
+2025-09-12 10:30:02,579 - werkzeug - INFO - 127.0.0.1 - - [12/Sep/2025 10:30:02] "GET /detections HTTP/1.1" 200 -
+2025-09-12 10:30:09,583 - werkzeug - INFO - 127.0.0.1 - - [12/Sep/2025 10:30:09] "GET /status HTTP/1.1" 200 -
+2025-09-12 10:31:02,581 - werkzeug - INFO - 127.0.0.1 - - [12/Sep/2025 10:31:02] "GET /detections HTTP/1.1" 200 -
+2025-09-12 10:31:09,588 - werkzeug - INFO - 127.0.0.1 - - [12/Sep/2025 10:31:09] "GET /status HTTP/1.1" 200 -
+2025-09-12 10:32:02,575 - werkzeug - INFO - 127.0.0.1 - - [12/Sep/2025 10:32:02] "GET /detections HTTP/1.1" 200 -
+2025-09-12 10:32:09,600 - werkzeug - INFO - 127.0.0.1 - - [12/Sep/2025 10:32:09] "GET /status HTTP/1.1" 200 -
+2025-09-12 10:33:02,575 - werkzeug - INFO - 127.0.0.1 - - [12/Sep/2025 10:33:02] "GET /detections HTTP/1.1" 200 -
+2025-09-12 10:33:09,611 - werkzeug - INFO - 127.0.0.1 - - [12/Sep/2025 10:33:09] "GET /status HTTP/1.1" 200 -
+2025-09-12 10:34:02,583 - werkzeug - INFO - 127.0.0.1 - - [12/Sep/2025 10:34:02] "GET /detections HTTP/1.1" 200 -
+2025-09-12 10:34:09,609 - werkzeug - INFO - 127.0.0.1 - - [12/Sep/2025 10:34:09] "GET /status HTTP/1.1" 200 -
+2025-09-12 10:35:02,570 - werkzeug - INFO - 127.0.0.1 - - [12/Sep/2025 10:35:02] "GET /detections HTTP/1.1" 200 -
+2025-09-12 10:35:09,592 - werkzeug - INFO - 127.0.0.1 - - [12/Sep/2025 10:35:09] "GET /status HTTP/1.1" 200 -
+2025-09-12 10:36:02,584 - werkzeug - INFO - 127.0.0.1 - - [12/Sep/2025 10:36:02] "GET /detections HTTP/1.1" 200 -
+2025-09-12 10:36:09,615 - werkzeug - INFO - 127.0.0.1 - - [12/Sep/2025 10:36:09] "GET /status HTTP/1.1" 200 -
+2025-09-12 10:37:02,578 - werkzeug - INFO - 127.0.0.1 - - [12/Sep/2025 10:37:02] "GET /detections HTTP/1.1" 200 -
+2025-09-12 10:37:09,610 - werkzeug - INFO - 127.0.0.1 - - [12/Sep/2025 10:37:09] "GET /status HTTP/1.1" 200 -
+2025-09-12 10:38:02,583 - werkzeug - INFO - 127.0.0.1 - - [12/Sep/2025 10:38:02] "GET /detections HTTP/1.1" 200 -
+2025-09-12 10:38:09,615 - werkzeug - INFO - 127.0.0.1 - - [12/Sep/2025 10:38:09] "GET /status HTTP/1.1" 200 -
+2025-09-12 10:39:02,571 - werkzeug - INFO - 127.0.0.1 - - [12/Sep/2025 10:39:02] "GET /detections HTTP/1.1" 200 -
+2025-09-12 10:39:09,601 - werkzeug - INFO - 127.0.0.1 - - [12/Sep/2025 10:39:09] "GET /status HTTP/1.1" 200 -
+2025-09-12 10:40:02,573 - werkzeug - INFO - 127.0.0.1 - - [12/Sep/2025 10:40:02] "GET /detections HTTP/1.1" 200 -
+2025-09-12 10:40:09,601 - werkzeug - INFO - 127.0.0.1 - - [12/Sep/2025 10:40:09] "GET /status HTTP/1.1" 200 -
+2025-09-12 10:41:02,572 - werkzeug - INFO - 127.0.0.1 - - [12/Sep/2025 10:41:02] "GET /detections HTTP/1.1" 200 -
+2025-09-12 10:41:02,629 - werkzeug - INFO - 127.0.0.1 - - [12/Sep/2025 10:41:02] "GET /status HTTP/1.1" 200 -
+2025-09-12 10:42:02,589 - werkzeug - INFO - 127.0.0.1 - - [12/Sep/2025 10:42:02] "GET /detections HTTP/1.1" 200 -
+2025-09-12 10:42:09,604 - werkzeug - INFO - 127.0.0.1 - - [12/Sep/2025 10:42:09] "GET /status HTTP/1.1" 200 -
+2025-09-12 10:43:02,569 - werkzeug - INFO - 127.0.0.1 - - [12/Sep/2025 10:43:02] "GET /detections HTTP/1.1" 200 -
+2025-09-12 10:43:09,600 - werkzeug - INFO - 127.0.0.1 - - [12/Sep/2025 10:43:09] "GET /status HTTP/1.1" 200 -
+2025-09-12 10:44:02,572 - werkzeug - INFO - 127.0.0.1 - - [12/Sep/2025 10:44:02] "GET /detections HTTP/1.1" 200 -
+2025-09-12 10:44:09,604 - werkzeug - INFO - 127.0.0.1 - - [12/Sep/2025 10:44:09] "GET /status HTTP/1.1" 200 -
+2025-09-12 10:45:02,573 - werkzeug - INFO - 127.0.0.1 - - [12/Sep/2025 10:45:02] "GET /detections HTTP/1.1" 200 -
+2025-09-12 10:45:09,609 - werkzeug - INFO - 127.0.0.1 - - [12/Sep/2025 10:45:09] "GET /status HTTP/1.1" 200 -
+2025-09-12 10:46:02,584 - werkzeug - INFO - 127.0.0.1 - - [12/Sep/2025 10:46:02] "GET /detections HTTP/1.1" 200 -
+2025-09-12 10:46:09,607 - werkzeug - INFO - 127.0.0.1 - - [12/Sep/2025 10:46:09] "GET /status HTTP/1.1" 200 -
+2025-09-12 10:47:02,578 - werkzeug - INFO - 127.0.0.1 - - [12/Sep/2025 10:47:02] "GET /detections HTTP/1.1" 200 -
+2025-09-12 10:47:09,598 - werkzeug - INFO - 127.0.0.1 - - [12/Sep/2025 10:47:09] "GET /status HTTP/1.1" 200 -
+2025-09-12 10:48:02,578 - werkzeug - INFO - 127.0.0.1 - - [12/Sep/2025 10:48:02] "GET /detections HTTP/1.1" 200 -
+2025-09-12 10:48:09,616 - werkzeug - INFO - 127.0.0.1 - - [12/Sep/2025 10:48:09] "GET /status HTTP/1.1" 200 -
+2025-09-12 10:49:02,565 - werkzeug - INFO - 127.0.0.1 - - [12/Sep/2025 10:49:02] "GET /detections HTTP/1.1" 200 -
+2025-09-12 10:49:09,593 - werkzeug - INFO - 127.0.0.1 - - [12/Sep/2025 10:49:09] "GET /status HTTP/1.1" 200 -
+2025-09-12 10:50:02,565 - werkzeug - INFO - 127.0.0.1 - - [12/Sep/2025 10:50:02] "GET /detections HTTP/1.1" 200 -
+2025-09-12 10:50:09,593 - werkzeug - INFO - 127.0.0.1 - - [12/Sep/2025 10:50:09] "GET /status HTTP/1.1" 200 -
+2025-09-12 10:51:02,578 - werkzeug - INFO - 127.0.0.1 - - [12/Sep/2025 10:51:02] "GET /detections HTTP/1.1" 200 -
+2025-09-12 10:51:09,617 - werkzeug - INFO - 127.0.0.1 - - [12/Sep/2025 10:51:09] "GET /status HTTP/1.1" 200 -
+2025-09-12 10:52:02,571 - werkzeug - INFO - 127.0.0.1 - - [12/Sep/2025 10:52:02] "GET /detections HTTP/1.1" 200 -
+2025-09-12 10:52:09,612 - werkzeug - INFO - 127.0.0.1 - - [12/Sep/2025 10:52:09] "GET /status HTTP/1.1" 200 -
+2025-09-12 10:53:02,576 - werkzeug - INFO - 127.0.0.1 - - [12/Sep/2025 10:53:02] "GET /detections HTTP/1.1" 200 -
+2025-09-12 10:53:09,604 - werkzeug - INFO - 127.0.0.1 - - [12/Sep/2025 10:53:09] "GET /status HTTP/1.1" 200 -
+2025-09-12 10:54:02,573 - werkzeug - INFO - 127.0.0.1 - - [12/Sep/2025 10:54:02] "GET /detections HTTP/1.1" 200 -
+2025-09-12 10:54:09,610 - werkzeug - INFO - 127.0.0.1 - - [12/Sep/2025 10:54:09] "GET /status HTTP/1.1" 200 -
+2025-09-12 10:55:02,580 - werkzeug - INFO - 127.0.0.1 - - [12/Sep/2025 10:55:02] "GET /detections HTTP/1.1" 200 -
+2025-09-12 10:55:09,613 - werkzeug - INFO - 127.0.0.1 - - [12/Sep/2025 10:55:09] "GET /status HTTP/1.1" 200 -
+2025-09-12 10:56:02,584 - werkzeug - INFO - 127.0.0.1 - - [12/Sep/2025 10:56:02] "GET /detections HTTP/1.1" 200 -
+2025-09-12 10:56:09,603 - werkzeug - INFO - 127.0.0.1 - - [12/Sep/2025 10:56:09] "GET /status HTTP/1.1" 200 -
+2025-09-12 10:57:02,573 - werkzeug - INFO - 127.0.0.1 - - [12/Sep/2025 10:57:02] "GET /detections HTTP/1.1" 200 -
+2025-09-12 10:57:09,599 - werkzeug - INFO - 127.0.0.1 - - [12/Sep/2025 10:57:09] "GET /status HTTP/1.1" 200 -
+2025-09-12 10:58:02,580 - werkzeug - INFO - 127.0.0.1 - - [12/Sep/2025 10:58:02] "GET /detections HTTP/1.1" 200 -
+2025-09-12 10:58:09,611 - werkzeug - INFO - 127.0.0.1 - - [12/Sep/2025 10:58:09] "GET /status HTTP/1.1" 200 -
+2025-09-12 10:59:02,576 - werkzeug - INFO - 127.0.0.1 - - [12/Sep/2025 10:59:02] "GET /detections HTTP/1.1" 200 -
+2025-09-12 10:59:09,616 - werkzeug - INFO - 127.0.0.1 - - [12/Sep/2025 10:59:09] "GET /status HTTP/1.1" 200 -
+2025-09-12 11:00:02,586 - werkzeug - INFO - 127.0.0.1 - - [12/Sep/2025 11:00:02] "GET /detections HTTP/1.1" 200 -
+2025-09-12 11:00:09,611 - werkzeug - INFO - 127.0.0.1 - - [12/Sep/2025 11:00:09] "GET /status HTTP/1.1" 200 -
+2025-09-12 11:01:02,575 - werkzeug - INFO - 127.0.0.1 - - [12/Sep/2025 11:01:02] "GET /detections HTTP/1.1" 200 -
+2025-09-12 11:01:09,593 - werkzeug - INFO - 127.0.0.1 - - [12/Sep/2025 11:01:09] "GET /status HTTP/1.1" 200 -
+2025-09-12 11:02:02,572 - werkzeug - INFO - 127.0.0.1 - - [12/Sep/2025 11:02:02] "GET /detections HTTP/1.1" 200 -
+2025-09-12 11:02:09,591 - werkzeug - INFO - 127.0.0.1 - - [12/Sep/2025 11:02:09] "GET /status HTTP/1.1" 200 -
+2025-09-12 11:03:02,580 - werkzeug - INFO - 127.0.0.1 - - [12/Sep/2025 11:03:02] "GET /detections HTTP/1.1" 200 -
+2025-09-12 11:03:02,704 - werkzeug - INFO - 127.0.0.1 - - [12/Sep/2025 11:03:02] "GET /status HTTP/1.1" 200 -
+2025-09-12 11:04:02,583 - werkzeug - INFO - 127.0.0.1 - - [12/Sep/2025 11:04:02] "GET /detections HTTP/1.1" 200 -
+2025-09-12 11:04:09,631 - werkzeug - INFO - 127.0.0.1 - - [12/Sep/2025 11:04:09] "GET /status HTTP/1.1" 200 -
+2025-09-12 11:05:02,587 - werkzeug - INFO - 127.0.0.1 - - [12/Sep/2025 11:05:02] "GET /detections HTTP/1.1" 200 -
+2025-09-12 11:05:02,719 - werkzeug - INFO - 127.0.0.1 - - [12/Sep/2025 11:05:02] "GET /status HTTP/1.1" 200 -
+2025-09-12 11:06:02,570 - werkzeug - INFO - 127.0.0.1 - - [12/Sep/2025 11:06:02] "GET /detections HTTP/1.1" 200 -
+2025-09-12 11:06:02,605 - werkzeug - INFO - 127.0.0.1 - - [12/Sep/2025 11:06:02] "GET /status HTTP/1.1" 200 -
+2025-09-12 11:07:02,586 - werkzeug - INFO - 127.0.0.1 - - [12/Sep/2025 11:07:02] "GET /detections HTTP/1.1" 200 -
+2025-09-12 11:07:02,682 - werkzeug - INFO - 127.0.0.1 - - [12/Sep/2025 11:07:02] "GET /status HTTP/1.1" 200 -
+2025-09-12 11:08:02,580 - werkzeug - INFO - 127.0.0.1 - - [12/Sep/2025 11:08:02] "GET /detections HTTP/1.1" 200 -
+2025-09-12 11:08:02,704 - werkzeug - INFO - 127.0.0.1 - - [12/Sep/2025 11:08:02] "GET /status HTTP/1.1" 200 -
+2025-09-12 11:09:02,570 - werkzeug - INFO - 127.0.0.1 - - [12/Sep/2025 11:09:02] "GET /detections HTTP/1.1" 200 -
+2025-09-12 11:09:02,658 - werkzeug - INFO - 127.0.0.1 - - [12/Sep/2025 11:09:02] "GET /status HTTP/1.1" 200 -
+2025-09-12 11:10:02,571 - werkzeug - INFO - 127.0.0.1 - - [12/Sep/2025 11:10:02] "GET /detections HTTP/1.1" 200 -
+2025-09-12 11:10:02,626 - werkzeug - INFO - 127.0.0.1 - - [12/Sep/2025 11:10:02] "GET /status HTTP/1.1" 200 -
+2025-09-12 11:11:02,592 - werkzeug - INFO - 127.0.0.1 - - [12/Sep/2025 11:11:02] "GET /detections HTTP/1.1" 200 -
+2025-09-12 11:11:02,709 - werkzeug - INFO - 127.0.0.1 - - [12/Sep/2025 11:11:02] "GET /status HTTP/1.1" 200 -
+2025-09-12 11:12:02,596 - werkzeug - INFO - 127.0.0.1 - - [12/Sep/2025 11:12:02] "GET /detections HTTP/1.1" 200 -
+2025-09-12 11:12:02,737 - werkzeug - INFO - 127.0.0.1 - - [12/Sep/2025 11:12:02] "GET /status HTTP/1.1" 200 -
+2025-09-12 11:13:02,572 - werkzeug - INFO - 127.0.0.1 - - [12/Sep/2025 11:13:02] "GET /detections HTTP/1.1" 200 -
+2025-09-12 11:13:02,689 - werkzeug - INFO - 127.0.0.1 - - [12/Sep/2025 11:13:02] "GET /status HTTP/1.1" 200 -
+2025-09-12 14:00:28,468 - werkzeug - INFO - 127.0.0.1 - - [12/Sep/2025 14:00:28] "GET /detections HTTP/1.1" 200 -
+2025-09-12 14:00:31,768 - werkzeug - INFO - 127.0.0.1 - - [12/Sep/2025 14:00:31] "GET /detections HTTP/1.1" 200 -
+2025-09-12 14:00:33,206 - werkzeug - INFO - 127.0.0.1 - - [12/Sep/2025 14:00:33] "GET /status HTTP/1.1" 200 -
+2025-09-12 14:00:36,776 - werkzeug - INFO - 127.0.0.1 - - [12/Sep/2025 14:00:36] "GET /detections HTTP/1.1" 200 -
+2025-09-12 14:00:40,233 - werkzeug - INFO - 127.0.0.1 - - [12/Sep/2025 14:00:40] "GET /status HTTP/1.1" 200 -
+2025-09-12 14:00:41,773 - werkzeug - INFO - 127.0.0.1 - - [12/Sep/2025 14:00:41] "GET /detections HTTP/1.1" 200 -
+2025-09-12 14:00:46,781 - werkzeug - INFO - 127.0.0.1 - - [12/Sep/2025 14:00:46] "GET /detections HTTP/1.1" 200 -
+2025-09-12 14:00:47,262 - werkzeug - INFO - 127.0.0.1 - - [12/Sep/2025 14:00:47] "GET /status HTTP/1.1" 200 -
+2025-09-12 14:00:54,283 - werkzeug - INFO - 127.0.0.1 - - [12/Sep/2025 14:00:54] "GET /status HTTP/1.1" 200 -
+2025-09-12 14:00:59,814 - werkzeug - INFO - 127.0.0.1 - - [12/Sep/2025 14:00:59] "GET /status HTTP/1.1" 200 -
+2025-09-12 14:01:01,309 - werkzeug - INFO - 127.0.0.1 - - [12/Sep/2025 14:01:01] "GET /status HTTP/1.1" 200 -
+2025-09-12 14:01:03,822 - werkzeug - INFO - 127.0.0.1 - - [12/Sep/2025 14:01:03] "GET /status HTTP/1.1" 200 -
+2025-09-12 14:01:05,816 - werkzeug - INFO - 127.0.0.1 - - [12/Sep/2025 14:01:05] "GET /status HTTP/1.1" 200 -
+2025-09-12 14:01:07,810 - werkzeug - INFO - 127.0.0.1 - - [12/Sep/2025 14:01:07] "GET /status HTTP/1.1" 200 -
+2025-09-12 14:01:08,340 - werkzeug - INFO - 127.0.0.1 - - [12/Sep/2025 14:01:08] "GET /status HTTP/1.1" 200 -
+2025-09-12 14:01:11,809 - werkzeug - INFO - 127.0.0.1 - - [12/Sep/2025 14:01:11] "GET /status HTTP/1.1" 200 -
+2025-09-12 14:01:13,823 - werkzeug - INFO - 127.0.0.1 - - [12/Sep/2025 14:01:13] "GET /status HTTP/1.1" 200 -
+2025-09-12 14:01:15,364 - werkzeug - INFO - 127.0.0.1 - - [12/Sep/2025 14:01:15] "GET /status HTTP/1.1" 200 -
+2025-09-12 14:01:17,822 - werkzeug - INFO - 127.0.0.1 - - [12/Sep/2025 14:01:17] "GET /status HTTP/1.1" 200 -

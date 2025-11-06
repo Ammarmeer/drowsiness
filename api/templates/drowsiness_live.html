@@ -1,0 +1,304 @@
+<!doctype html>
+<html lang="en" data-bs-theme="dark">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Live Drowsiness Monitor</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    body { background: #0f1220; color: #e9ecff; }
+    .card { background:#151935; border: none; }
+    .pill { display:inline-block; padding:.25rem .6rem; background:#232a53; border-radius:999px; margin:.1rem; font-size:.8rem; }
+    .feed-wrap { position: relative; width: 100%; }
+    /* We render *everything* into the canvas; video is hidden but used as source */
+    #cam { display:none; }
+    #view { width: 100%; height: auto; max-height: 60vh; border-radius: .5rem; }
+    .log { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace; white-space: pre-wrap; font-size: 12px; color:#9aa3c7; }
+  </style>
+</head>
+<body>
+<nav class="navbar navbar-expand-lg" style="background:#151935;">
+  <div class="container">
+    <a class="navbar-brand fw-bold text-light" href="/">Drowsiness API</a>
+    <div class="navbar-nav">
+      <a class="nav-link text-light" href="/docs">Docs</a>
+      <a class="nav-link text-light" href="/drowsiness/dashboard">Dashboard</a>
+      <a class="nav-link text-light" href="/drowsiness/dashboard-live">Live</a>
+    </div>
+  </div>
+</nav>
+
+<main class="container my-4">
+  <div class="row g-3">
+    <div class="col-lg-7">
+      <div class="card p-3">
+        <h5 class="mb-3">Live Camera</h5>
+
+        <!-- Hidden <video> is the capture source -->
+        <video id="cam" playsinline autoplay muted></video>
+
+        <!-- We draw the live frame + boxes on this canvas -->
+        <canvas id="view" class="w-100 rounded border"></canvas>
+
+        <div class="small text-muted mt-2">If the page doesn't access the camera, allow permission in the browser.</div>
+
+        <div class="mt-3 d-flex gap-2">
+          <button id="startBtn" class="btn btn-primary">Start Feed</button>
+          <button id="stopBtn" class="btn btn-outline-light" disabled>Stop Feed</button>
+        </div>
+      </div>
+
+      <div class="card p-3 mt-3">
+        <h6 class="mb-2">Debug Log</h6>
+        <div id="log" class="log"></div>
+      </div>
+    </div>
+
+    <div class="col-lg-5">
+      <div class="card p-3">
+        <h5 class="mb-3">Status</h5>
+        <div id="sysInfo" class="mb-3 small">Loading...</div>
+
+        <div class="d-flex gap-2 mb-3">
+          <button class="btn btn-danger" id="testBeep">Test Beep</button>
+          <button class="btn btn-secondary" id="stopBeep">Stop Beep</button>
+        </div>
+
+        <div class="mb-2"><b>Detections:</b></div>
+        <div id="labels"></div>
+        <div id="alert" class="mt-3 h5"></div>
+
+        <div class="mt-4">
+          <label class="form-label">Send FPS</label>
+          <input type="range" min="2" max="15" value="8" id="fps" class="form-range">
+          <div class="small text-muted">Lower FPS = lower CPU/network usage.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>
+
+<script>
+  // ================= CONSTANTS =================
+  // Internal capture size. Server detections are computed on this exact size
+  // so boxes align perfectly when we draw them back on the same canvas.
+  const CAP_W = 640, CAP_H = 480;
+
+  // ================= Tiny logger =================
+  const $log = document.getElementById('log');
+  function logln(...args){ $log.textContent += args.join(' ') + '\n'; $log.scrollTop = $log.scrollHeight; }
+
+  // ================= DOM =================
+  const video     = document.getElementById("cam");   // hidden capture source
+  const canvas    = document.getElementById("view");  // visible canvas
+  const ctx       = canvas.getContext("2d");
+  const labelsDiv = document.getElementById("labels");
+  const alertDiv  = document.getElementById("alert");
+  const sysInfo   = document.getElementById("sysInfo");
+  const fpsSlider = document.getElementById("fps");
+  const startBtn  = document.getElementById("startBtn");
+  const stopBtn   = document.getElementById("stopBtn");
+  const testBeep  = document.getElementById("testBeep");
+  const stopBeepB = document.getElementById("stopBeep");
+
+  // ================= Health =================
+  fetch("/drowsiness/health").then(r=>r.json()).then(j=>{
+    sysInfo.innerHTML = `Torch <span class="pill">${j.torch}</span>
+                         CUDA <span class="pill">${j.cuda_version || "None"}</span>
+                         GPU <span class="pill">${j.cuda_available ? "Available" : "CPU-only"}</span>`;
+    logln('Health:', JSON.stringify(j));
+  }).catch(e=>{ sysInfo.textContent = "Health check failed"; logln('Health error:', e); });
+
+  // ================= Audio alarm =================
+  let ac, osc, gain, beepTimeout;
+  function startBeep() {
+    try {
+      if (!ac) ac = new (window.AudioContext || window.webkitAudioContext)();
+      if (!gain) { gain = ac.createGain(); gain.gain.value = 0.06; gain.connect(ac.destination); }
+      stopBeep();
+      osc = ac.createOscillator();
+      osc.type = "square";
+      osc.frequency.value = 1000;
+      osc.connect(gain);
+      osc.start();
+      clearTimeout(beepTimeout);
+      beepTimeout = setTimeout(stopBeep, 1000);
+    } catch(e) { logln('Audio error:', e); }
+  }
+  function stopBeep() { try { if (osc) { osc.stop(); osc.disconnect(); osc = null; } } catch(e) { logln('Stop beep error:', e); } }
+  testBeep.onclick = startBeep;  stopBeepB.onclick = stopBeep;
+
+  // ================= State =================
+  let stream = null;
+  let ws = null;
+  let sendInterval = null;
+  let drawing = false;
+
+  // ================= Drawing =================
+  function drawFrameAndBoxes(dets) {
+    // Draw the current video frame scaled to the canvas internal size
+    ctx.drawImage(video, 0, 0, CAP_W, CAP_H);
+
+    // Draw detections in the same CAP_W x CAP_H coordinate system
+    const boxes = dets?.boxes || [];
+    const confs = dets?.confs || [];
+    const labels = dets?.labels || [];
+
+    ctx.lineWidth = 2;
+    ctx.font = "14px system-ui";
+
+    for (let i = 0; i < boxes.length; i++) {
+      const [x1,y1,x2,y2] = boxes[i];
+      const w = x2 - x1, h = y2 - y1;
+
+      ctx.strokeStyle = "rgba(0, 200, 255, 0.9)";
+      ctx.fillStyle   = "rgba(0, 200, 255, 0.25)";
+      ctx.fillRect(x1, y1, w, h);
+      ctx.strokeRect(x1, y1, w, h);
+
+      const tag = `${labels[i] || "obj"} ${(confs[i]||0).toFixed(2)}`;
+      const tagW = ctx.measureText(tag).width + 8;
+      ctx.fillStyle = "rgba(0,0,0,0.7)";
+      ctx.fillRect(x1, y1 - 18, tagW, 18);
+      ctx.fillStyle = "#fff";
+      ctx.fillText(tag, x1 + 4, y1 - 5);
+    }
+  }
+
+  // Make canvas crisp & keep aspect. CSS controls display size; internal buffer is fixed.
+  function initCanvasSize() {
+    canvas.width = CAP_W;
+    canvas.height = CAP_H;
+  }
+  initCanvasSize();
+
+  // ================= Camera =================
+  async function startCamera() {
+    if (stream) return; // already started
+    try {
+      stream = await navigator.mediaDevices.getUserMedia({
+        video: { width: CAP_W, height: CAP_H, facingMode: "user" },
+        audio: false
+      });
+      video.srcObject = stream;
+      await new Promise(res => video.onloadedmetadata = res);
+      await video.play().catch(()=>{});
+      logln('Camera ready:', CAP_W + 'x' + CAP_H);
+    } catch(e) {
+      logln('Camera access failed:', e);
+      alert("Camera access failed. Allow permission in the browser and check Windows privacy settings.");
+      throw e;
+    }
+  }
+
+  function stopCamera() {
+    if (stream) {
+      stream.getTracks().forEach(t => t.stop());
+      stream = null;
+      logln('Camera stopped');
+    }
+  }
+
+  // ================= WebSocket & sending frames =================
+  function sendLoop() {
+    const intervalMs = Math.floor(1000 / Number(fpsSlider.value || 8));
+    if (sendInterval) clearInterval(sendInterval);
+    sendInterval = setInterval(() => {
+      if (!ws || ws.readyState !== WebSocket.OPEN || !stream) return;
+
+      // Build a frame at the fixed capture size
+      const off = document.createElement("canvas");
+      off.width = CAP_W; off.height = CAP_H;
+      off.getContext("2d").drawImage(video, 0, 0, CAP_W, CAP_H);
+
+      // Also draw the plain frame to the visible canvas now (so user sees smooth video)
+      ctx.drawImage(video, 0, 0, CAP_W, CAP_H);
+
+      // Compress & send
+      off.toBlob(b => {
+        if (!b) return;
+        b.arrayBuffer().then(buf => ws.send(buf));
+      }, "image/jpeg", 0.6);
+    }, intervalMs);
+    logln('Sending frames at', (1000/intervalMs).toFixed(1), 'FPS');
+  }
+
+  function connectWS() {
+    if (ws && ws.readyState === WebSocket.OPEN) return;
+    const scheme = (location.protocol === "https:") ? "wss://" : "ws://";
+    const url = scheme + location.host + "/drowsiness/ws";
+    ws = new WebSocket(url);
+    ws.binaryType = "arraybuffer";
+
+    ws.onopen = () => { logln('WS connected:', url); sendLoop(); };
+    ws.onclose = (e) => { logln('WS closed:', e.code, e.reason || ''); if (sendInterval) clearInterval(sendInterval); };
+    ws.onerror = (e) => { logln('WS error:', e); if (sendInterval) clearInterval(sendInterval); };
+    ws.onmessage = (ev) => {
+      try {
+        const dets = JSON.parse(ev.data);
+        if (dets.error) logln('Server error:', dets.error);
+
+        // Update labels
+        const labs = dets.labels || [];
+        labelsDiv.innerHTML = labs.length
+          ? labs.map(l => `<span class="pill">${l}</span>`).join(" ")
+          : "<span class='pill'>No labels</span>";
+
+        // Draw boxes on top of the most recent video frame
+        drawFrameAndBoxes(dets);
+
+        // Alarm
+        if (dets.drowsy) {
+          alertDiv.innerHTML = "<span class='text-danger'>DROWSY DETECTED — ALARM!</span>";
+          startBeep();
+        } else {
+          alertDiv.innerHTML = "<span class='text-success'>OK</span>";
+        }
+      } catch (e) {
+        logln('WS parse error:', e);
+      }
+    };
+  }
+
+  function disconnectWS() {
+    if (sendInterval) { clearInterval(sendInterval); sendInterval = null; }
+    if (ws) { try { ws.close(); } catch(_) {} ws = null; }
+  }
+
+  // ================= Controls =================
+  async function startFeed() {
+    startBtn.disabled = true;
+    try {
+      await startCamera();
+      connectWS();
+      sendLoop();
+      stopBtn.disabled = false;
+      logln('Feed started');
+    } catch(e) {
+      startBtn.disabled = false;
+    }
+  }
+
+  function stopFeed() {
+    disconnectWS();
+    stopCamera();
+    // Clear canvas & UI
+    ctx.clearRect(0,0,canvas.width,canvas.height);
+    labelsDiv.innerHTML = "";
+    alertDiv.innerHTML = "";
+    stopBeep();
+
+    stopBtn.disabled = true;
+    startBtn.disabled = false;
+    logln('Feed stopped');
+  }
+
+  startBtn.onclick = startFeed;
+  stopBtn.onclick  = stopFeed;
+  fpsSlider.addEventListener("input", () => { if (ws && ws.readyState===WebSocket.OPEN) sendLoop(); });
+
+  // Optional: auto-start on page load
+  // startFeed();
+</script>
+</body>
+</html>
