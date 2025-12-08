@@ -6,7 +6,7 @@ import cv2
 import tempfile
 import os
 import sqlite3
-from datetime import datetime
+from datetime import datetime, timedelta
 from typing import Dict, Any, Optional
 from pydantic import BaseModel
 import logging
@@ -56,7 +56,7 @@ def init_db():
     conn = sqlite3.connect('drowsiness.db')
     cursor = conn.cursor()
     
-    # Updated users table with password field
+    # Updated users table with role field
     cursor.execute('''
     CREATE TABLE IF NOT EXISTS users (
         id INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -64,6 +64,7 @@ def init_db():
         email TEXT UNIQUE NOT NULL,
         password_hash TEXT NOT NULL,
         phone TEXT,
+        role TEXT DEFAULT 'driver',
         created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
     )
     ''')
@@ -98,14 +99,21 @@ def init_db():
     )
     ''')
     
-    # Check if password_hash column exists, if not add it
+    # Check if role column exists, if not add it
     cursor.execute("PRAGMA table_info(users)")
     columns = [column[1] for column in cursor.fetchall()]
-    if 'password_hash' not in columns:
-        cursor.execute('ALTER TABLE users ADD COLUMN password_hash TEXT')
-        # Set default password for existing users (you should prompt them to change it)
-        cursor.execute('UPDATE users SET password_hash = ? WHERE password_hash IS NULL', 
-                      (hash_password('defaultpassword123'),))
+    if 'role' not in columns:
+        cursor.execute('ALTER TABLE users ADD COLUMN role TEXT DEFAULT "driver"')
+    
+    # Create default admin if not exists
+    cursor.execute("SELECT * FROM users WHERE username = 'admin'")
+    if not cursor.fetchone():
+        admin_password = hash_password('admin123')
+        cursor.execute(
+            "INSERT INTO users (username, email, password_hash, role) VALUES (?, ?, ?, ?)",
+            ('admin', 'admin@drowsyguard.com', admin_password, 'admin')
+        )
+        logger.info("Default admin created: username=admin, password=admin123")
     
     conn.commit()
     conn.close()
@@ -113,16 +121,18 @@ def init_db():
 # Initialize database
 init_db()
 
-# Updated Pydantic models
+# Pydantic models
 class UserCreate(BaseModel):
     username: str
     email: str
     password: str
     phone: Optional[str] = None
+    role: Optional[str] = 'driver'
 
 class UserLogin(BaseModel):
     username: str
     password: str
+    role: Optional[str] = None
 
 class SessionStart(BaseModel):
     user_id: int
@@ -170,14 +180,17 @@ async def root():
 async def register_user(user: UserCreate):
     """Register a new user with password"""
     try:
-        # Hash the password
+        # Only allow driver registration through this endpoint
+        if user.role and user.role != 'driver':
+            raise HTTPException(status_code=403, detail="Only driver registration allowed")
+        
         password_hash = hash_password(user.password)
         
         conn = get_db_connection()
         cursor = conn.cursor()
         cursor.execute(
-            "INSERT INTO users (username, email, password_hash, phone) VALUES (?, ?, ?, ?)",
-            (user.username, user.email, password_hash, user.phone)
+            "INSERT INTO users (username, email, password_hash, phone, role) VALUES (?, ?, ?, ?, ?)",
+            (user.username, user.email, password_hash, user.phone, 'driver')
         )
         user_id = cursor.lastrowid
         conn.commit()
@@ -195,55 +208,32 @@ async def login_user(login_data: UserLogin):
         conn = get_db_connection()
         cursor = conn.cursor()
         cursor.execute(
-            "SELECT id, username, email, phone, password_hash FROM users WHERE username = ?",
+            "SELECT id, username, email, phone, password_hash, role FROM users WHERE username = ?",
             (login_data.username,)
         )
         user = cursor.fetchone()
         conn.close()
         
         if user and verify_password(login_data.password, user[4]):
+            # Check role if specified
+            user_role = user[5]
+            if login_data.role and user_role != login_data.role:
+                raise HTTPException(status_code=403, detail="Invalid role for this account")
+            
             return {
                 "success": True,
                 "user": {
                     "id": user[0],
                     "username": user[1],
                     "email": user[2],
-                    "phone": user[3]
+                    "phone": user[3],
+                    "role": user_role
                 }
             }
         else:
             raise HTTPException(status_code=401, detail="Invalid username or password")
     except HTTPException:
         raise
-    except Exception as e:
-        raise HTTPException(status_code=500, detail=f"Login failed: {str(e)}")
-
-# Legacy login endpoint for backward compatibility
-@app.post("/users/login_legacy")
-async def login_user_legacy(username: str, email: str):
-    """Legacy login - just check if user exists (for backward compatibility)"""
-    try:
-        conn = get_db_connection()
-        cursor = conn.cursor()
-        cursor.execute(
-            "SELECT id, username, email, phone FROM users WHERE username = ? AND email = ?",
-            (username, email)
-        )
-        user = cursor.fetchone()
-        conn.close()
-        
-        if user:
-            return {
-                "success": True,
-                "user": {
-                    "id": user[0],
-                    "username": user[1],
-                    "email": user[2],
-                    "phone": user[3]
-                }
-            }
-        else:
-            raise HTTPException(status_code=401, detail="Invalid credentials")
     except Exception as e:
         raise HTTPException(status_code=500, detail=f"Login failed: {str(e)}")
 
@@ -305,7 +295,7 @@ async def detect_drowsiness(
         # Get prediction
         result = infer_image(img)
         
-        # Check if drowsy (customize based on your model's labels)
+        # Check if drowsy
         is_drowsy = result["prediction"].lower() in ['drowsy', 'sleepy', 'tired'] and result["confidence"] > 0.7
         
         # Log detection
@@ -358,7 +348,7 @@ async def get_dashboard(user_id: int):
         
         stats = cursor.fetchone()
         
-        # Get recent sessions with more details
+        # Get recent sessions
         cursor.execute("""
             SELECT 
                 s.id, 
@@ -383,24 +373,9 @@ async def get_dashboard(user_id: int):
         
         if total_detections > 0:
             drowsy_percentage = (total_drowsy / total_detections) * 100
-            safety_score = max(0, 100 - (drowsy_percentage * 2))  # More sensitive scoring
+            safety_score = max(0, 100 - (drowsy_percentage * 2))
         else:
             safety_score = 100
-        
-        # Get session duration average
-        cursor.execute("""
-            SELECT AVG(
-                CASE 
-                    WHEN end_time IS NOT NULL AND start_time IS NOT NULL 
-                    THEN (julianday(end_time) - julianday(start_time)) * 24 * 60 
-                    ELSE 0 
-                END
-            ) as avg_duration_minutes
-            FROM sessions 
-            WHERE user_id = ? AND end_time IS NOT NULL
-        """, (user_id,))
-        
-        avg_duration = cursor.fetchone()[0] or 0
         
         conn.close()
         
@@ -411,7 +386,6 @@ async def get_dashboard(user_id: int):
                 "total_alerts": total_drowsy,
                 "total_detections": total_detections,
                 "safety_score": round(safety_score, 1),
-                "avg_session_duration": round(avg_duration, 1),
                 "recent_sessions": [
                     {
                         "id": session[0],
@@ -420,7 +394,6 @@ async def get_dashboard(user_id: int):
                         "alerts": session[3] or 0,
                         "total_detections": session[4] or 0,
                         "detection_count": session[5] or 0,
-                        "duration_minutes": _calculate_duration(session[1], session[2])
                     }
                     for session in recent_sessions
                 ]
@@ -431,18 +404,220 @@ async def get_dashboard(user_id: int):
         logger.error(f"Dashboard error: {e}")
         raise HTTPException(status_code=500, detail=f"Failed to get dashboard: {str(e)}")
 
-def _calculate_duration(start_time: str, end_time: str) -> float:
-    """Calculate session duration in minutes"""
+@app.get("/admin/dashboard")
+async def get_admin_dashboard():
+    """Get admin dashboard with all drivers' data"""
     try:
-        if not start_time or not end_time:
-            return 0
-        start = datetime.fromisoformat(start_time.replace('Z', '+00:00'))
-        end = datetime.fromisoformat(end_time.replace('Z', '+00:00'))
-        duration = (end - start).total_seconds() / 60
-        return round(duration, 1)
-    except:
-        return 0
-    
+        conn = get_db_connection()
+        cursor = conn.cursor()
+        
+        # Get total drivers
+        cursor.execute("SELECT COUNT(*) FROM users WHERE role = 'driver'")
+        total_drivers = cursor.fetchone()[0]
+        
+        # Get active sessions (sessions without end_time)
+        cursor.execute("""
+            SELECT 
+                s.id as session_id,
+                s.user_id,
+                u.username,
+                s.start_time,
+                s.total_detections,
+                s.drowsy_detections,
+                (
+                    SELECT d.prediction 
+                    FROM detections d 
+                    WHERE d.session_id = s.id 
+                    ORDER BY d.timestamp DESC 
+                    LIMIT 1
+                ) as latest_prediction
+            FROM sessions s
+            JOIN users u ON s.user_id = u.id
+            WHERE s.end_time IS NULL
+            ORDER BY s.start_time DESC
+        """)
+        active_sessions = cursor.fetchall()
+        
+        # Count drowsy drivers (active sessions with recent drowsy detection)
+        drowsy_count = 0
+        active_sessions_list = []
+        
+        for session in active_sessions:
+            latest_prediction = session[6]
+            is_drowsy = latest_prediction and 'drowsy' in latest_prediction.lower()
+            
+            if is_drowsy:
+                drowsy_count += 1
+            
+            active_sessions_list.append({
+                "session_id": session[0],
+                "user_id": session[1],
+                "username": session[2],
+                "start_time": session[3],
+                "total_detections": session[4] or 0,
+                "alerts": session[5] or 0,
+                "latest_drowsy": is_drowsy
+            })
+        
+        # Get total sessions count
+        cursor.execute("SELECT COUNT(*) FROM sessions WHERE end_time IS NOT NULL")
+        total_sessions = cursor.fetchone()[0]
+        
+        # Get recent detection logs (last 50)
+        cursor.execute("""
+            SELECT 
+                d.id,
+                d.session_id,
+                d.timestamp,
+                d.prediction,
+                d.confidence,
+                u.username
+            FROM detections d
+            JOIN sessions s ON d.session_id = s.id
+            JOIN users u ON s.user_id = u.id
+            ORDER BY d.timestamp DESC
+            LIMIT 50
+        """)
+        recent_logs = cursor.fetchall()
+        
+        conn.close()
+        
+        return {
+            "success": True,
+            "data": {
+                "total_drivers": total_drivers,
+                "active_drivers": len(active_sessions),
+                "drowsy_drivers": drowsy_count,
+                "total_sessions": total_sessions,
+                "active_sessions": active_sessions_list,
+                "recent_logs": [
+                    {
+                        "id": log[0],
+                        "session_id": log[1],
+                        "timestamp": log[2],
+                        "prediction": log[3],
+                        "confidence": log[4],
+                        "username": log[5]
+                    }
+                    for log in recent_logs
+                ]
+            }
+        }
+        
+    except Exception as e:
+        logger.error(f"Admin dashboard error: {e}")
+        raise HTTPException(status_code=500, detail=f"Failed to get admin dashboard: {str(e)}")
+
+@app.get("/admin/drivers")
+async def get_all_drivers():
+    """Get list of all drivers"""
+    try:
+        conn = get_db_connection()
+        cursor = conn.cursor()
+        
+        cursor.execute("""
+            SELECT 
+                u.id,
+                u.username,
+                u.email,
+                u.phone,
+                u.created_at,
+                COUNT(DISTINCT s.id) as total_sessions,
+                SUM(s.drowsy_detections) as total_alerts,
+                (
+                    SELECT s2.start_time 
+                    FROM sessions s2 
+                    WHERE s2.user_id = u.id AND s2.end_time IS NULL 
+                    LIMIT 1
+                ) as active_session_start
+            FROM users u
+            LEFT JOIN sessions s ON u.id = s.user_id
+            WHERE u.role = 'driver'
+            GROUP BY u.id
+            ORDER BY u.created_at DESC
+        """)
+        
+        drivers = cursor.fetchall()
+        conn.close()
+        
+        return {
+            "success": True,
+            "data": [
+                {
+                    "id": driver[0],
+                    "username": driver[1],
+                    "email": driver[2],
+                    "phone": driver[3],
+                    "created_at": driver[4],
+                    "total_sessions": driver[5] or 0,
+                    "total_alerts": driver[6] or 0,
+                    "is_active": driver[7] is not None,
+                    "active_session_start": driver[7]
+                }
+                for driver in drivers
+            ]
+        }
+        
+    except Exception as e:
+        logger.error(f"Get drivers error: {e}")
+        raise HTTPException(status_code=500, detail=f"Failed to get drivers: {str(e)}")
+
+@app.get("/admin/sessions")
+async def get_all_sessions(limit: int = 50, offset: int = 0):
+    """Get all sessions with pagination"""
+    try:
+        conn = get_db_connection()
+        cursor = conn.cursor()
+        
+        cursor.execute("""
+            SELECT 
+                s.id,
+                s.user_id,
+                u.username,
+                s.start_time,
+                s.end_time,
+                s.total_detections,
+                s.drowsy_detections,
+                s.distance_km
+            FROM sessions s
+            JOIN users u ON s.user_id = u.id
+            ORDER BY s.start_time DESC
+            LIMIT ? OFFSET ?
+        """, (limit, offset))
+        
+        sessions = cursor.fetchall()
+        
+        cursor.execute("SELECT COUNT(*) FROM sessions")
+        total_count = cursor.fetchone()[0]
+        
+        conn.close()
+        
+        return {
+            "success": True,
+            "data": {
+                "sessions": [
+                    {
+                        "id": session[0],
+                        "user_id": session[1],
+                        "username": session[2],
+                        "start_time": session[3],
+                        "end_time": session[4],
+                        "total_detections": session[5] or 0,
+                        "alerts": session[6] or 0,
+                        "distance": session[7] or 0.0
+                    }
+                    for session in sessions
+                ],
+                "total": total_count,
+                "limit": limit,
+                "offset": offset
+            }
+        }
+        
+    except Exception as e:
+        logger.error(f"Get sessions error: {e}")
+        raise HTTPException(status_code=500, detail=f"Failed to get sessions: {str(e)}")
+
 @app.post("/predict_frame")
 async def predict_frame_simple(file: UploadFile = File(...)):
     """Simple frame prediction without session tracking"""
@@ -523,31 +698,6 @@ async def get_session_details(session_id: int):
     except Exception as e:
         raise HTTPException(status_code=500, detail=f"Failed to get session details: {str(e)}")
 
-# Password reset endpoint (bonus feature)
-@app.post("/users/reset-password")
-async def reset_password(username: str, new_password: str):
-    """Reset user password (simplified version)"""
-    try:
-        password_hash = hash_password(new_password)
-        
-        conn = get_db_connection()
-        cursor = conn.cursor()
-        cursor.execute(
-            "UPDATE users SET password_hash = ? WHERE username = ?",
-            (password_hash, username)
-        )
-        
-        if cursor.rowcount == 0:
-            raise HTTPException(status_code=404, detail="User not found")
-        
-        conn.commit()
-        conn.close()
-        return {"success": True, "message": "Password reset successfully"}
-    except HTTPException:
-        raise
-    except Exception as e:
-        raise HTTPException(status_code=500, detail=f"Password reset failed: {str(e)}")
-
 if __name__ == "__main__":
     import uvicorn
-    uvicorn.run(host="0.0.0.0", port=int(os.getenv("PORT", 8000)), debug=True)
+    uvicorn.run(app, host="0.0.0.0", port=int(os.getenv("PORT", 8000)), debug=True)

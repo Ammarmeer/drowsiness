@@ -6,6 +6,7 @@ import 'package:camera/camera.dart';
 import 'package:http/http.dart' as http;
 import 'package:audioplayers/audioplayers.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:network_info_plus/network_info_plus.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -32,8 +33,59 @@ class DrowsyGuardApp extends StatelessWidget {
           brightness: Brightness.light,
         ),
       ),
-      home: AuthWrapper(camera: camera),
+      home: SplashScreen(camera: camera),
     );
+  }
+}
+
+// Server Discovery Service
+class ServerDiscovery {
+  static String? _cachedServerUrl;
+  
+  static Future<String?> discoverServer() async {
+    if (_cachedServerUrl != null) return _cachedServerUrl;
+    
+    try {
+      final networkInfo = NetworkInfo();
+      final wifiIP = await networkInfo.getWifiIP();
+      
+      if (wifiIP == null) return null;
+      
+      final subnet = wifiIP.substring(0, wifiIP.lastIndexOf('.'));
+      
+      // Try common ports
+      final ports = [8000, 5000, 3000];
+      
+      for (final port in ports) {
+        for (int i = 1; i <= 255; i++) {
+          final testUrl = 'http://$subnet.$i:$port';
+          try {
+            final response = await http.get(
+              Uri.parse(testUrl),
+              headers: {'Connection': 'close'},
+            ).timeout(const Duration(milliseconds: 100));
+            
+            if (response.statusCode == 200) {
+              final body = jsonDecode(response.body);
+              if (body['message'] == 'DrowsyGuard API') {
+                _cachedServerUrl = testUrl;
+                return testUrl;
+              }
+            }
+          } catch (e) {
+            continue;
+          }
+        }
+      }
+    } catch (e) {
+      print('Server discovery error: $e');
+    }
+    
+    return null;
+  }
+  
+  static void clearCache() {
+    _cachedServerUrl = null;
   }
 }
 
@@ -43,12 +95,14 @@ class User {
   final String username;
   final String email;
   final String? phone;
+  final String role;
 
   User({
     required this.id,
     required this.username,
     required this.email,
     this.phone,
+    this.role = 'driver',
   });
 
   factory User.fromJson(Map<String, dynamic> json) {
@@ -57,6 +111,7 @@ class User {
       username: json['username'],
       email: json['email'],
       phone: json['phone'],
+      role: json['role'] ?? 'driver',
     );
   }
 
@@ -66,14 +121,188 @@ class User {
       'username': username,
       'email': email,
       'phone': phone,
+      'role': role,
     };
+  }
+}
+
+// Splash Screen
+class SplashScreen extends StatefulWidget {
+  final CameraDescription camera;
+  const SplashScreen({super.key, required this.camera});
+
+  @override
+  State<SplashScreen> createState() => _SplashScreenState();
+}
+
+class _SplashScreenState extends State<SplashScreen> with SingleTickerProviderStateMixin {
+  late AnimationController _controller;
+  late Animation<double> _fadeAnimation;
+  String _status = 'Initializing...';
+
+  @override
+  void initState() {
+    super.initState();
+    _controller = AnimationController(
+      duration: const Duration(seconds: 2),
+      vsync: this,
+    );
+    _fadeAnimation = Tween<double>(begin: 0.0, end: 1.0).animate(_controller);
+    _controller.forward();
+    _initialize();
+  }
+
+  Future<void> _initialize() async {
+    setState(() => _status = 'Discovering server...');
+    await Future.delayed(const Duration(seconds: 1));
+    
+    final serverUrl = await ServerDiscovery.discoverServer();
+    
+    if (serverUrl != null) {
+      setState(() => _status = 'Connected to server');
+      await Future.delayed(const Duration(milliseconds: 500));
+      
+      if (mounted) {
+        Navigator.pushReplacement(
+          context,
+          MaterialPageRoute(
+            builder: (context) => AuthWrapper(camera: widget.camera, serverUrl: serverUrl),
+          ),
+        );
+      }
+    } else {
+      setState(() => _status = 'Server not found');
+      await Future.delayed(const Duration(seconds: 1));
+      
+      if (mounted) {
+        _showManualServerDialog();
+      }
+    }
+  }
+
+  void _showManualServerDialog() {
+    final controller = TextEditingController(text: 'http://192.168.1.13:8000');
+    showDialog(
+      context: context,
+      barrierDismissible: false,
+      builder: (context) => AlertDialog(
+        title: const Text('Server Not Found'),
+        content: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            const Text('Please enter server URL manually:'),
+            const SizedBox(height: 16),
+            TextField(
+              controller: controller,
+              decoration: const InputDecoration(
+                labelText: 'Server URL',
+                hintText: 'http://192.168.1.13:8000',
+                border: OutlineInputBorder(),
+              ),
+            ),
+          ],
+        ),
+        actions: [
+          TextButton(
+            onPressed: () => _initialize(),
+            child: const Text('Retry Auto-Discovery'),
+          ),
+          ElevatedButton(
+            onPressed: () {
+              Navigator.pop(context);
+              Navigator.pushReplacement(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => AuthWrapper(
+                    camera: widget.camera,
+                    serverUrl: controller.text,
+                  ),
+                ),
+              );
+            },
+            child: const Text('Connect'),
+          ),
+        ],
+      ),
+    );
+  }
+
+  @override
+  void dispose() {
+    _controller.dispose();
+    super.dispose();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      body: Container(
+        decoration: BoxDecoration(
+          gradient: LinearGradient(
+            begin: Alignment.topCenter,
+            end: Alignment.bottomCenter,
+            colors: [Colors.blue.shade900, Colors.blue.shade600],
+          ),
+        ),
+        child: FadeTransition(
+          opacity: _fadeAnimation,
+          child: Center(
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Container(
+                  padding: const EdgeInsets.all(32),
+                  decoration: const BoxDecoration(
+                    color: Colors.white,
+                    shape: BoxShape.circle,
+                  ),
+                  child: const Icon(
+                    Icons.local_taxi,
+                    size: 80,
+                    color: Colors.blue,
+                  ),
+                ),
+                const SizedBox(height: 32),
+                const Text(
+                  'DrowsyGuard',
+                  style: TextStyle(
+                    fontSize: 48,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.white,
+                  ),
+                ),
+                const SizedBox(height: 16),
+                const Text(
+                  'AI-Powered Driving Safety',
+                  style: TextStyle(
+                    fontSize: 18,
+                    color: Colors.white70,
+                  ),
+                ),
+                const SizedBox(height: 48),
+                const CircularProgressIndicator(color: Colors.white),
+                const SizedBox(height: 16),
+                Text(
+                  _status,
+                  style: const TextStyle(
+                    fontSize: 16,
+                    color: Colors.white70,
+                  ),
+                ),
+              ],
+            ),
+          ),
+        ),
+      ),
+    );
   }
 }
 
 // Auth wrapper
 class AuthWrapper extends StatefulWidget {
   final CameraDescription camera;
-  const AuthWrapper({super.key, required this.camera});
+  final String serverUrl;
+  const AuthWrapper({super.key, required this.camera, required this.serverUrl});
 
   @override
   State<AuthWrapper> createState() => _AuthWrapperState();
@@ -146,29 +375,220 @@ class _AuthWrapperState extends State<AuthWrapper> {
     }
 
     if (_currentUser == null) {
-      return LoginScreen(onLoginSuccess: _onLoginSuccess);
+      return RoleSelectionScreen(
+        serverUrl: widget.serverUrl,
+        onLoginSuccess: _onLoginSuccess,
+      );
+    }
+
+    if (_currentUser!.role == 'admin') {
+      return AdminDashboard(
+        serverUrl: widget.serverUrl,
+        user: _currentUser!,
+        onLogout: _logout,
+      );
     }
 
     return MainNavigationScreen(
       camera: widget.camera,
+      serverUrl: widget.serverUrl,
       user: _currentUser!,
       onLogout: _logout,
     );
   }
 }
 
+// Role Selection Screen
+class RoleSelectionScreen extends StatelessWidget {
+  final String serverUrl;
+  final Function(User) onLoginSuccess;
+  
+  const RoleSelectionScreen({
+    super.key,
+    required this.serverUrl,
+    required this.onLoginSuccess,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      body: Container(
+        decoration: BoxDecoration(
+          gradient: LinearGradient(
+            colors: [Colors.blue.shade700, Colors.blue.shade500],
+          ),
+        ),
+        child: SafeArea(
+          child: Center(
+            child: Padding(
+              padding: const EdgeInsets.all(24),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  const Icon(
+                    Icons.local_taxi,
+                    size: 100,
+                    color: Colors.white,
+                  ),
+                  const SizedBox(height: 24),
+                  const Text(
+                    'Welcome to DrowsyGuard',
+                    style: TextStyle(
+                      fontSize: 32,
+                      fontWeight: FontWeight.bold,
+                      color: Colors.white,
+                    ),
+                    textAlign: TextAlign.center,
+                  ),
+                  const SizedBox(height: 16),
+                  const Text(
+                    'Select your role to continue',
+                    style: TextStyle(
+                      fontSize: 18,
+                      color: Colors.white70,
+                    ),
+                  ),
+                  const SizedBox(height: 48),
+                  
+                  // Driver Button
+                  _RoleCard(
+                    icon: Icons.drive_eta,
+                    title: 'Driver',
+                    description: 'Monitor your drowsiness while driving',
+                    color: Colors.blue,
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => LoginScreen(
+                            serverUrl: serverUrl,
+                            role: 'driver',
+                            onLoginSuccess: onLoginSuccess,
+                          ),
+                        ),
+                      );
+                    },
+                  ),
+                  
+                  const SizedBox(height: 20),
+                  
+                  // Admin Button
+                  _RoleCard(
+                    icon: Icons.admin_panel_settings,
+                    title: 'Admin',
+                    description: 'Monitor all drivers and view analytics',
+                    color: Colors.orange,
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => LoginScreen(
+                            serverUrl: serverUrl,
+                            role: 'admin',
+                            onLoginSuccess: onLoginSuccess,
+                          ),
+                        ),
+                      );
+                    },
+                  ),
+                ],
+              ),
+            ),
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+class _RoleCard extends StatelessWidget {
+  final IconData icon;
+  final String title;
+  final String description;
+  final Color color;
+  final VoidCallback onTap;
+
+  const _RoleCard({
+    required this.icon,
+    required this.title,
+    required this.description,
+    required this.color,
+    required this.onTap,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Card(
+      elevation: 8,
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(20),
+      ),
+      child: InkWell(
+        onTap: onTap,
+        borderRadius: BorderRadius.circular(20),
+        child: Container(
+          padding: const EdgeInsets.all(24),
+          child: Row(
+            children: [
+              Container(
+                padding: const EdgeInsets.all(16),
+                decoration: BoxDecoration(
+                  color: color.withOpacity(0.1),
+                  shape: BoxShape.circle,
+                ),
+                child: Icon(icon, size: 48, color: color),
+              ),
+              const SizedBox(width: 20),
+              Expanded(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      title,
+                      style: TextStyle(
+                        fontSize: 24,
+                        fontWeight: FontWeight.bold,
+                        color: color,
+                      ),
+                    ),
+                    const SizedBox(height: 8),
+                    Text(
+                      description,
+                      style: TextStyle(
+                        fontSize: 14,
+                        color: Colors.grey.shade600,
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+              Icon(Icons.arrow_forward_ios, color: color),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+}
+
 // Login Screen
 class LoginScreen extends StatefulWidget {
+  final String serverUrl;
+  final String role;
   final Function(User) onLoginSuccess;
-  const LoginScreen({super.key, required this.onLoginSuccess});
+  
+  const LoginScreen({
+    super.key,
+    required this.serverUrl,
+    required this.role,
+    required this.onLoginSuccess,
+  });
 
   @override
   State<LoginScreen> createState() => _LoginScreenState();
 }
 
 class _LoginScreenState extends State<LoginScreen> {
-  static const String serverUrl = 'http://192.168.1.13:8000';
-  
   final _formKey = GlobalKey<FormState>();
   final _usernameController = TextEditingController();
   final _passwordController = TextEditingController();
@@ -182,11 +602,12 @@ class _LoginScreenState extends State<LoginScreen> {
 
     try {
       final response = await http.post(
-        Uri.parse('$serverUrl/users/login'),
+        Uri.parse('${widget.serverUrl}/users/login'),
         headers: {'Content-Type': 'application/json'},
         body: jsonEncode({
           'username': _usernameController.text,
           'password': _passwordController.text,
+          'role': widget.role,
         }),
       );
 
@@ -194,6 +615,10 @@ class _LoginScreenState extends State<LoginScreen> {
 
       if (response.statusCode == 200 && data['success']) {
         final user = User.fromJson(data['user']);
+        if (user.role != widget.role) {
+          _showError('Invalid role for this account');
+          return;
+        }
         widget.onLoginSuccess(user);
       } else {
         _showError(data['detail'] ?? 'Login failed');
@@ -217,11 +642,15 @@ class _LoginScreenState extends State<LoginScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final isAdmin = widget.role == 'admin';
+    
     return Scaffold(
       body: Container(
         decoration: BoxDecoration(
           gradient: LinearGradient(
-            colors: [Colors.blue.shade700, Colors.blue.shade500],
+            colors: isAdmin 
+                ? [Colors.orange.shade700, Colors.orange.shade500]
+                : [Colors.blue.shade700, Colors.blue.shade500],
           ),
         ),
         child: SafeArea(
@@ -240,44 +669,32 @@ class _LoginScreenState extends State<LoginScreen> {
                     child: Column(
                       mainAxisSize: MainAxisSize.min,
                       children: [
-                        // Logo
                         Container(
                           padding: const EdgeInsets.all(20),
                           decoration: BoxDecoration(
                             gradient: LinearGradient(
-                              colors: [Colors.blue.shade400, Colors.blue.shade600],
+                              colors: isAdmin
+                                  ? [Colors.orange.shade400, Colors.orange.shade600]
+                                  : [Colors.blue.shade400, Colors.blue.shade600],
                             ),
                             shape: BoxShape.circle,
                           ),
-                          child: const Icon(
-                            Icons.local_taxi,
+                          child: Icon(
+                            isAdmin ? Icons.admin_panel_settings : Icons.local_taxi,
                             size: 48,
                             color: Colors.white,
                           ),
                         ),
                         const SizedBox(height: 24),
-                        
-                        // Title
-                        const Text(
-                          'DrowsyGuard',
-                          style: TextStyle(
+                        Text(
+                          isAdmin ? 'Admin Login' : 'Driver Login',
+                          style: const TextStyle(
                             fontSize: 32,
                             fontWeight: FontWeight.bold,
                             color: Colors.black87,
                           ),
                         ),
-                        const SizedBox(height: 8),
-                        Text(
-                          'Your AI-powered driving safety companion',
-                          style: TextStyle(
-                            fontSize: 16,
-                            color: Colors.grey.shade600,
-                          ),
-                          textAlign: TextAlign.center,
-                        ),
                         const SizedBox(height: 40),
-
-                        // Username field
                         TextFormField(
                           controller: _usernameController,
                           decoration: InputDecoration(
@@ -295,8 +712,6 @@ class _LoginScreenState extends State<LoginScreen> {
                           },
                         ),
                         const SizedBox(height: 20),
-
-                        // Password field
                         TextFormField(
                           controller: _passwordController,
                           obscureText: _obscurePassword,
@@ -319,15 +734,13 @@ class _LoginScreenState extends State<LoginScreen> {
                           },
                         ),
                         const SizedBox(height: 32),
-
-                        // Login button
                         SizedBox(
                           width: double.infinity,
                           height: 56,
                           child: ElevatedButton(
                             onPressed: _isLoading ? null : _login,
                             style: ElevatedButton.styleFrom(
-                              backgroundColor: Colors.blue.shade600,
+                              backgroundColor: isAdmin ? Colors.orange.shade600 : Colors.blue.shade600,
                               foregroundColor: Colors.white,
                               shape: RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(16),
@@ -341,36 +754,37 @@ class _LoginScreenState extends State<LoginScreen> {
                                   ),
                           ),
                         ),
-                        const SizedBox(height: 24),
-
-                        // Sign up link
-                        TextButton(
-                          onPressed: () {
-                            Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                builder: (context) => SignupScreen(
-                                  onSignupSuccess: widget.onLoginSuccess,
-                                ),
-                              ),
-                            );
-                          },
-                          child: RichText(
-                            text: TextSpan(
-                              text: "Don't have an account? ",
-                              style: TextStyle(color: Colors.grey.shade600, fontSize: 16),
-                              children: [
-                                TextSpan(
-                                  text: 'Sign up',
-                                  style: TextStyle(
-                                    color: Colors.blue.shade700,
-                                    fontWeight: FontWeight.bold,
+                        if (!isAdmin) ...[
+                          const SizedBox(height: 24),
+                          TextButton(
+                            onPressed: () {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) => SignupScreen(
+                                    serverUrl: widget.serverUrl,
+                                    onSignupSuccess: widget.onLoginSuccess,
                                   ),
                                 ),
-                              ],
+                              );
+                            },
+                            child: RichText(
+                              text: TextSpan(
+                                text: "Don't have an account? ",
+                                style: TextStyle(color: Colors.grey.shade600, fontSize: 16),
+                                children: [
+                                  TextSpan(
+                                    text: 'Sign up',
+                                    style: TextStyle(
+                                      color: Colors.blue.shade700,
+                                      fontWeight: FontWeight.bold,
+                                    ),
+                                  ),
+                                ],
+                              ),
                             ),
                           ),
-                        ),
+                        ],
                       ],
                     ),
                   ),
@@ -391,18 +805,22 @@ class _LoginScreenState extends State<LoginScreen> {
   }
 }
 
-// Signup Screen
+// Signup Screen (Driver only)
 class SignupScreen extends StatefulWidget {
+  final String serverUrl;
   final Function(User) onSignupSuccess;
-  const SignupScreen({super.key, required this.onSignupSuccess});
+  
+  const SignupScreen({
+    super.key,
+    required this.serverUrl,
+    required this.onSignupSuccess,
+  });
 
   @override
   State<SignupScreen> createState() => _SignupScreenState();
 }
 
 class _SignupScreenState extends State<SignupScreen> {
-  static const String serverUrl = 'http://192.168.1.13:8000';
-  
   final _formKey = GlobalKey<FormState>();
   final _usernameController = TextEditingController();
   final _emailController = TextEditingController();
@@ -420,13 +838,14 @@ class _SignupScreenState extends State<SignupScreen> {
 
     try {
       final response = await http.post(
-        Uri.parse('$serverUrl/users/register'),
+        Uri.parse('${widget.serverUrl}/users/register'),
         headers: {'Content-Type': 'application/json'},
         body: jsonEncode({
           'username': _usernameController.text,
           'email': _emailController.text,
           'password': _passwordController.text,
           'phone': _phoneController.text.isEmpty ? null : _phoneController.text,
+          'role': 'driver',
         }),
       );
 
@@ -447,11 +866,12 @@ class _SignupScreenState extends State<SignupScreen> {
   Future<void> _autoLogin() async {
     try {
       final response = await http.post(
-        Uri.parse('$serverUrl/users/login'),
+        Uri.parse('${widget.serverUrl}/users/login'),
         headers: {'Content-Type': 'application/json'},
         body: jsonEncode({
           'username': _usernameController.text,
           'password': _passwordController.text,
+          'role': 'driver',
         }),
       );
 
@@ -507,7 +927,6 @@ class _SignupScreenState extends State<SignupScreen> {
                     child: Column(
                       mainAxisSize: MainAxisSize.min,
                       children: [
-                        // Logo
                         Container(
                           padding: const EdgeInsets.all(20),
                           decoration: BoxDecoration(
@@ -523,8 +942,6 @@ class _SignupScreenState extends State<SignupScreen> {
                           ),
                         ),
                         const SizedBox(height: 24),
-
-                        // Title
                         const Text(
                           'Create Account',
                           style: TextStyle(
@@ -533,18 +950,7 @@ class _SignupScreenState extends State<SignupScreen> {
                             color: Colors.black87,
                           ),
                         ),
-                        const SizedBox(height: 8),
-                        Text(
-                          'Join DrowsyGuard for safer driving',
-                          style: TextStyle(
-                            fontSize: 16,
-                            color: Colors.grey.shade600,
-                          ),
-                          textAlign: TextAlign.center,
-                        ),
                         const SizedBox(height: 40),
-
-                        // Username field
                         TextFormField(
                           controller: _usernameController,
                           decoration: InputDecoration(
@@ -565,8 +971,6 @@ class _SignupScreenState extends State<SignupScreen> {
                           },
                         ),
                         const SizedBox(height: 20),
-
-                        // Email field
                         TextFormField(
                           controller: _emailController,
                           keyboardType: TextInputType.emailAddress,
@@ -588,8 +992,6 @@ class _SignupScreenState extends State<SignupScreen> {
                           },
                         ),
                         const SizedBox(height: 20),
-
-                        // Password field
                         TextFormField(
                           controller: _passwordController,
                           obscureText: _obscurePassword,
@@ -615,8 +1017,6 @@ class _SignupScreenState extends State<SignupScreen> {
                           },
                         ),
                         const SizedBox(height: 20),
-
-                        // Confirm Password field
                         TextFormField(
                           controller: _confirmPasswordController,
                           obscureText: _obscureConfirmPassword,
@@ -642,8 +1042,6 @@ class _SignupScreenState extends State<SignupScreen> {
                           },
                         ),
                         const SizedBox(height: 20),
-
-                        // Phone field (optional)
                         TextFormField(
                           controller: _phoneController,
                           keyboardType: TextInputType.phone,
@@ -656,8 +1054,6 @@ class _SignupScreenState extends State<SignupScreen> {
                           ),
                         ),
                         const SizedBox(height: 32),
-
-                        // Signup button
                         SizedBox(
                           width: double.infinity,
                           height: 56,
@@ -679,8 +1075,6 @@ class _SignupScreenState extends State<SignupScreen> {
                           ),
                         ),
                         const SizedBox(height: 24),
-
-                        // Login link
                         TextButton(
                           onPressed: () => Navigator.pop(context),
                           child: RichText(
@@ -722,15 +1116,369 @@ class _SignupScreenState extends State<SignupScreen> {
   }
 }
 
-// Main Navigation
+// Admin Dashboard
+class AdminDashboard extends StatefulWidget {
+  final String serverUrl;
+  final User user;
+  final VoidCallback onLogout;
+  
+  const AdminDashboard({
+    super.key,
+    required this.serverUrl,
+    required this.user,
+    required this.onLogout,
+  });
+
+  @override
+  State<AdminDashboard> createState() => _AdminDashboardState();
+}
+
+class _AdminDashboardState extends State<AdminDashboard> {
+  Map<String, dynamic>? _adminData;
+  bool _isLoading = true;
+  Timer? _refreshTimer;
+
+  @override
+  void initState() {
+    super.initState();
+    _loadAdminData();
+    _refreshTimer = Timer.periodic(const Duration(seconds: 5), (_) => _loadAdminData());
+  }
+
+  @override
+  void dispose() {
+    _refreshTimer?.cancel();
+    super.dispose();
+  }
+
+  Future<void> _loadAdminData() async {
+    try {
+      final response = await http.get(
+        Uri.parse('${widget.serverUrl}/admin/dashboard'),
+      );
+
+      if (response.statusCode == 200) {
+        final data = jsonDecode(response.body);
+        if (data['success'] && mounted) {
+          setState(() {
+            _adminData = data['data'];
+            _isLoading = false;
+          });
+        }
+      }
+    } catch (e) {
+      print('Admin dashboard error: $e');
+      if (mounted) {
+        setState(() => _isLoading = false);
+      }
+    }
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('Admin Dashboard - ${widget.user.username}'),
+        backgroundColor: Colors.orange.shade700,
+        foregroundColor: Colors.white,
+        actions: [
+          IconButton(
+            icon: const Icon(Icons.refresh),
+            onPressed: _loadAdminData,
+          ),
+          PopupMenuButton<String>(
+            onSelected: (value) {
+              if (value == 'logout') {
+                widget.onLogout();
+              }
+            },
+            itemBuilder: (context) => [
+              const PopupMenuItem(
+                value: 'logout',
+                child: Row(
+                  children: [
+                    Icon(Icons.logout),
+                    SizedBox(width: 8),
+                    Text('Logout'),
+                  ],
+                ),
+              ),
+            ],
+          ),
+        ],
+      ),
+      body: _isLoading
+          ? const Center(child: CircularProgressIndicator())
+          : RefreshIndicator(
+              onRefresh: _loadAdminData,
+              child: SingleChildScrollView(
+                physics: const AlwaysScrollableScrollPhysics(),
+                padding: const EdgeInsets.all(16),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    // Stats Overview
+                    Row(
+                      children: [
+                        Expanded(
+                          child: _buildStatCard(
+                            'Active Drivers',
+                            '${_adminData?['active_drivers'] ?? 0}',
+                            Icons.drive_eta,
+                            Colors.green,
+                          ),
+                        ),
+                        const SizedBox(width: 12),
+                        Expanded(
+                          child: _buildStatCard(
+                            'Drowsy Alerts',
+                            '${_adminData?['drowsy_drivers'] ?? 0}',
+                            Icons.warning,
+                            Colors.red,
+                          ),
+                        ),
+                      ],
+                    ),
+                    const SizedBox(height: 12),
+                    Row(
+                      children: [
+                        Expanded(
+                          child: _buildStatCard(
+                            'Total Drivers',
+                            '${_adminData?['total_drivers'] ?? 0}',
+                            Icons.people,
+                            Colors.blue,
+                          ),
+                        ),
+                        const SizedBox(width: 12),
+                        Expanded(
+                          child: _buildStatCard(
+                            'Total Sessions',
+                            '${_adminData?['total_sessions'] ?? 0}',
+                            Icons.timeline,
+                            Colors.purple,
+                          ),
+                        ),
+                      ],
+                    ),
+                    
+                    const SizedBox(height: 24),
+                    
+                    // Active Sessions
+                    const Text(
+                      'Active Sessions',
+                      style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                    ),
+                    const SizedBox(height: 16),
+                    ..._buildActiveSessions(),
+                    
+                    const SizedBox(height: 24),
+                    
+                    // Recent Activity
+                    const Text(
+                      'Recent Activity',
+                      style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                    ),
+                    const SizedBox(height: 16),
+                    ..._buildRecentActivity(),
+                  ],
+                ),
+              ),
+            ),
+    );
+  }
+
+  Widget _buildStatCard(String title, String value, IconData icon, Color color) {
+    return Card(
+      child: Padding(
+        padding: const EdgeInsets.all(16),
+        child: Column(
+          children: [
+            Icon(icon, color: color, size: 32),
+            const SizedBox(height: 8),
+            Text(
+              value,
+              style: TextStyle(
+                fontSize: 24,
+                fontWeight: FontWeight.bold,
+                color: color,
+              ),
+            ),
+            Text(
+              title,
+              style: TextStyle(
+                fontSize: 12,
+                color: Colors.grey.shade600,
+              ),
+              textAlign: TextAlign.center,
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+
+  List<Widget> _buildActiveSessions() {
+    final sessions = _adminData?['active_sessions'] as List? ?? [];
+    
+    if (sessions.isEmpty) {
+      return [
+        Card(
+          child: Padding(
+            padding: const EdgeInsets.all(24),
+            child: Center(
+              child: Text(
+                'No active sessions',
+                style: TextStyle(color: Colors.grey.shade600),
+              ),
+            ),
+          ),
+        ),
+      ];
+    }
+
+    return sessions.map<Widget>((session) {
+      final isDrowsy = (session['latest_drowsy'] ?? false);
+      final duration = _calculateDuration(session['start_time']);
+      
+      return Card(
+        margin: const EdgeInsets.only(bottom: 8),
+        color: isDrowsy ? Colors.red.shade50 : null,
+        child: ListTile(
+          leading: Container(
+            padding: const EdgeInsets.all(8),
+            decoration: BoxDecoration(
+              color: isDrowsy ? Colors.red.shade100 : Colors.green.shade100,
+              shape: BoxShape.circle,
+            ),
+            child: Icon(
+              isDrowsy ? Icons.warning : Icons.check_circle,
+              color: isDrowsy ? Colors.red : Colors.green,
+            ),
+          ),
+          title: Text(
+            session['username'] ?? 'Unknown Driver',
+            style: const TextStyle(fontWeight: FontWeight.bold),
+          ),
+          subtitle: Text(
+            'Session #${session['session_id']} • ${session['total_detections'] ?? 0} detections\n'
+            'Alerts: ${session['alerts'] ?? 0} • Duration: $duration',
+          ),
+          trailing: isDrowsy
+              ? Container(
+                  padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
+                  decoration: BoxDecoration(
+                    color: Colors.red,
+                    borderRadius: BorderRadius.circular(12),
+                  ),
+                  child: const Text(
+                    'DROWSY',
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontWeight: FontWeight.bold,
+                      fontSize: 12,
+                    ),
+                  ),
+                )
+              : const Icon(Icons.arrow_forward_ios, size: 16),
+        ),
+      );
+    }).toList();
+  }
+
+  List<Widget> _buildRecentActivity() {
+    final activities = _adminData?['recent_logs'] as List? ?? [];
+    
+    if (activities.isEmpty) {
+      return [
+        Card(
+          child: Padding(
+            padding: const EdgeInsets.all(24),
+            child: Center(
+              child: Text(
+                'No recent activity',
+                style: TextStyle(color: Colors.grey.shade600),
+              ),
+            ),
+          ),
+        ),
+      ];
+    }
+
+    return activities.take(20).map<Widget>((log) {
+      final isDrowsy = (log['prediction'] ?? '').toLowerCase().contains('drowsy');
+      final confidence = (log['confidence'] ?? 0.0) * 100;
+      
+      return Card(
+        margin: const EdgeInsets.only(bottom: 8),
+        child: ListTile(
+          leading: Icon(
+            isDrowsy ? Icons.warning : Icons.visibility,
+            color: isDrowsy ? Colors.red : Colors.blue,
+          ),
+          title: Text('${log['username']} - ${log['prediction']}'),
+          subtitle: Text(
+            'Confidence: ${confidence.toStringAsFixed(1)}% • Session #${log['session_id']}\n'
+            '${_formatDateTime(log['timestamp'])}',
+          ),
+          trailing: Text(
+            _formatTime(log['timestamp']),
+            style: TextStyle(
+              color: Colors.grey.shade500,
+              fontSize: 12,
+            ),
+          ),
+        ),
+      );
+    }).toList();
+  }
+
+  String _calculateDuration(String? startTime) {
+    if (startTime == null) return '0m';
+    try {
+      final start = DateTime.parse(startTime);
+      final duration = DateTime.now().difference(start);
+      if (duration.inHours > 0) {
+        return '${duration.inHours}h ${duration.inMinutes % 60}m';
+      }
+      return '${duration.inMinutes}m';
+    } catch (e) {
+      return '0m';
+    }
+  }
+
+  String _formatDateTime(String? dateTime) {
+    if (dateTime == null) return '';
+    try {
+      final date = DateTime.parse(dateTime);
+      return '${date.day}/${date.month}/${date.year}';
+    } catch (e) {
+      return '';
+    }
+  }
+
+  String _formatTime(String? dateTime) {
+    if (dateTime == null) return '';
+    try {
+      final date = DateTime.parse(dateTime);
+      return '${date.hour.toString().padLeft(2, '0')}:${date.minute.toString().padLeft(2, '0')}';
+    } catch (e) {
+      return '';
+    }
+  }
+}
+
+// Main Navigation (Driver)
 class MainNavigationScreen extends StatefulWidget {
   final CameraDescription camera;
+  final String serverUrl;
   final User user;
   final VoidCallback onLogout;
   
   const MainNavigationScreen({
-    super.key, 
-    required this.camera, 
+    super.key,
+    required this.camera,
+    required this.serverUrl,
     required this.user,
     required this.onLogout,
   });
@@ -748,18 +1496,17 @@ class _MainNavigationScreenState extends State<MainNavigationScreen> {
     final screens = [
       DashboardScreen(
         key: _dashboardKey,
-        user: widget.user, 
+        serverUrl: widget.serverUrl,
+        user: widget.user,
         onLogout: widget.onLogout,
       ),
       DrowsinessDetectionScreen(
-        camera: widget.camera, 
+        camera: widget.camera,
+        serverUrl: widget.serverUrl,
         user: widget.user,
         onDetectionComplete: () {
-          print('Detection completed callback called');
-          // Force refresh dashboard
           Future.delayed(const Duration(milliseconds: 500), () {
             if (_dashboardKey.currentState != null) {
-              print('Refreshing dashboard');
               _dashboardKey.currentState!.refreshDashboard();
             }
           });
@@ -773,9 +1520,7 @@ class _MainNavigationScreenState extends State<MainNavigationScreen> {
         currentIndex: _currentIndex,
         onTap: (index) {
           setState(() => _currentIndex = index);
-          // Also refresh dashboard when switching to it
           if (index == 0) {
-            print('Switched to dashboard, refreshing');
             Future.delayed(const Duration(milliseconds: 100), () {
               if (_dashboardKey.currentState != null) {
                 _dashboardKey.currentState!.refreshDashboard();
@@ -798,19 +1543,24 @@ class _MainNavigationScreenState extends State<MainNavigationScreen> {
   }
 }
 
-// Dashboard Screen
+// Dashboard Screen (Driver)
 class DashboardScreen extends StatefulWidget {
+  final String serverUrl;
   final User user;
   final VoidCallback onLogout;
   
-  const DashboardScreen({super.key, required this.user, required this.onLogout});
+  const DashboardScreen({
+    super.key,
+    required this.serverUrl,
+    required this.user,
+    required this.onLogout,
+  });
 
   @override
   State<DashboardScreen> createState() => _DashboardScreenState();
 }
 
 class _DashboardScreenState extends State<DashboardScreen> {
-  static const String serverUrl = 'http://192.168.1.13:8000';
   Map<String, dynamic>? _dashboardData;
   bool _isLoading = true;
 
@@ -821,21 +1571,16 @@ class _DashboardScreenState extends State<DashboardScreen> {
   }
 
   Future<void> _loadDashboardData() async {
-    print('Loading dashboard data for user ${widget.user.id}');
     setState(() => _isLoading = true);
     
     try {
       final response = await http.get(
-        Uri.parse('$serverUrl/users/${widget.user.id}/dashboard'),
+        Uri.parse('${widget.serverUrl}/users/${widget.user.id}/dashboard'),
       );
-
-      print('Dashboard API response: ${response.statusCode}');
-      print('Dashboard API body: ${response.body}');
 
       if (response.statusCode == 200) {
         final data = jsonDecode(response.body);
         if (data['success']) {
-          print('Dashboard data loaded: $data');
           setState(() {
             _dashboardData = data['data'];
             _isLoading = false;
@@ -851,7 +1596,6 @@ class _DashboardScreenState extends State<DashboardScreen> {
   }
 
   Future<void> refreshDashboard() async {
-    print('Refresh dashboard called');
     await _loadDashboardData();
   }
 
@@ -865,10 +1609,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
         actions: [
           IconButton(
             icon: const Icon(Icons.refresh),
-            onPressed: () {
-              print('Manual refresh button pressed');
-              refreshDashboard();
-            },
+            onPressed: refreshDashboard,
           ),
           PopupMenuButton<String>(
             onSelected: (value) {
@@ -901,7 +1642,6 @@ class _DashboardScreenState extends State<DashboardScreen> {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    // Stats Cards
                     Row(
                       children: [
                         Expanded(
@@ -945,10 +1685,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
                         ),
                       ],
                     ),
-
                     const SizedBox(height: 24),
-
-                    // Quick Actions
                     Card(
                       child: ListTile(
                         leading: const Icon(Icons.play_circle_filled, color: Colors.green, size: 40),
@@ -963,10 +1700,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
                         },
                       ),
                     ),
-
                     const SizedBox(height: 24),
-
-                    // Recent Sessions
                     const Text(
                       'Recent Sessions',
                       style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
@@ -1030,15 +1764,6 @@ class _DashboardScreenState extends State<DashboardScreen> {
                     color: Colors.grey.shade600,
                   ),
                 ),
-                const SizedBox(height: 8),
-                Text(
-                  'Start your first detection session to see history here',
-                  style: TextStyle(
-                    fontSize: 14,
-                    color: Colors.grey.shade500,
-                  ),
-                  textAlign: TextAlign.center,
-                ),
               ],
             ),
           ),
@@ -1090,15 +1815,17 @@ class _DashboardScreenState extends State<DashboardScreen> {
   }
 }
 
-// Detection Screen
+// Detection Screen (unchanged from your original, just added serverUrl parameter)
 class DrowsinessDetectionScreen extends StatefulWidget {
   final CameraDescription camera;
+  final String serverUrl;
   final User user;
   final VoidCallback? onDetectionComplete;
   
   const DrowsinessDetectionScreen({
-    super.key, 
-    required this.camera, 
+    super.key,
+    required this.camera,
+    required this.serverUrl,
     required this.user,
     this.onDetectionComplete,
   });
@@ -1109,8 +1836,6 @@ class DrowsinessDetectionScreen extends StatefulWidget {
 
 class _DrowsinessDetectionScreenState extends State<DrowsinessDetectionScreen> 
     with TickerProviderStateMixin {
-  static const String serverUrl = 'http://192.168.1.13:8000';
-  
   late CameraController _cameraController;
   late Future<void> _initializeControllerFuture;
   late AudioPlayer _audioPlayer;
@@ -1119,7 +1844,7 @@ class _DrowsinessDetectionScreenState extends State<DrowsinessDetectionScreen>
   
   bool _isDetecting = false;
   bool _isDrowsy = false;
-  bool _isProcessing = false; // Add flag to prevent overlapping requests
+  bool _isProcessing = false;
   String _currentStatus = 'Ready to start detection';
   String _lastPrediction = '';
   double _lastConfidence = 0.0;
@@ -1154,7 +1879,7 @@ class _DrowsinessDetectionScreenState extends State<DrowsinessDetectionScreen>
   void _initializeCamera() {
     _cameraController = CameraController(
       widget.camera,
-      ResolutionPreset.low, // Reduced from medium to low for faster processing
+      ResolutionPreset.low,
       enableAudio: false,
       imageFormatGroup: ImageFormatGroup.jpeg,
     );
@@ -1166,7 +1891,7 @@ class _DrowsinessDetectionScreenState extends State<DrowsinessDetectionScreen>
 
     try {
       final response = await http.post(
-        Uri.parse('$serverUrl/sessions/start'),
+        Uri.parse('${widget.serverUrl}/sessions/start'),
         headers: {'Content-Type': 'application/json'},
         body: jsonEncode({'user_id': widget.user.id}),
       );
@@ -1186,7 +1911,6 @@ class _DrowsinessDetectionScreenState extends State<DrowsinessDetectionScreen>
       _drowsyCount = 0;
     });
 
-    // Reduced interval to 500ms for real-time detection
     _detectionTimer = Timer.periodic(
       const Duration(milliseconds: 500),
       (_) => _captureAndAnalyze(),
@@ -1200,23 +1924,16 @@ class _DrowsinessDetectionScreenState extends State<DrowsinessDetectionScreen>
 
     if (_currentSessionId != null) {
       try {
-        print('Ending session $_currentSessionId');
         final response = await http.post(
-          Uri.parse('$serverUrl/sessions/$_currentSessionId/end'),
+          Uri.parse('${widget.serverUrl}/sessions/$_currentSessionId/end'),
           headers: {'Content-Type': 'application/json'},
         );
-        
-        print('End session response: ${response.statusCode}');
-        print('End session body: ${response.body}');
         
         if (response.statusCode == 200) {
           final data = jsonDecode(response.body);
           if (data['success']) {
-            print('Session ended successfully, calling callback');
             widget.onDetectionComplete?.call();
           }
-        } else {
-          print('Failed to end session: ${response.statusCode} - ${response.body}');
         }
       } catch (e) {
         print('Failed to end session: $e');
@@ -1232,7 +1949,6 @@ class _DrowsinessDetectionScreenState extends State<DrowsinessDetectionScreen>
   }
 
   Future<void> _captureAndAnalyze() async {
-    // Skip if already processing or camera not ready
     if (!_cameraController.value.isInitialized || !_isDetecting || _isProcessing) return;
 
     _isProcessing = true;
@@ -1248,7 +1964,7 @@ class _DrowsinessDetectionScreenState extends State<DrowsinessDetectionScreen>
           _detectionCount++;
           
           _isDrowsy = _lastPrediction.toLowerCase().contains('drowsy') && 
-                     _lastConfidence > 0.6; // Reduced threshold for faster response
+                     _lastConfidence > 0.6;
           
           if (_isDrowsy) {
             _drowsyCount++;
@@ -1284,15 +2000,14 @@ class _DrowsinessDetectionScreenState extends State<DrowsinessDetectionScreen>
   Future<Map<String, dynamic>?> _sendImageToBackend(String imagePath) async {
     try {
       String endpoint = _currentSessionId != null 
-          ? '$serverUrl/detect/$_currentSessionId'
-          : '$serverUrl/predict_frame';
+          ? '${widget.serverUrl}/detect/$_currentSessionId'
+          : '${widget.serverUrl}/predict_frame';
       
       var request = http.MultipartRequest('POST', Uri.parse(endpoint));
       request.files.add(await http.MultipartFile.fromPath('file', imagePath));
       
-      // Reduced timeout for faster response
       final streamedResponse = await request.send().timeout(
-        const Duration(seconds: 3), // Reduced from 10 to 3 seconds
+        const Duration(seconds: 3),
       );
       
       final response = await http.Response.fromStream(streamedResponse);
@@ -1378,7 +2093,6 @@ class _DrowsinessDetectionScreenState extends State<DrowsinessDetectionScreen>
           if (snapshot.connectionState == ConnectionState.done) {
             return Column(
               children: [
-                // Camera Preview
                 Expanded(
                   flex: 3,
                   child: Container(
@@ -1396,8 +2110,6 @@ class _DrowsinessDetectionScreenState extends State<DrowsinessDetectionScreen>
                     ),
                   ),
                 ),
-                
-                // Status Card
                 Card(
                   margin: const EdgeInsets.all(16),
                   child: Padding(
@@ -1451,8 +2163,6 @@ class _DrowsinessDetectionScreenState extends State<DrowsinessDetectionScreen>
                     ),
                   ),
                 ),
-                
-                // Control Buttons
                 Padding(
                   padding: const EdgeInsets.all(16),
                   child: Column(
@@ -1471,11 +2181,6 @@ class _DrowsinessDetectionScreenState extends State<DrowsinessDetectionScreen>
                             style: const TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
                           ),
                         ),
-                      ),
-                      const SizedBox(height: 12),
-                      OutlinedButton(
-                        onPressed: _captureAndAnalyze,
-                        child: const Text('Test Single Frame'),
                       ),
                     ],
                   ),
